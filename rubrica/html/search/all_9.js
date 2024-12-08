@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['removecontact_0',['removeContact',['../interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book.html#a8f21f177c629ebd93b711fe6ed0251dd',1,'it.unisa.diem.ingsoftw.gruppo16.model.AddressBook.removeContact()'],['../classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model.html#a16dc0311d7ddb5578eb7aad54226d3c9',1,'it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel.removeContact()'],['../classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_favourtie_address_book.html#a2f3d5e73cd265d901187c417989dc740',1,'it.unisa.diem.ingsoftw.gruppo16.model.FavourtieAddressBook.removeContact()']]]
+  ['removecontact_0',['removeContact',['../interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book.html#a8f21f177c629ebd93b711fe6ed0251dd',1,'it.unisa.diem.ingsoftw.gruppo16.model.AddressBook.removeContact()'],['../classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model.html#a16dc0311d7ddb5578eb7aad54226d3c9',1,'it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel.removeContact()']]]
 ];
