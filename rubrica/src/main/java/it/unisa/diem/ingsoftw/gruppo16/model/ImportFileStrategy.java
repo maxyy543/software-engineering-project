@@ -1,8 +1,16 @@
-package classes;
-import java.util.Collection;
+package it.unisa.diem.ingsoftw.gruppo16.model;
+import java.util.TreeSet;
 
+/**
+ * @interface ImportFileStrategy
+ * @brief Definisce il metodo importFile.
+ */
 public interface ImportFileStrategy {
-
-    public Collection<Contact> importFile(String filename);
+    /**
+     * 
+     * @param[in] filename Path del file da importare
+     * @return TreeSet con i contatti importati dal file.
+     */
+    public TreeSet<Contact> importFile(String filename);
     
 }

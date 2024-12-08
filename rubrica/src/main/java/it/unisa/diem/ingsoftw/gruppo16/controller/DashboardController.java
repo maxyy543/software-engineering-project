@@ -1,4 +1,4 @@
-package com.example;
+package it.unisa.diem.ingsoftw.gruppo16.controller;
 
 import java.io.IOException;
 import java.net.URL;
