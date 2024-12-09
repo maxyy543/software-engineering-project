@@ -42,28 +42,22 @@ public class DashboardController implements Initializable{
     @FXML
     private void exportFileOnAction(ActionEvent event) {
     }
+
     @FXML
     private void addButtonOnAction(ActionEvent event) throws IOException {
-        switchSceneToModifyContact(event);
+        Parent scene2Root = FXMLLoader.load(getClass().getResource("interface3.fxml")); 
+        Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
+        Scene scene2 = new Scene(scene2Root); 
+        stage.setScene(scene2); 
+        stage.show();
     }
+
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
     }
 
     @FXML
     private void importFileOnAction(ActionEvent event) {
-    }
-
-    void switchSceneToModifyContact(ActionEvent event) throws IOException{
-        try{
-            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml")); 
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
-            Scene scene2 = new Scene(scene2Root); 
-            stage.setScene(scene2); 
-            stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
     
 }
