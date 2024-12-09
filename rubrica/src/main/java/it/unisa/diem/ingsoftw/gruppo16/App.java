@@ -14,9 +14,9 @@ public class App extends Application{
     {
         launch(args);
     }
-
-     @Override
-    public void start(Stage stage){
+    
+    @Override
+    public void start(Stage stage){        
         try {
             Parent root = loadFXML("fxmlDir/interface");
             Scene scene1 = new Scene(root);
