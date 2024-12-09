@@ -28,10 +28,15 @@
                     </goals>
                 </execution>
             </executions>
-	    <configuration>
+	          <configuration>
                         <mainClass>it.unisa.diem.ingsoftw.gruppo16.App</mainClass>
             </configuration>
         </plugin>
     </plugins>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+        </resource>
+    </resources>
   </build>
 </project>

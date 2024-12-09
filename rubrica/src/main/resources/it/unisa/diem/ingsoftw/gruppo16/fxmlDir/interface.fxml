@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="768.0" maxWidth="1024.0" minHeight="480.0" minWidth="640.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #343434;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="768.0" maxWidth="1024.0" minHeight="480.0" minWidth="640.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #343434;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ingsoftw.gruppo16.controller.DashboardController">
    <children>
       <Button fx:id="exportBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="379.0" mnemonicParsing="false" onAction="#exportFileOnAction" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: #545454;" text="Esporta" textFill="#a6a6a6" />
       <Button fx:id="addContactBtn" layoutX="16.0" layoutY="109.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="70.0" prefWidth="168.0" style="-fx-background-color: #545454;" text="+ Crea Contatto" textFill="#00a1ff" AnchorPane.bottomAnchor="421.0" />
