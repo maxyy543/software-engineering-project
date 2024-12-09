@@ -1,11 +1,15 @@
 package it.unisa.diem.ingsoftw.gruppo16.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -13,6 +17,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 public class DetailController implements Initializable{
@@ -81,8 +86,8 @@ public class DetailController implements Initializable{
     }
 
     @FXML
-    private void modifyBtnOnAction(ActionEvent event){
-
+    private void modifyBtnOnAction(ActionEvent event) throws IOException{
+        switchSceneToModifyContact(event);
     }
 
     @FXML 
@@ -99,5 +104,15 @@ public class DetailController implements Initializable{
                 System.out.println("Utente ha annullato l'azione.");
             }
     }
-    
+    void switchSceneToModifyContact(ActionEvent event) throws IOException{
+        try{
+            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml")); 
+            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
+            Scene scene2 = new Scene(scene2Root); 
+            stage.setScene(scene2); 
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
