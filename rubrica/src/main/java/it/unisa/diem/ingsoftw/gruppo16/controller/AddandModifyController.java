@@ -88,7 +88,7 @@ public class AddandModifyController implements Initializable{
     }
     @FXML 
     private void delContactOnAction(ActionEvent event){
-        Alert alert = new Alert(AlertType.CONFIRMATION); 
+        Alert alert = new Alert(AlertType.WARNING); 
         alert.setTitle("Conferma Azione"); 
         alert.setHeaderText("Sei sicuro di voler procedere?"); 
         alert.setContentText("Questa azione non può essere annullata."); 
@@ -102,25 +102,10 @@ public class AddandModifyController implements Initializable{
     }
     @FXML
     private void cancelOnAction(ActionEvent event) throws IOException{
-        switchSceneToDashboard(event);
+        Parent scene2Root = FXMLLoader.load(getClass().getResource("interface.fxml")); 
+        Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
+        Scene scene2 = new Scene(scene2Root); 
+        stage.setScene(scene2); 
+        stage.show();
     }
-    @FXML
-    private void saveBtnOnAction(ActionEvent event) throws IOException{
-        switchSceneToDashboard(event);
-    }
-
-
-
-    private void switchSceneToDashboard(ActionEvent event) throws IOException{
-        try {
-            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml")); 
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
-            Scene scene2 = new Scene(scene2Root); 
-            stage.setScene(scene2); 
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
 }

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="768.0" maxWidth="1024.0" minHeight="480.0" minWidth="640.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #343434;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ingsoftw.gruppo16.controller.AddandModifyController">
+<AnchorPane maxHeight="768.0" maxWidth="1024.0" minHeight="480.0" minWidth="640.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #343434;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="exportBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="379.0" mnemonicParsing="false" onAction="#exportFileOnAction" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: #545454;" text="Esporta" textFill="#a6a6a6" />
       <Button fx:id="addContactBtn" layoutX="16.0" layoutY="109.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="70.0" prefWidth="168.0" style="-fx-background-color: #545454;" text="+ Crea Contatto" textFill="#00a1ff" AnchorPane.bottomAnchor="421.0" />
@@ -24,9 +24,9 @@
       <ListView fx:id="listView" layoutX="275.0" layoutY="109.0" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;" />
       <Pane layoutX="524.0" layoutY="109.0" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;">
          <children>
-            <Button fx:id="cancelBtn" layoutX="12.0" layoutY="14.0" mnemonicParsing="false" onAction="#cancelOnAction" style="-fx-background-color: #545454;" text="Annulla" textFill="#00a1ff" />
-            <Button fx:id="saveBtn" layoutX="68.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveBtnOnAction" style="-fx-background-color: #545454;" text="Salva" textFill="#00a1ff" />
-            <Button fx:id="deleteContactBtn" layoutX="12.0" layoutY="373.0" mnemonicParsing="false" onAction="#delContactOnAction" style="-fx-background-color: #545454;" text="Elimina contatto" textFill="#e40202" />
+            <Button fx:id="cancelBtn" layoutX="12.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #545454;" text="Annulla" textFill="#00a1ff" />
+            <Button fx:id="saveBtn" layoutX="68.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #545454;" text="Salva" textFill="#00a1ff" />
+            <Button fx:id="deleteContactBtn" layoutX="12.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #545454;" text="Elimina contatto" textFill="#e40202" />
             <TextField fx:id="telephoneTf" layoutX="12.0" layoutY="129.0" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 1" style="-fx-border-color: #a6a6a6; -fx-background-color: #545454;" />
             <TextField fx:id="telephone2Tf" layoutX="12.0" layoutY="162.0" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 2" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;" />
             <TextField fx:id="telephone3Tf" layoutX="12.0" layoutY="201.0" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 3" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;" />
