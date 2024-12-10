@@ -71,12 +71,19 @@ public class DashboardController implements Initializable{
     private void addButtonOnAction(ActionEvent event) throws IOException {
         switchSceneToModifyContact(event);
     }
+    /*
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
     }
-
+    */
     @FXML
     private void importFileOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void contactSelected() throws IOException{
+        selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
+        openDetailOf(selectedContact.getSelectedContact());
     }
 
     void switchSceneToModifyContact(ActionEvent event) throws IOException{
@@ -89,11 +96,6 @@ public class DashboardController implements Initializable{
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-    @FXML
-    private void contactSelected() throws IOException{
-        selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
-        openDetailOf(selectedContact.getSelectedContact());
     }
     private void openDetailOf(Contact contact) throws IOException{
         try{

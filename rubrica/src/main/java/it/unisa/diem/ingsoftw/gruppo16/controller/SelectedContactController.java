@@ -4,7 +4,7 @@ import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
 
 public class SelectedContactController {
     private static SelectedContactController instance;
-    private Contact selectedContact;
+    private static Contact selectedContact;
     private SelectedContactController(){}
     public static SelectedContactController getInstance(){
         if(instance == null){
@@ -16,9 +16,9 @@ public class SelectedContactController {
         return selectedContact;
     }
     public void setSelectedContact(Contact selectedContact) {
-        this.selectedContact = selectedContact;
+        SelectedContactController.selectedContact = selectedContact;
     }
     public void resetSelectedContact(){
-        this.selectedContact = null;
+        SelectedContactController.selectedContact = null;
     }
 }

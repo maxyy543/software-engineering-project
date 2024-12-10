@@ -99,10 +99,10 @@ public class DetailController implements Initializable{
     @FXML
     private void addButtonOnAction(ActionEvent event) {
     }
-
+    /* 
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
-    }
+    }*/
 
     @FXML
     private void importFileOnAction(ActionEvent event) {
@@ -131,7 +131,7 @@ public class DetailController implements Initializable{
     }
 
     @FXML 
-    private void delContactOnAction(ActionEvent event){
+    private void delContactOnAction(ActionEvent event) throws IOException{
         Alert alert = new Alert(AlertType.CONFIRMATION); 
         alert.setTitle("Conferma Azione"); 
         alert.setHeaderText("Sei sicuro di voler procedere?"); 
@@ -139,7 +139,12 @@ public class DetailController implements Initializable{
         Optional<ButtonType> result = alert.showAndWait(); 
             if (result.isPresent() && result.get() == ButtonType.OK) { 
                 if(selectedContact.getSelectedContact() != null){
+                    System.out.println("Contatto eliminato!");
                     addrBook.removeContact(selectedContact.getSelectedContact());
+                    listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+                    contactListListView.setItems(listObservable);
+                    selectedContact.resetSelectedContact();
+                    switchSceneToDashboard(event);
                 }
             } 
             else{ 
@@ -172,5 +177,16 @@ public class DetailController implements Initializable{
         emailLbl.setText(email[0]);
         email2Lbl.setText(email[1]);
         email3Lbl.setText(email[2]);
+    }
+    private void switchSceneToDashboard(ActionEvent event) throws IOException{
+        try {
+            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml")); 
+            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
+            Scene scene2 = new Scene(scene2Root); 
+            stage.setScene(scene2); 
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Errore qui");
+        }
     }
 }

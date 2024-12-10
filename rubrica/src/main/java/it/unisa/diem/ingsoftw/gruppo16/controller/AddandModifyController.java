@@ -2,7 +2,6 @@ package it.unisa.diem.ingsoftw.gruppo16.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TreeSet;
 
@@ -17,10 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -100,11 +96,11 @@ public class AddandModifyController implements Initializable{
     @FXML
     private void addButtonOnAction(ActionEvent event) {
     }
-
+    /* 
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
     }
-
+    */
     @FXML
     private void importFileOnAction(ActionEvent event) {
     }
@@ -125,6 +121,7 @@ public class AddandModifyController implements Initializable{
             listView.setItems(listObservable);
         });
     }
+    /* 
     @FXML 
     private void delContactOnAction(ActionEvent event){
         Alert alert = new Alert(AlertType.CONFIRMATION); 
@@ -138,7 +135,7 @@ public class AddandModifyController implements Initializable{
             else{ 
                 System.out.println("Utente ha annullato l'azione.");
             }
-    }
+    }*/
     @FXML
     private void cancelOnAction(ActionEvent event) throws IOException{
         switchSceneToDashboard(event);
@@ -155,6 +152,7 @@ public class AddandModifyController implements Initializable{
             String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
             contact.setTelephoneNumber(tel);
             contact.setEmail(email);
+
             
             Validator verificaContatto = Validator.link(new EmailController(), new TelephoneNumberController());
 
