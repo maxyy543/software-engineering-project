@@ -1,4 +1,9 @@
 package it.unisa.diem.ingsoftw.gruppo16.model;
+
+import java.util.TreeSet;
+
+
+
 /**
  * @interface AddressBook
  * @brief L'interfaccia AddressBook definisce i metodi per la gestione dei contatti di una rubrica.
@@ -27,4 +32,5 @@ public interface AddressBook {
      * @return true se la modifica del contatto nella rubrica è andata a buon fine.
      */
     public boolean modifyContact(Contact cOld, Contact cNew);
+    public TreeSet<Contact> getTreeSet();
 }

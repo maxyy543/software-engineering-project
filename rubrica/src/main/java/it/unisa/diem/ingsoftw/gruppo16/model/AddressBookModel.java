@@ -8,9 +8,10 @@ import java.util.TreeSet;
  * La classe AddressBookModel gestisce i contatti utilizzando una TreeSet come collezione.
  * @version 1.0
  */
-public class AddressBookModel implements AddressBook {
+public class AddressBookModel implements AddressBook, Cloneable{
     
     private static TreeSet<Contact> listContacts; ///< lista di contatti gestita con una TreeSet.
+
 
     /**
      * @brief Costruttore che inizializza un AddressBookModel.
@@ -19,14 +20,17 @@ public class AddressBookModel implements AddressBook {
     public AddressBookModel(){
         listContacts = new TreeSet<>();
     }
+
+    public TreeSet<Contact> getTreeSet(){
+        return listContacts;
+    }
     /**
      * 
      * @param c Contatto da trovare
      * @return restituisce true se il contatto cercato è presente nella TreeSet.
      */
     public boolean contains(Contact c){
-        //
-        return true;
+        return listContacts.contains(c);
     }
 
     /**
@@ -38,8 +42,7 @@ public class AddressBookModel implements AddressBook {
      */
     @Override
     public boolean addNewContact(Contact c) {
-        //
-        return true;
+        return listContacts.add(c);
     }
     /**
      * Rimuove un contatto dalla rubrica.
@@ -50,8 +53,7 @@ public class AddressBookModel implements AddressBook {
      */
     @Override
     public boolean removeContact(Contact c) {
-        //
-        return true;
+        return listContacts.remove(c);
     }
     /**
      * Modifica un contatto esistente nella rubrica.
@@ -63,7 +65,11 @@ public class AddressBookModel implements AddressBook {
      */
     @Override
     public boolean modifyContact(Contact cOld, Contact cNew) {
-        //
-        return true;
+        if(listContacts.contains(cOld)){
+            listContacts.remove(cOld);
+            listContacts.add(cNew);
+            return true;
+        }
+        return false;
     }
 }

@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
+import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
+import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -38,7 +45,7 @@ public class DetailController implements Initializable{
     @FXML
     private TextField searchBarTf;
     @FXML
-    private ListView<?> contactListListView;
+    private ListView<Contact> contactListListView;
     @FXML
     private Button modifyBtn;
     @FXML
@@ -62,7 +69,28 @@ public class DetailController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        AddressBook addrBook = new AddressBookModel();
+        addrBook.addNewContact(new Contact("Orefice", "Marco"));
+        addrBook.addNewContact(new Contact("Lanzetta", "Luca"));
+        addrBook.addNewContact(new Contact("Liguori", "Nicola"));
+        addrBook.addNewContact(new Contact("Makhovskyy", "Maxim"));
+        
+        //ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        contactListListView.setItems(listObservable);
+
+
+        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
+            @Override
+            protected void updateItem(Contact contact, boolean empty) {
+                super.updateItem(contact, empty);
+
+                if (empty || contact == null) {
+                    setText(null);
+                } else {
+                    setText(contact.getSurname() + " " + contact.getName());
+                }
+            }});
     }    
 
     @FXML
@@ -114,5 +142,13 @@ public class DetailController implements Initializable{
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    @FXML
+    private void contactSelected() throws IOException{
+        Contact selectedContact = contactListListView.getSelectionModel().getSelectedItem();
+        setContactSelected(selectedContact);
+    }
+    public void setContactSelected(Contact contact){
+        contactNameLbl.setText(contact.getSurname() + " " + contact.getName());
     }
 }

@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
+import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
+import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -37,7 +44,7 @@ public class AddandModifyController implements Initializable{
     @FXML
     private TextField searchBarTf;
     @FXML
-    private ListView<?> listView;
+    private ListView<Contact> listView;
     @FXML
     private Button cancelBtn;
     @FXML
@@ -62,9 +69,34 @@ public class AddandModifyController implements Initializable{
     private TextField surnameTf;
 
 
+    private AddressBook addrBook;
+
+    public void setAddressBook(AddressBook addrBook){
+        this.addrBook=addrBook;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        addrBook = new AddressBookModel();
+        addrBook.addNewContact(new Contact("O", "M"));
+        addrBook.addNewContact(new Contact("L", "L"));
+        addrBook.addNewContact(new Contact("L", "N"));
+        addrBook.addNewContact(new Contact("M", "M"));
+        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        listView.setItems(listObservable);
+
+
+        listView.setCellFactory(param -> new ListCell<Contact>() {
+            @Override
+            protected void updateItem(Contact contact, boolean empty) {
+                super.updateItem(contact, empty);
+
+                if (empty || contact == null) {
+                    setText(null);
+                } else {
+                    setText(contact.getSurname() + " " + contact.getName());
+                }
+            }});
     }    
 
     @FXML
@@ -104,12 +136,54 @@ public class AddandModifyController implements Initializable{
     private void cancelOnAction(ActionEvent event) throws IOException{
         switchSceneToDashboard(event);
     }
+
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
-        switchSceneToDashboard(event);
+        
+        if(!(surnameTf.getText().trim().isEmpty()) || (nameTf.getText().trim().isEmpty())){
+            Contact contact = new Contact(surnameTf.getText().trim(), nameTf.getText().trim());
+            String[] tel =  {telephoneTf.getText().trim(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
+            String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
+            contact.setTelephoneNumber(tel);
+            contact.setEmail(email);
+            /*
+            // Validator verificaContatto = Validator.link(new FormatController(), new MaxTextLengthController());
+        
+            /*if(verificaContatto.check(contact)){
+                addrBook.addNewContact(contact);
+                switchSceneToDashboard(event);
+            }else{
+                error("Validatore non accetta il contatto inserito.");
+            }*/
+            if(addrBook != null){
+                addrBook.addNewContact(contact);
+                ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+                listView.setItems(listObservable);
+                error("aggiunto");
+            }
+        }
+        error("Nome o cognome non inserito");
     }
 
-
+    @FXML
+    private void contactSelected() throws IOException{
+        Contact selectedContact = listView.getSelectionModel().getSelectedItem();
+        openDetailOf(selectedContact);
+    }
+    private void openDetailOf(Contact contact) throws IOException{
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
+            Parent root = loader.load();
+            DetailController detailController = loader.getController();
+            detailController.setContactSelected(contact);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) listView.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     private void switchSceneToDashboard(ActionEvent event) throws IOException{
         try {
@@ -119,8 +193,11 @@ public class AddandModifyController implements Initializable{
             stage.setScene(scene2); 
             stage.show();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Errore qui");
         }
     }
     
+    private void error(String str){
+        System.out.println(str);
+    }
 }

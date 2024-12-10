@@ -20,7 +20,7 @@
       </Label>
       <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="16.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="searchBarTf" layoutX="275.0" layoutY="36.0" prefHeight="39.0" prefWidth="497.0" promptText="Cerca in tutti contatti" style="-fx-background-color: #545454;" />
-      <ListView fx:id="contactListListView" layoutX="275.0" layoutY="109.0" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;" />
+      <ListView fx:id="contactListListView" onMouseClicked="#contactSelected" layoutX="275.0" layoutY="109.0" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;" />
       <Pane layoutX="524.0" layoutY="109.0" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;" />
    </children>
 </AnchorPane>
