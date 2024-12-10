@@ -1,5 +1,7 @@
 package it.unisa.diem.ingsoftw.gruppo16;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -17,7 +19,7 @@ public class AppTest
      */
     public AppTest( String testName )
     {
-        super( testName );
+        super( );
     }
 
     /**
