@@ -78,18 +78,7 @@ public class DetailController implements Initializable{
         listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         selectedContact = SelectedContactController.getInstance();
         contactListListView.setItems(listObservable);
-
-        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
-            @Override
-            protected void updateItem(Contact contact, boolean empty) {
-                super.updateItem(contact, empty);
-
-                if (empty || contact == null) {
-                    setText(null);
-                } else {
-                    setText(contact.getSurname() + " " + contact.getName());
-                }
-            }});
+        listViewSelectItemInit();
     }    
 
     @FXML
@@ -99,10 +88,10 @@ public class DetailController implements Initializable{
     @FXML
     private void addButtonOnAction(ActionEvent event) {
     }
-    /* 
+
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
-    }*/
+    }
 
     @FXML
     private void importFileOnAction(ActionEvent event) {
@@ -116,8 +105,7 @@ public class DetailController implements Initializable{
             listObservable.clear();
 
             for(Contact c : tempTree){
-                if(c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
-                   c.getSurname().toLowerCase().contains(newValue.toLowerCase())){
+                if(contactIsFiltered(c, newValue)){
                     listObservable.add(c);
                 }
             }
@@ -133,17 +121,11 @@ public class DetailController implements Initializable{
     @FXML 
     private void delContactOnAction(ActionEvent event) throws IOException{
         Alert alert = new Alert(AlertType.CONFIRMATION); 
-        alert.setTitle("Conferma Azione"); 
-        alert.setHeaderText("Sei sicuro di voler procedere?"); 
-        alert.setContentText("Questa azione non può essere annullata."); 
+        initAlert(alert);
         Optional<ButtonType> result = alert.showAndWait(); 
             if (result.isPresent() && result.get() == ButtonType.OK) { 
                 if(selectedContact.getSelectedContact() != null){
-                    System.out.println("Contatto eliminato!");
-                    addrBook.removeContact(selectedContact.getSelectedContact());
-                    listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-                    contactListListView.setItems(listObservable);
-                    selectedContact.resetSelectedContact();
+                    deleteContactFromAddressBook(selectedContact);
                     switchSceneToDashboard(event);
                 }
             } 
@@ -188,5 +170,34 @@ public class DetailController implements Initializable{
         } catch (Exception e) {
             System.out.println("Errore qui");
         }
+    }
+    private void listViewSelectItemInit(){
+        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
+            @Override
+            protected void updateItem(Contact contact, boolean empty) {
+                super.updateItem(contact, empty);
+
+                if (empty || contact == null) {
+                    setText(null);
+                } else {
+                    setText(contact.getSurname() + " " + contact.getName());
+                }
+            }});
+    }
+    private boolean contactIsFiltered(Contact c, String newValue){
+        return c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                c.getSurname().toLowerCase().contains(newValue.toLowerCase());
+    }
+    private void initAlert(Alert a){
+        a.setTitle("Conferma Azione"); 
+        a.setHeaderText("Sei sicuro di voler procedere?"); 
+        a.setContentText("Questa azione non può essere annullata."); 
+    }
+    private void deleteContactFromAddressBook(SelectedContactController s){
+        System.out.println("Contatto eliminato!");
+        addrBook.removeContact(selectedContact.getSelectedContact());
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        contactListListView.setItems(listObservable);
+        selectedContact.resetSelectedContact();
     }
 }

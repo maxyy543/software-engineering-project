@@ -51,18 +51,7 @@ public class DashboardController implements Initializable{
         selectedContact = SelectedContactController.getInstance();
         listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         contactListListView.setItems(listObservable);
-
-        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
-            @Override
-            protected void updateItem(Contact contact, boolean empty) {
-                super.updateItem(contact, empty);
-
-                if (empty || contact == null) {
-                    setText(null);
-                } else {
-                    setText(contact.getSurname() + " " + contact.getName());
-                }
-            }});
+        listViewSelectItemInit();
     }    
     @FXML
     private void exportFileOnAction(ActionEvent event) {
@@ -71,11 +60,9 @@ public class DashboardController implements Initializable{
     private void addButtonOnAction(ActionEvent event) throws IOException {
         switchSceneToModifyContact(event);
     }
-    /*
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
     }
-    */
     @FXML
     private void importFileOnAction(ActionEvent event) {
     }
@@ -111,5 +98,17 @@ public class DashboardController implements Initializable{
             e.printStackTrace();
         }
     }
-    
+    private void listViewSelectItemInit(){
+        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
+            @Override
+            protected void updateItem(Contact contact, boolean empty) {
+                super.updateItem(contact, empty);
+
+                if (empty || contact == null) {
+                    setText(null);
+                } else {
+                    setText(contact.getSurname() + " " + contact.getName());
+                }
+            }});
+    }
 }
