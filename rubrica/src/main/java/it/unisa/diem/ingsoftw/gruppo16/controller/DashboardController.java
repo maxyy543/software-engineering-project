@@ -41,15 +41,12 @@ public class DashboardController implements Initializable{
     @FXML
     private ListView<Contact> contactListListView;
 
+    AddressBook addrBook = AddressBookModel.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        AddressBook addrBook = new AddressBookModel();
-        addrBook.addNewContact(new Contact("Orefice", "Marco"));
-        addrBook.addNewContact(new Contact("Lanzetta", "Luca"));
-        addrBook.addNewContact(new Contact("Liguori", "Nicola"));
-        addrBook.addNewContact(new Contact("Makhovskyy", "Maxim"));
+        
         
         //ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());

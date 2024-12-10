@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.TreeSet;
 
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
@@ -67,18 +68,16 @@ public class DetailController implements Initializable{
     @FXML
     private Label email3Lbl;
 
+    AddressBook addrBook = AddressBookModel.getInstance();
+    ObservableList<Contact> listObservable;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        AddressBook addrBook = new AddressBookModel();
-        addrBook.addNewContact(new Contact("Orefice", "Marco"));
-        addrBook.addNewContact(new Contact("Lanzetta", "Luca"));
-        addrBook.addNewContact(new Contact("Liguori", "Nicola"));
-        addrBook.addNewContact(new Contact("Makhovskyy", "Maxim"));
+        
         
         //ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         contactListListView.setItems(listObservable);
-
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
 
         contactListListView.setCellFactory(param -> new ListCell<Contact>() {
             @Override
@@ -111,6 +110,17 @@ public class DetailController implements Initializable{
 
     @FXML
     private void searchBarOnAction(ActionEvent event) {
+        searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
+            
+            listObservable.clear();
+            TreeSet<Contact> tempTree = addrBook.getTreeSet();
+            for(Contact c : tempTree){
+                if(c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                   c.getSurname().toLowerCase().contains(newValue)){
+                    listObservable.add(c);
+                }
+            }
+        });
     }
 
     @FXML

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.TreeSet;
 
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
@@ -68,21 +69,11 @@ public class AddandModifyController implements Initializable{
     @FXML
     private TextField surnameTf;
 
-
-    private AddressBook addrBook;
-
-    public void setAddressBook(AddressBook addrBook){
-        this.addrBook=addrBook;
-    }
-
+    AddressBook addrBook = AddressBookModel.getInstance();
+    ObservableList<Contact> listObservable;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        addrBook = new AddressBookModel();
-        addrBook.addNewContact(new Contact("O", "M"));
-        addrBook.addNewContact(new Contact("L", "L"));
-        addrBook.addNewContact(new Contact("L", "N"));
-        addrBook.addNewContact(new Contact("M", "M"));
-        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         listView.setItems(listObservable);
 
 
@@ -117,6 +108,20 @@ public class AddandModifyController implements Initializable{
 
     @FXML
     private void searchbarOnAction(ActionEvent event) {
+        searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
+
+            TreeSet<Contact> tempTree = addrBook.getTreeSet();
+            listObservable.clear();
+
+            for(Contact c : tempTree){
+                if(c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                   c.getSurname().toLowerCase().contains(newValue.toLowerCase())){
+                    listObservable.add(c);
+                }
+            }
+            
+            listView.setItems(listObservable);
+        });
     }
     @FXML 
     private void delContactOnAction(ActionEvent event){
@@ -140,9 +145,11 @@ public class AddandModifyController implements Initializable{
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
         
-        if(!(surnameTf.getText().trim().isEmpty()) || (nameTf.getText().trim().isEmpty())){
-            Contact contact = new Contact(surnameTf.getText().trim(), nameTf.getText().trim());
-            String[] tel =  {telephoneTf.getText().trim(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
+        if(!((surnameTf.getText().trim().isEmpty()) || (nameTf.getText().trim().isEmpty()))){
+            Contact contact = new Contact(
+                surnameTf.getText().trim().substring(0,1).toUpperCase() + surnameTf.getText().trim().substring(1).toLowerCase(),
+                nameTf.getText().trim().substring(0,1).toUpperCase() + nameTf.getText().trim().substring(1).toLowerCase());
+            String[] tel =  {telephoneTf.getText().trim().toUpperCase(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
             String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
             contact.setTelephoneNumber(tel);
             contact.setEmail(email);
