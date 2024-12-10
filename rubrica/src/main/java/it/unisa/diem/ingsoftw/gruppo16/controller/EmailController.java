@@ -12,14 +12,14 @@ public class EmailController extends Validator {
 	@Override
 	public boolean check(Contact contact) {
 
-		if (contact == null || contact.getEmail() == null) {
+		if (contact == null) {
 			return false;
 		}
 
 		String[] emails = contact.getEmail();
 
 		for (String email : emails) {
-			if (email != null && EMAIL_PATTERN.matcher(email).matches()) {
+			if (EMAIL_PATTERN.matcher(email).matches() || (email.equals(""))) {
 				return true;
 			}
 		}

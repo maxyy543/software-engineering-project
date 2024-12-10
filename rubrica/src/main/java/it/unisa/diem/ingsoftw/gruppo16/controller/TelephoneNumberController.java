@@ -12,14 +12,14 @@ public class TelephoneNumberController extends Validator {
 	@Override
 	public boolean check(Contact contact) {
 
-		if (contact == null || contact.getTelephoneNumber() == null) {
+		if (contact == null) {
 			return false;
 		}
 
 		String[] phoneNumbers = contact.getTelephoneNumber();
 
 		for (String phoneNumber : phoneNumbers) {
-			if (phoneNumber != null && PHONE_PATTERN.matcher(phoneNumber).matches()) {
+			if (PHONE_PATTERN.matcher(phoneNumber).matches() || (phoneNumber.equals(""))) {
 				return true;
 			}
 		}

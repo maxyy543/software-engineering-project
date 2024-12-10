@@ -68,16 +68,16 @@ public class DetailController implements Initializable{
     @FXML
     private Label email3Lbl;
 
-    AddressBook addrBook = AddressBookModel.getInstance();
-    ObservableList<Contact> listObservable;
+    private AddressBook addrBook;
+    private ObservableList<Contact> listObservable;
+    private SelectedContactController selectedContact;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        //ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        contactListListView.setItems(listObservable);
+        addrBook = AddressBookModel.getInstance();
         listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        selectedContact = SelectedContactController.getInstance();
+        contactListListView.setItems(listObservable);
 
         contactListListView.setCellFactory(param -> new ListCell<Contact>() {
             @Override
@@ -111,15 +111,17 @@ public class DetailController implements Initializable{
     @FXML
     private void searchBarOnAction(ActionEvent event) {
         searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
-            
-            listObservable.clear();
+
             TreeSet<Contact> tempTree = addrBook.getTreeSet();
+            listObservable.clear();
+
             for(Contact c : tempTree){
                 if(c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
-                   c.getSurname().toLowerCase().contains(newValue)){
+                   c.getSurname().toLowerCase().contains(newValue.toLowerCase())){
                     listObservable.add(c);
                 }
             }
+            contactListListView.setItems(listObservable);
         });
     }
 
@@ -136,7 +138,9 @@ public class DetailController implements Initializable{
         alert.setContentText("Questa azione non può essere annullata."); 
         Optional<ButtonType> result = alert.showAndWait(); 
             if (result.isPresent() && result.get() == ButtonType.OK) { 
-                System.out.println("Utente ha confermato l'azione."); 
+                if(selectedContact.getSelectedContact() != null){
+                    addrBook.removeContact(selectedContact.getSelectedContact());
+                }
             } 
             else{ 
                 System.out.println("Utente ha annullato l'azione.");
@@ -155,10 +159,18 @@ public class DetailController implements Initializable{
     }
     @FXML
     private void contactSelected() throws IOException{
-        Contact selectedContact = contactListListView.getSelectionModel().getSelectedItem();
-        setContactSelected(selectedContact);
+        selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
+        setContactDetail(selectedContact.getSelectedContact());
     }
-    public void setContactSelected(Contact contact){
+    public void setContactDetail(Contact contact){
         contactNameLbl.setText(contact.getSurname() + " " + contact.getName());
+        String[] tel = contact.getTelephoneNumber();
+        String[] email = contact.getEmail();
+        telephoneLbl.setText(tel[0]);
+        telephone2Lbl.setText(tel[1]);
+        telephone3Lbl.setText(tel[2]);
+        emailLbl.setText(email[0]);
+        email2Lbl.setText(email[1]);
+        email3Lbl.setText(email[2]);
     }
 }

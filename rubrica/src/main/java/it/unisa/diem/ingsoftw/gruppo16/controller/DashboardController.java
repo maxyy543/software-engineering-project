@@ -40,18 +40,17 @@ public class DashboardController implements Initializable{
     private TextField searchBarTf;
     @FXML
     private ListView<Contact> contactListListView;
-
-    AddressBook addrBook = AddressBookModel.getInstance();
+    
+    private ObservableList<Contact> listObservable;
+    private AddressBook addrBook;
+    private SelectedContactController selectedContact;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        
-        
-        //ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        addrBook = AddressBookModel.getInstance();
+        selectedContact = SelectedContactController.getInstance();
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         contactListListView.setItems(listObservable);
-
 
         contactListListView.setCellFactory(param -> new ListCell<Contact>() {
             @Override
@@ -93,15 +92,15 @@ public class DashboardController implements Initializable{
     }
     @FXML
     private void contactSelected() throws IOException{
-        Contact selectedContact = contactListListView.getSelectionModel().getSelectedItem();
-        openDetailOf(selectedContact);
+        selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
+        openDetailOf(selectedContact.getSelectedContact());
     }
     private void openDetailOf(Contact contact) throws IOException{
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
             Parent root = loader.load();
             DetailController detailController = loader.getController();
-            detailController.setContactSelected(contact);
+            detailController.setContactDetail(contact);
             Scene scene = new Scene(root);
             Stage stage = (Stage) contactListListView.getScene().getWindow();
             stage.setScene(scene);

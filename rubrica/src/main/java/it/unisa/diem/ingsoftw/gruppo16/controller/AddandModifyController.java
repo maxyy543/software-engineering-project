@@ -69,14 +69,17 @@ public class AddandModifyController implements Initializable{
     @FXML
     private TextField surnameTf;
 
-    AddressBook addrBook = AddressBookModel.getInstance();
-    ObservableList<Contact> listObservable;
+    private AddressBook addrBook;
+    private ObservableList<Contact> listObservable;
+    private SelectedContactController selectedContact;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        addrBook = AddressBookModel.getInstance();
         listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        selectedContact = SelectedContactController.getInstance();
         listView.setItems(listObservable);
-
-
+        
         listView.setCellFactory(param -> new ListCell<Contact>() {
             @Override
             protected void updateItem(Contact contact, boolean empty) {
@@ -119,7 +122,6 @@ public class AddandModifyController implements Initializable{
                     listObservable.add(c);
                 }
             }
-            
             listView.setItems(listObservable);
         });
     }
@@ -153,36 +155,35 @@ public class AddandModifyController implements Initializable{
             String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
             contact.setTelephoneNumber(tel);
             contact.setEmail(email);
-            /*
-            // Validator verificaContatto = Validator.link(new FormatController(), new MaxTextLengthController());
-        
-            /*if(verificaContatto.check(contact)){
-                addrBook.addNewContact(contact);
-                switchSceneToDashboard(event);
-            }else{
-                error("Validatore non accetta il contatto inserito.");
-            }*/
-            if(addrBook != null){
+            
+            Validator verificaContatto = Validator.link(new EmailController(), new TelephoneNumberController());
+
+            if(verificaContatto.check(contact) && (addrBook != null)){
                 addrBook.addNewContact(contact);
                 ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
                 listView.setItems(listObservable);
-                error("aggiunto");
-            }
+                surnameTf.clear();
+                nameTf.clear();
+                emailTf.clear();
+                email2Tf.clear();
+                email3Tf.clear();
+                telephoneTf.clear();
+                telephone2Tf.clear();
+                telephone3Tf.clear();
+            } 
         }
-        error("Nome o cognome non inserito");
     }
-
     @FXML
     private void contactSelected() throws IOException{
-        Contact selectedContact = listView.getSelectionModel().getSelectedItem();
-        openDetailOf(selectedContact);
+        selectedContact.setSelectedContact(listView.getSelectionModel().getSelectedItem());
+        openDetailOf(selectedContact.getSelectedContact());
     }
     private void openDetailOf(Contact contact) throws IOException{
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
             Parent root = loader.load();
             DetailController detailController = loader.getController();
-            detailController.setContactSelected(contact);
+            detailController.setContactDetail(contact);
             Scene scene = new Scene(root);
             Stage stage = (Stage) listView.getScene().getWindow();
             stage.setScene(scene);
@@ -202,9 +203,5 @@ public class AddandModifyController implements Initializable{
         } catch (Exception e) {
             System.out.println("Errore qui");
         }
-    }
-    
-    private void error(String str){
-        System.out.println(str);
     }
 }

@@ -10,11 +10,11 @@ import java.io.*;
 import java.util.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
-
+/* 
 public class ImportAsXML implements ImportFileStrategy {
     @Override
     public TreeSet<Contact> importFile(String filename) {
-        TreeSet<Contact> contacts = new TreeSet<>();
+        TreeSet<>
         try {
             File file = new File(filename);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -65,3 +65,4 @@ public class ImportAsXML implements ImportFileStrategy {
         return contacts;
     }
 }
+*/
