@@ -11,6 +11,7 @@ import org.w3c.dom.*;
 
 
 public class ImportAsXML implements ImportFileStrategy {
+
     @Override
     public TreeSet<Contact> importFile(String filename) {
         TreeSet<Contact> contacts = new TreeSet<>();
