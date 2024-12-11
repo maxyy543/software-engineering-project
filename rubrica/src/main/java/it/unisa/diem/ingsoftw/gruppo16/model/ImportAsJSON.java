@@ -1,7 +1,6 @@
 package it.unisa.diem.ingsoftw.gruppo16.model;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -13,12 +12,22 @@ import java.util.TreeSet;
  * @version 1.0
  */
 public class ImportAsJSON implements ImportFileStrategy {
+
+    @Override
+    public TreeSet<Contact> importFile(String filename) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'importFile'");
+    }
+}
     /**
      * 
      * @param[in] filename Path del file da importare
      * @return TreeSet con i contatti importati dal file JSON.
      */
-    @Override
+    /*@Override
+    */
+    
+    /*
     public TreeSet<Contact> importFile(String filename) {
         TreeSet<Contact> contacts = new TreeSet<>();
         try {
@@ -51,6 +60,6 @@ public class ImportAsJSON implements ImportFileStrategy {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return contacts;*/
-    }
-}
+        return contacts;
+        }
+}*/
