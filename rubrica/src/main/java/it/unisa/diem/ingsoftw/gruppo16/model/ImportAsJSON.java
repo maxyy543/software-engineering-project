@@ -3,6 +3,7 @@ package it.unisa.diem.ingsoftw.gruppo16.model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeSet;
@@ -20,7 +21,8 @@ public class ImportAsJSON implements ImportFileStrategy {
      * 
      * 
     */
-    public TreeSet<Contact> importFile(String filename) {
+    public TreeSet<Contact> importFile(File file) {
+        String filename = file.getAbsolutePath();
         Gson gson = new Gson();
         java.lang.reflect.Type treeSet = new TypeToken<TreeSet<Contact>>(){}.getType();
         try(FileReader reader = new FileReader(filename)) {

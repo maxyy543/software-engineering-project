@@ -1,5 +1,6 @@
 package it.unisa.diem.ingsoftw.gruppo16.model;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Locale;
@@ -7,8 +8,10 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 public class ImportAsCSV implements ImportFileStrategy {
+    AddressBookModel addrBook = AddressBookModel.getInstance();
     @Override
-    public TreeSet<Contact> importFile(String filename) {
+    public TreeSet<Contact> importFile(File file) {
+        String filename = file.getAbsolutePath();
         TreeSet<Contact> treeContacts = new TreeSet<>();
         try(Scanner i = new Scanner(
                 new BufferedReader(
@@ -24,16 +27,19 @@ public class ImportAsCSV implements ImportFileStrategy {
                 name = i.next();
                 String telNumStr = i.next();
                 String emailStr = i.next();
-
                 telNum = telNumStr.split(",");
-                email = telNumStr.split(",");
-                
+                email = emailStr.split(",");
+                Contact c = new Contact(surname, name);
+                c.setTelephoneNumber(telNum);
+                c.setEmail(email);
+                treeContacts.add(c);
             }
+            return treeContacts;
         }catch(FileNotFoundException e){
             System.out.println(e);
             return null;
         }catch(RuntimeException e){   
         }
-        return treeContacts;
+        return null;
     }
 }

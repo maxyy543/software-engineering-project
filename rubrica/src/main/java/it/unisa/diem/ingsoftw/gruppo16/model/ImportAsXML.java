@@ -18,7 +18,8 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 public class ImportAsXML implements ImportFileStrategy {
 
     @Override
-    public TreeSet<Contact> importFile(String filename) {
+    public TreeSet<Contact> importFile(File file) {
+        String filename = file.getAbsolutePath();
         XmlMapper xmlMapper = new XmlMapper();
         try{
             List<Contact> listContacts = xmlMapper.readValue(new File(filename),
