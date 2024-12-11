@@ -4,13 +4,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.TreeSet;
 
-/*
-@Class ExportAsCSV
-@brief Strategia per esportare i contatti in un file in formato CSV
-@version 1.0
-
-@param[in] filename Path del file da esportare
-@param[in] contacts Contatti da salvare nel file CSV*/
+/**
+* @Class ExportAsCSV
+* @brief Strategia per esportare i contatti in un file in formato CSV
+* @version 1.0
+*
+* @param[in] filename Path del file da esportare
+* @param[in] contacts Contatti da salvare nel file CSV
+*/
 
 public class ExportAsCSV implements ExportFileStrategy {
 @Override
