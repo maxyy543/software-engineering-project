@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.TreeSet;
 
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
@@ -68,35 +69,17 @@ public class AddandModifyController implements Initializable{
     @FXML
     private TextField surnameTf;
 
-
     private AddressBook addrBook;
-
-    public void setAddressBook(AddressBook addrBook){
-        this.addrBook=addrBook;
-    }
+    private ObservableList<Contact> listObservable;
+    private SelectedContactController selectedContact;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        addrBook = new AddressBookModel();
-        addrBook.addNewContact(new Contact("O", "M"));
-        addrBook.addNewContact(new Contact("L", "L"));
-        addrBook.addNewContact(new Contact("L", "N"));
-        addrBook.addNewContact(new Contact("M", "M"));
-        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        addrBook = AddressBookModel.getInstance();
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        selectedContact = SelectedContactController.getInstance();
         listView.setItems(listObservable);
-
-
-        listView.setCellFactory(param -> new ListCell<Contact>() {
-            @Override
-            protected void updateItem(Contact contact, boolean empty) {
-                super.updateItem(contact, empty);
-
-                if (empty || contact == null) {
-                    setText(null);
-                } else {
-                    setText(contact.getSurname() + " " + contact.getName());
-                }
-            }});
+        listViewSelectItemInit();
     }    
 
     @FXML
@@ -117,6 +100,19 @@ public class AddandModifyController implements Initializable{
 
     @FXML
     private void searchbarOnAction(ActionEvent event) {
+        searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
+
+            TreeSet<Contact> tempTree = addrBook.getTreeSet();
+            listObservable.clear();
+
+            for(Contact c : tempTree){
+                if(c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                   c.getSurname().toLowerCase().contains(newValue.toLowerCase())){
+                    listObservable.add(c);
+                }
+            }
+            listView.setItems(listObservable);
+        });
     }
     @FXML 
     private void delContactOnAction(ActionEvent event){
@@ -140,42 +136,28 @@ public class AddandModifyController implements Initializable{
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
         
-        if(!(surnameTf.getText().trim().isEmpty()) || (nameTf.getText().trim().isEmpty())){
-            Contact contact = new Contact(surnameTf.getText().trim(), nameTf.getText().trim());
-            String[] tel =  {telephoneTf.getText().trim(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
-            String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
-            contact.setTelephoneNumber(tel);
-            contact.setEmail(email);
-            /*
-            // Validator verificaContatto = Validator.link(new FormatController(), new MaxTextLengthController());
-        
-            /*if(verificaContatto.check(contact)){
-                addrBook.addNewContact(contact);
-                switchSceneToDashboard(event);
-            }else{
-                error("Validatore non accetta il contatto inserito.");
-            }*/
-            if(addrBook != null){
+        if(!((surnameTf.getText().trim().isEmpty()) || (nameTf.getText().trim().isEmpty()))){
+            Contact contact = ContactWithInfoFromTextFields();            
+            Validator verificaContatto = Validator.link(new EmailController(), new TelephoneNumberController());
+            if(verificaContatto.check(contact) && (addrBook != null)){
                 addrBook.addNewContact(contact);
                 ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
                 listView.setItems(listObservable);
-                error("aggiunto");
-            }
+                clearTextFields();
+            } 
         }
-        error("Nome o cognome non inserito");
     }
-
     @FXML
     private void contactSelected() throws IOException{
-        Contact selectedContact = listView.getSelectionModel().getSelectedItem();
-        openDetailOf(selectedContact);
+        selectedContact.setSelectedContact(listView.getSelectionModel().getSelectedItem());
+        openDetailOf(selectedContact.getSelectedContact());
     }
     private void openDetailOf(Contact contact) throws IOException{
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
             Parent root = loader.load();
             DetailController detailController = loader.getController();
-            detailController.setContactSelected(contact);
+            detailController.setContactDetail(contact);
             Scene scene = new Scene(root);
             Stage stage = (Stage) listView.getScene().getWindow();
             stage.setScene(scene);
@@ -197,7 +179,43 @@ public class AddandModifyController implements Initializable{
         }
     }
     
-    private void error(String str){
-        System.out.println(str);
+    private void listViewSelectItemInit(){
+        listView.setCellFactory(param -> new ListCell<Contact>() {
+            @Override
+            protected void updateItem(Contact contact, boolean empty) {
+                super.updateItem(contact, empty);
+
+                if (empty || contact == null) {
+                    setText(null);
+                } else {
+                    setText(contact.getSurname() + " " + contact.getName());
+                }
+            }});
+    }
+    private String getSurnameTextField(){
+        return surnameTf.getText().trim().substring(0,1).toUpperCase() + 
+        surnameTf.getText().trim().substring(1).toLowerCase();
+    }
+    private String getNameTextField(){
+        return nameTf.getText().trim().substring(0,1).toUpperCase() + 
+        nameTf.getText().trim().substring(1).toLowerCase();
+    }
+    private void clearTextFields(){
+        surnameTf.clear();
+        nameTf.clear();
+        emailTf.clear();
+        email2Tf.clear();
+        email3Tf.clear();
+        telephoneTf.clear();
+        telephone2Tf.clear();
+        telephone3Tf.clear();
+    }
+    private Contact ContactWithInfoFromTextFields(){
+        Contact contact = new Contact(getSurnameTextField(),getNameTextField());
+        String[] tel =  {telephoneTf.getText().trim().toUpperCase(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
+        String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
+        contact.setTelephoneNumber(tel);
+        contact.setEmail(email);
+        return contact;
     }
 }

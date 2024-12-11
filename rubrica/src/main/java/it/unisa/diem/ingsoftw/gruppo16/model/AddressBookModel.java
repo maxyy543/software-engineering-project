@@ -11,16 +11,22 @@ import java.util.TreeSet;
 public class AddressBookModel implements AddressBook, Cloneable{
     
     private static TreeSet<Contact> listContacts; ///< lista di contatti gestita con una TreeSet.
-
+    private static AddressBookModel addrBookInstance;
 
     /**
      * @brief Costruttore che inizializza un AddressBookModel.
      * Inizializza una lista di contatti come una struttura TreeSet.
      */
-    public AddressBookModel(){
+    private AddressBookModel(){
         listContacts = new TreeSet<>();
     }
 
+    public static AddressBookModel getInstance(){
+        if(addrBookInstance == null){
+            addrBookInstance = new AddressBookModel();
+        }
+        return addrBookInstance;
+    }
     public TreeSet<Contact> getTreeSet(){
         return listContacts;
     }

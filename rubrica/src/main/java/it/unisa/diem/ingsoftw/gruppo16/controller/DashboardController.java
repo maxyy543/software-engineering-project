@@ -40,33 +40,18 @@ public class DashboardController implements Initializable{
     private TextField searchBarTf;
     @FXML
     private ListView<Contact> contactListListView;
-
+    
+    private ObservableList<Contact> listObservable;
+    private AddressBook addrBook;
+    private SelectedContactController selectedContact;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        AddressBook addrBook = new AddressBookModel();
-        addrBook.addNewContact(new Contact("Orefice", "Marco"));
-        addrBook.addNewContact(new Contact("Lanzetta", "Luca"));
-        addrBook.addNewContact(new Contact("Liguori", "Nicola"));
-        addrBook.addNewContact(new Contact("Makhovskyy", "Maxim"));
-        
-        //ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        addrBook = AddressBookModel.getInstance();
+        selectedContact = SelectedContactController.getInstance();
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         contactListListView.setItems(listObservable);
-
-
-        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
-            @Override
-            protected void updateItem(Contact contact, boolean empty) {
-                super.updateItem(contact, empty);
-
-                if (empty || contact == null) {
-                    setText(null);
-                } else {
-                    setText(contact.getSurname() + " " + contact.getName());
-                }
-            }});
+        listViewSelectItemInit();
     }    
     @FXML
     private void exportFileOnAction(ActionEvent event) {
@@ -78,9 +63,14 @@ public class DashboardController implements Initializable{
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
     }
-
     @FXML
     private void importFileOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void contactSelected() throws IOException{
+        selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
+        openDetailOf(selectedContact.getSelectedContact());
     }
 
     void switchSceneToModifyContact(ActionEvent event) throws IOException{
@@ -94,17 +84,12 @@ public class DashboardController implements Initializable{
             e.printStackTrace();
         }
     }
-    @FXML
-    private void contactSelected() throws IOException{
-        Contact selectedContact = contactListListView.getSelectionModel().getSelectedItem();
-        openDetailOf(selectedContact);
-    }
     private void openDetailOf(Contact contact) throws IOException{
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
             Parent root = loader.load();
             DetailController detailController = loader.getController();
-            detailController.setContactSelected(contact);
+            detailController.setContactDetail(contact);
             Scene scene = new Scene(root);
             Stage stage = (Stage) contactListListView.getScene().getWindow();
             stage.setScene(scene);
@@ -113,5 +98,17 @@ public class DashboardController implements Initializable{
             e.printStackTrace();
         }
     }
-    
+    private void listViewSelectItemInit(){
+        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
+            @Override
+            protected void updateItem(Contact contact, boolean empty) {
+                super.updateItem(contact, empty);
+
+                if (empty || contact == null) {
+                    setText(null);
+                } else {
+                    setText(contact.getSurname() + " " + contact.getName());
+                }
+            }});
+    }
 }
