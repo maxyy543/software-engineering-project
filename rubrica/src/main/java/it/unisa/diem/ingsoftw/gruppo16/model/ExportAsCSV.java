@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.TreeSet;
 
 /*
- 
 @Class ExportAsCSV
 @brief Strategia per esportare i contatti in un file in formato CSV
 @version 1.0
