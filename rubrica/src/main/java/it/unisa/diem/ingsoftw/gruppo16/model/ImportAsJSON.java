@@ -26,7 +26,7 @@ public class ImportAsJSON implements ImportFileStrategy {
         Gson gson = new Gson();
         java.lang.reflect.Type treeSet = new TypeToken<TreeSet<Contact>>(){}.getType();
         try(FileReader reader = new FileReader(filename)) {
-            return gson.fromJson(filename, treeSet);
+            return gson.fromJson(reader, treeSet);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e){

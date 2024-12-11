@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
+import it.unisa.diem.ingsoftw.gruppo16.model.ExportAsJSON;
+import it.unisa.diem.ingsoftw.gruppo16.model.ExportFileStrategy;
 import it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV;
 import it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON;
 import it.unisa.diem.ingsoftw.gruppo16.model.ImportAsXML;
@@ -68,6 +70,8 @@ public class DashboardController implements Initializable{
             alert.setContentText("Devi inserire dei contatti all'interno della rubrica prima di effettuare un export!");
             alert.showAndWait();
         }
+        ExportFileStrategy exportFileStrategy = new ExportAsJSON();
+        exportFileStrategy.exportFile("test.json", addrBook.getTreeSet());
     }
     @FXML
     private void addButtonOnAction(ActionEvent event) throws IOException {
