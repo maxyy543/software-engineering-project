@@ -1,17 +1,17 @@
 package it.unisa.diem.ingsoftw.gruppo16.model;
 import java.util.TreeSet;
-
+import java.io.*;
+import javax.xml.parsers.*;
+import org.w3c.dom.*;
 /**
  * @Class ImportAsXML
  * @brief Strategia per importare i contatti in un file in formato XML
  * @verison 1.0
  */
-import java.io.*;
-import java.util.*;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
-/* 
+
+
 public class ImportAsXML implements ImportFileStrategy {
+
     @Override
     public TreeSet<Contact> importFile(String filename) {
         TreeSet<>
@@ -32,30 +32,23 @@ public class ImportAsXML implements ImportFileStrategy {
                     String name = element.getElementsByTagName("name").item(0).getTextContent();
                     String surname = element.getElementsByTagName("surname").item(0) != null ? element.getElementsByTagName("surname").item(0).getTextContent() : "";
 
-                    // Verifico che almeno uno tra nome e cognome sia presente
                     if (name.isEmpty() && surname.isEmpty()) {
                         continue;
                     }
 
                     Contact contact = new Contact(name, surname);
 
-                    // Aggiungo i numeri di telefono (separati da ";")
                     if (element.getElementsByTagName("phoneNumbers").item(0) != null) {
                         String[] phoneNumbers = element.getElementsByTagName("phoneNumbers").item(0).getTextContent().split(";");
-                        for (int j = 0; j < Math.min(phoneNumbers.length, 3); j++) {
-                            contact.setTelephoneNumber(phoneNumbers[j]);
-                        }
+                        contact.setTelephoneNumber(phoneNumbers);
                     }
 
-                    // Aggiungo le email (separate da ";") solo se presenti
                     if (element.getElementsByTagName("emails").item(0) != null) {
                         String[] emails = element.getElementsByTagName("emails").item(0).getTextContent().split(";");
-                        for (int j = 0; j < Math.min(emails.length, 3); j++) {
-                            contact.setEmail(emails[j]);
-                        }
+                        contact.setEmail(emails);
                     }
 
-                    // Aggiungo il contatto al TreeSet
+                    
                     contacts.add(contact);
                 }
             }
@@ -65,4 +58,3 @@ public class ImportAsXML implements ImportFileStrategy {
         return contacts;
     }
 }
-*/
