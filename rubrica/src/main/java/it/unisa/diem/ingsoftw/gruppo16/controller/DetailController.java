@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.TreeSet;
 
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
@@ -67,30 +68,17 @@ public class DetailController implements Initializable{
     @FXML
     private Label email3Lbl;
 
+    private AddressBook addrBook;
+    private ObservableList<Contact> listObservable;
+    private SelectedContactController selectedContact;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        AddressBook addrBook = new AddressBookModel();
-        addrBook.addNewContact(new Contact("Orefice", "Marco"));
-        addrBook.addNewContact(new Contact("Lanzetta", "Luca"));
-        addrBook.addNewContact(new Contact("Liguori", "Nicola"));
-        addrBook.addNewContact(new Contact("Makhovskyy", "Maxim"));
-        
-        //ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        addrBook = AddressBookModel.getInstance();
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        selectedContact = SelectedContactController.getInstance();
         contactListListView.setItems(listObservable);
-
-
-        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
-            @Override
-            protected void updateItem(Contact contact, boolean empty) {
-                super.updateItem(contact, empty);
-
-                if (empty || contact == null) {
-                    setText(null);
-                } else {
-                    setText(contact.getSurname() + " " + contact.getName());
-                }
-            }});
+        listViewSelectItemInit();
     }    
 
     @FXML
@@ -111,6 +99,18 @@ public class DetailController implements Initializable{
 
     @FXML
     private void searchBarOnAction(ActionEvent event) {
+        searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
+
+            TreeSet<Contact> tempTree = addrBook.getTreeSet();
+            listObservable.clear();
+
+            for(Contact c : tempTree){
+                if(contactIsFiltered(c, newValue)){
+                    listObservable.add(c);
+                }
+            }
+            contactListListView.setItems(listObservable);
+        });
     }
 
     @FXML
@@ -119,14 +119,15 @@ public class DetailController implements Initializable{
     }
 
     @FXML 
-    private void delContactOnAction(ActionEvent event){
+    private void delContactOnAction(ActionEvent event) throws IOException{
         Alert alert = new Alert(AlertType.CONFIRMATION); 
-        alert.setTitle("Conferma Azione"); 
-        alert.setHeaderText("Sei sicuro di voler procedere?"); 
-        alert.setContentText("Questa azione non può essere annullata."); 
+        initAlert(alert);
         Optional<ButtonType> result = alert.showAndWait(); 
             if (result.isPresent() && result.get() == ButtonType.OK) { 
-                System.out.println("Utente ha confermato l'azione."); 
+                if(selectedContact.getSelectedContact() != null){
+                    deleteContactFromAddressBook(selectedContact);
+                    switchSceneToDashboard(event);
+                }
             } 
             else{ 
                 System.out.println("Utente ha annullato l'azione.");
@@ -145,10 +146,58 @@ public class DetailController implements Initializable{
     }
     @FXML
     private void contactSelected() throws IOException{
-        Contact selectedContact = contactListListView.getSelectionModel().getSelectedItem();
-        setContactSelected(selectedContact);
+        selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
+        setContactDetail(selectedContact.getSelectedContact());
     }
-    public void setContactSelected(Contact contact){
+    public void setContactDetail(Contact contact){
         contactNameLbl.setText(contact.getSurname() + " " + contact.getName());
+        String[] tel = contact.getTelephoneNumber();
+        String[] email = contact.getEmail();
+        telephoneLbl.setText(tel[0]);
+        telephone2Lbl.setText(tel[1]);
+        telephone3Lbl.setText(tel[2]);
+        emailLbl.setText(email[0]);
+        email2Lbl.setText(email[1]);
+        email3Lbl.setText(email[2]);
+    }
+    private void switchSceneToDashboard(ActionEvent event) throws IOException{
+        try {
+            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml")); 
+            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
+            Scene scene2 = new Scene(scene2Root); 
+            stage.setScene(scene2); 
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Errore qui");
+        }
+    }
+    private void listViewSelectItemInit(){
+        contactListListView.setCellFactory(param -> new ListCell<Contact>() {
+            @Override
+            protected void updateItem(Contact contact, boolean empty) {
+                super.updateItem(contact, empty);
+
+                if (empty || contact == null) {
+                    setText(null);
+                } else {
+                    setText(contact.getSurname() + " " + contact.getName());
+                }
+            }});
+    }
+    private boolean contactIsFiltered(Contact c, String newValue){
+        return c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                c.getSurname().toLowerCase().contains(newValue.toLowerCase());
+    }
+    private void initAlert(Alert a){
+        a.setTitle("Conferma Azione"); 
+        a.setHeaderText("Sei sicuro di voler procedere?"); 
+        a.setContentText("Questa azione non può essere annullata."); 
+    }
+    private void deleteContactFromAddressBook(SelectedContactController s){
+        System.out.println("Contatto eliminato!");
+        addrBook.removeContact(selectedContact.getSelectedContact());
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        contactListListView.setItems(listObservable);
+        selectedContact.resetSelectedContact();
     }
 }
