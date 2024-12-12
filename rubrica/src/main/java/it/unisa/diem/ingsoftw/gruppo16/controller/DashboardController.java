@@ -11,7 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -77,7 +80,7 @@ public class DashboardController implements Initializable{
         view.setAddAndModifyScene();
     }
     private void openDetailOf(Contact contact) throws IOException{
-        /*try{
+        try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
             Parent root = loader.load();
             DetailController detailController = loader.getController();
@@ -88,9 +91,9 @@ public class DashboardController implements Initializable{
             stage.show();
         }catch(Exception e){
             e.printStackTrace();
-        }*/
-        view = new ViewUpdateController((Stage)contactListListView.getScene().getWindow());
-        view.setAddAndModifyScene();
+        }
+        /*view = new ViewUpdateController((Stage)contactListListView.getScene().getWindow());
+        view.setAddAndModifyScene();*/
     }
     private void listViewSelectItemInit(){
         contactListListView.setCellFactory(param -> new ListCell<Contact>() {

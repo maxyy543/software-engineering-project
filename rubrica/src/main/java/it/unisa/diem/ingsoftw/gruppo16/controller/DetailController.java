@@ -65,7 +65,7 @@ public class DetailController implements Initializable{
     @FXML
     private Label email3Lbl;
 
-    private AddressBook addrBook;
+    private AddressBookModel addrBook;
     private ObservableList<Contact> listObservable;
     private SelectedContactController selectedContact;
     private ViewUpdateController view;
@@ -73,8 +73,8 @@ public class DetailController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addrBook = AddressBookModel.getInstance();
+        selectedContact = SelectedContactController.getInstance();
         updateListView();
-        contactListListView.setItems(listObservable);
         listViewSelectItemInit();
         /* 
         bindContactDetail();
@@ -125,6 +125,7 @@ public class DetailController implements Initializable{
         Optional<ButtonType> result = alert.showAndWait(); 
             if (result.isPresent() && result.get() == ButtonType.OK) { 
                 if(selectedContact.getSelectedContact() != null){
+                    System.out.println("Sono arrivato fino a qui");;
                     deleteContactFromAddressBook(selectedContact);
                     switchSceneToDashboard(event);
                 }
@@ -139,8 +140,12 @@ public class DetailController implements Initializable{
     }
     @FXML
     private void contactSelected() throws IOException{
-        selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
-        setContactDetail(selectedContact.getSelectedContact());
+        try {
+            selectedContact.setSelectedContact(contactListListView.getSelectionModel().getSelectedItem());
+            setContactDetail(selectedContact.getSelectedContact());
+        } catch (Exception e) {
+            System.out.println("Errore verificato qui");
+        }
     }
     public void setContactDetail(Contact contact){
         contactNameLbl.setText(contact.getSurname() + " " + contact.getName());
@@ -181,11 +186,16 @@ public class DetailController implements Initializable{
     }
     private void deleteContactFromAddressBook(SelectedContactController s){
         System.out.println("Contatto eliminato!");
+        selectedContact = SelectedContactController.getInstance();
         addrBook.removeContact(selectedContact.getSelectedContact());
         updateListView();
         selectedContact.resetSelectedContact();
     }
     private void updateListView(){
+        System.out.println("Sono arrivato in updateListView");
+        if(addrBook.isEmpty()){
+            System.out.println("Rubrica Vuota");
+        }
         listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         contactListListView.setItems(listObservable);
     }/*
