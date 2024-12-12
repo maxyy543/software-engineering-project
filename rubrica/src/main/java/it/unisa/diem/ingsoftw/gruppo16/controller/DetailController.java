@@ -13,10 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -71,14 +68,17 @@ public class DetailController implements Initializable{
     private AddressBook addrBook;
     private ObservableList<Contact> listObservable;
     private SelectedContactController selectedContact;
-    
+    private ViewUpdateController view;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addrBook = AddressBookModel.getInstance();
-        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        selectedContact = SelectedContactController.getInstance();
+        updateListView();
         contactListListView.setItems(listObservable);
         listViewSelectItemInit();
+        /* 
+        bindContactDetail();
+        */
     }    
 
     @FXML
@@ -134,15 +134,8 @@ public class DetailController implements Initializable{
             }
     }
     void switchSceneToModifyContact(ActionEvent event) throws IOException{
-        try{
-            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml")); 
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
-            Scene scene2 = new Scene(scene2Root); 
-            stage.setScene(scene2); 
-            stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        view = new ViewUpdateController((Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow());
+        view.setAddAndModifyScene();
     }
     @FXML
     private void contactSelected() throws IOException{
@@ -161,15 +154,8 @@ public class DetailController implements Initializable{
         email3Lbl.setText(email[2]);
     }
     private void switchSceneToDashboard(ActionEvent event) throws IOException{
-        try {
-            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml")); 
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
-            Scene scene2 = new Scene(scene2Root); 
-            stage.setScene(scene2); 
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Errore qui");
-        }
+        view = new ViewUpdateController((Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow());
+        view.setAddAndModifyScene();
     }
     private void listViewSelectItemInit(){
         contactListListView.setCellFactory(param -> new ListCell<Contact>() {
@@ -196,8 +182,21 @@ public class DetailController implements Initializable{
     private void deleteContactFromAddressBook(SelectedContactController s){
         System.out.println("Contatto eliminato!");
         addrBook.removeContact(selectedContact.getSelectedContact());
-        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        contactListListView.setItems(listObservable);
+        updateListView();
         selectedContact.resetSelectedContact();
     }
+    private void updateListView(){
+        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        contactListListView.setItems(listObservable);
+    }/*
+    private void bindContactDetail(){
+        StringBinding fullNameBinding = Bindings.createStringBinding(() ->
+            selectedContact.getSelectedContact().getSurname() + " " + selectedContact.getSelectedContact().getName(),
+            selectedContact.getSelectedContact().getSurnameProperty(), selectedContact.getSelectedContact().getNameProperty());
+        StringBinding telephoneBinding = Bindings.createStringBinding(() -> selectedContact.getSelectedContact().getTelephoneNumber(),
+                                                                            selectedContact.getSelectedContact().getTelephoneNumberProperty().get(0) );
+        contactNameLbl.textProperty().bind(fullNameBinding);
+        telephoneLbl.textProperty().bind(selectedContact.getSelectedContact().getTelephoneNumberProperty().get(0));
+
+    }*/
 }

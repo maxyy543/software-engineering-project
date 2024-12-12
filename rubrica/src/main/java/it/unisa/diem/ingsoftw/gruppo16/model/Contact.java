@@ -2,6 +2,12 @@ package it.unisa.diem.ingsoftw.gruppo16.model;
 
 import java.io.Serializable;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+
 
 
 /**
@@ -144,6 +150,20 @@ public class Contact implements Comparable<Contact>, Serializable{
     public void setIsFavourite(boolean isFavourite){
         this.isFavourite = isFavourite;
     }
+
+    public StringProperty getSurnameProperty(){
+        return new SimpleStringProperty(surname);
+    }
+    public StringProperty getNameProperty(){
+        return new SimpleStringProperty(name);
+    }
+    public ListProperty<String> getTelephoneNumberProperty(){
+        return new SimpleListProperty<>(FXCollections.observableArrayList(telephoneNumber));
+    }
+    public ListProperty<String> getEmailProperty(){
+        return new SimpleListProperty<>(FXCollections.observableArrayList(email));
+    }
+
     /**
      * @brief Metodo per il confronto tra i contatti nella TreeSet.
      * Per tenere ordinata la TreeSet è necessario definire una relazione d'ordine. Nel nostro caso la relazione d'ordine è il Cognome.
