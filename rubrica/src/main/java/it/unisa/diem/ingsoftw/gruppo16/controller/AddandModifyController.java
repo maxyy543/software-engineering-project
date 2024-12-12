@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TreeSet;
-
-import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
 import javafx.collections.FXCollections;
@@ -84,6 +82,7 @@ public class AddandModifyController implements Initializable{
 
     @FXML
     private void exportFileOnAction(ActionEvent event) {
+        new ExportFileController(event);
     }
 
     @FXML
@@ -96,6 +95,7 @@ public class AddandModifyController implements Initializable{
 
     @FXML
     private void importFileOnAction(ActionEvent event) {
+        new ImportFileController(event);
     }
 
     @FXML
@@ -136,7 +136,7 @@ public class AddandModifyController implements Initializable{
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
         
-        if(!((surnameTf.getText().trim().isEmpty()) || (nameTf.getText().trim().isEmpty()))){
+        if(!((surnameTf.getText().trim().isEmpty()) && (nameTf.getText().trim().isEmpty()))){
             Contact contact = ContactWithInfoFromTextFields();            
             Validator verificaContatto = Validator.link(new EmailController(), new TelephoneNumberController());
             if(verificaContatto.check(contact) && (addrBook != null)){
@@ -193,11 +193,17 @@ public class AddandModifyController implements Initializable{
             }});
     }
     private String getSurnameTextField(){
-        return surnameTf.getText().trim().substring(0,1).toUpperCase() + 
+        if(surnameTf.getText().isEmpty())
+            return "";
+        else 
+            return surnameTf.getText().trim().substring(0,1).toUpperCase() + 
         surnameTf.getText().trim().substring(1).toLowerCase();
     }
     private String getNameTextField(){
-        return nameTf.getText().trim().substring(0,1).toUpperCase() + 
+        if(nameTf.getText().isEmpty())
+            return "";
+        else
+            return nameTf.getText().trim().substring(0,1).toUpperCase() + 
         nameTf.getText().trim().substring(1).toLowerCase();
     }
     private void clearTextFields(){
@@ -211,7 +217,9 @@ public class AddandModifyController implements Initializable{
         telephone3Tf.clear();
     }
     private Contact ContactWithInfoFromTextFields(){
-        Contact contact = new Contact(getSurnameTextField(),getNameTextField());
+        String surname = getSurnameTextField();
+        String name = getNameTextField();
+        Contact contact = new Contact(surname, name);
         String[] tel =  {telephoneTf.getText().trim().toUpperCase(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
         String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
         contact.setTelephoneNumber(tel);

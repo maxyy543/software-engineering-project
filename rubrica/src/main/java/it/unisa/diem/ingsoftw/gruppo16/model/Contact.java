@@ -63,7 +63,6 @@ public class Contact implements Comparable<Contact>, Serializable{
         this.isFavourite = false;
     }
 
-
     /**
      * 
      * @return Cognome del Contact

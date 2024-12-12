@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TreeSet;
-
-import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
 import javafx.collections.FXCollections;
@@ -83,6 +81,7 @@ public class DetailController implements Initializable{
 
     @FXML
     private void exportFileOnAction(ActionEvent event) {
+        new ExportFileController(event);
     }
 
     @FXML
@@ -95,6 +94,7 @@ public class DetailController implements Initializable{
 
     @FXML
     private void importFileOnAction(ActionEvent event) {
+        new ImportFileController(event);
     }
 
     @FXML
