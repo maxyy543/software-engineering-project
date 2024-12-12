@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 public class TelephoneNumberController extends Validator {
 
-	private static final String PHONE_REGEX = "^(\\+?[0-9]{1,3})?[-.\\s]?\\(?[0-9]{2,4}\\)?[-.\\s]?[0-9]{3,4}[-.\\s]?[0-9]{3,4}$";
-	private static final Pattern PHONE_PATTERN = Pattern.compile(PHONE_REGEX);
+	private static final String PHONE_NUMBER_REGEX = "^(\\+?[0-9]{1,3})?[-.\\s]?\\(?[0-9]{2,4}\\)?[-.\\s]?[0-9]{3,4}[-.\\s]?[0-9]{3,4}$";
+	private static final Pattern PHONE_PATTERN = Pattern.compile(PHONE_NUMBER_REGEX);
 
 	@Override
 	public boolean check(Contact contact) {
