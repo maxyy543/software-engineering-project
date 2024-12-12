@@ -1,5 +1,6 @@
 package it.unisa.diem.ingsoftw.gruppo16.model;
 
+import java.io.File;
 import java.util.TreeSet;
 
 /**
@@ -12,6 +13,6 @@ public interface ImportFileStrategy {
      * @param[in] filename Path del file da importare
      * @return TreeSet con i contatti importati dal file.
      */
-    public TreeSet<Contact> importFile(String filename);
+    public TreeSet<Contact> importFile(File file);
 
 }

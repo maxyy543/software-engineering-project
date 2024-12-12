@@ -2,6 +2,12 @@ package it.unisa.diem.ingsoftw.gruppo16.model;
 
 import java.io.Serializable;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+
 /**
  * @class Contact
  * @brief Definizione della classe Contact e suoi metodi.
@@ -135,6 +141,22 @@ public class Contact implements Comparable<Contact>, Serializable {
      */
     public void setIsFavourite(boolean isFavourite) {
         this.isFavourite = isFavourite;
+    }
+
+    public StringProperty getSurnameProperty() {
+        return new SimpleStringProperty(surname);
+    }
+
+    public StringProperty getNameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
+    public ListProperty<String> getTelephoneNumberProperty() {
+        return new SimpleListProperty<>(FXCollections.observableArrayList(telephoneNumber));
+    }
+
+    public ListProperty<String> getEmailProperty() {
+        return new SimpleListProperty<>(FXCollections.observableArrayList(email));
     }
 
     /**

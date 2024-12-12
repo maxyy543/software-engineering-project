@@ -1,4 +1,5 @@
 package it.unisa.diem.ingsoftw.gruppo16.model;
+import java.io.Serializable;
 import java.util.TreeSet;
 
 /**
@@ -8,7 +9,7 @@ import java.util.TreeSet;
  * La classe AddressBookModel gestisce i contatti utilizzando una TreeSet come collezione.
  * @version 1.0
  */
-public class AddressBookModel implements AddressBook, Cloneable{
+public class AddressBookModel implements AddressBook, Cloneable, Serializable{
     
     private static TreeSet<Contact> listContacts; ///< lista di contatti gestita con una TreeSet.
     private static AddressBookModel addrBookInstance;
@@ -39,6 +40,13 @@ public class AddressBookModel implements AddressBook, Cloneable{
         return listContacts.contains(c);
     }
 
+    public boolean isEmpty(){
+        return listContacts.isEmpty();
+    }
+
+    public void clearAddressBook(){
+        listContacts.clear();
+    }
     /**
      * Aggiunge un nuovo contatto nella rubrica.
      * @pre Il contatto deve possedere i campi necessari(nome e cognome) per poter essere inserito nella rubrica.

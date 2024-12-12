@@ -69,7 +69,7 @@ public class AddandModifyController implements Initializable{
     @FXML
     private TextField surnameTf;
 
-    private AddressBook addrBook;
+    private AddressBookModel addrBook;
     private ObservableList<Contact> listObservable;
     private SelectedContactController selectedContact;
 
