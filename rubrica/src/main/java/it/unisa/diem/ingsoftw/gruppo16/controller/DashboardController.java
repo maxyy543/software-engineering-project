@@ -1,10 +1,10 @@
 package it.unisa.diem.ingsoftw.gruppo16.controller;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import it.unisa.diem.ingsoftw.gruppo16.model.AddressBook;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
 import javafx.collections.FXCollections;
@@ -42,9 +42,9 @@ public class DashboardController implements Initializable{
     private ListView<Contact> contactListListView;
     
     private ObservableList<Contact> listObservable;
-    private AddressBook addrBook;
+    private AddressBookModel addrBook;
     private SelectedContactController selectedContact;
-
+    private ViewUpdateController view;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addrBook = AddressBookModel.getInstance();
@@ -55,6 +55,7 @@ public class DashboardController implements Initializable{
     }    
     @FXML
     private void exportFileOnAction(ActionEvent event) {
+        new ExportFileController(event);
     }
     @FXML
     private void addButtonOnAction(ActionEvent event) throws IOException {
@@ -65,6 +66,7 @@ public class DashboardController implements Initializable{
     }
     @FXML
     private void importFileOnAction(ActionEvent event) {
+        new ImportFileController(event);
     }
 
     @FXML
@@ -74,15 +76,8 @@ public class DashboardController implements Initializable{
     }
 
     void switchSceneToModifyContact(ActionEvent event) throws IOException{
-        try{
-            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml")); 
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
-            Scene scene2 = new Scene(scene2Root); 
-            stage.setScene(scene2); 
-            stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        view = new ViewUpdateController((Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow());
+        view.setAddAndModifyScene();
     }
     private void openDetailOf(Contact contact) throws IOException{
         try{
@@ -97,6 +92,8 @@ public class DashboardController implements Initializable{
         }catch(Exception e){
             e.printStackTrace();
         }
+        /*view = new ViewUpdateController((Stage)contactListListView.getScene().getWindow());
+        view.setAddAndModifyScene();*/
     }
     private void listViewSelectItemInit(){
         contactListListView.setCellFactory(param -> new ListCell<Contact>() {
