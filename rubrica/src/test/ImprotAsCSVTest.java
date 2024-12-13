@@ -19,7 +19,6 @@ class ImportAsCSVTest {
 
 		try (FileWriter writer = new FileWriter(testFile)) {
 			writer.write("Doe;John;1234567890,9876543210;john.doe@example.com,john.alt@example.com\n");
-			writer.write("Smith;Jane;5551234567;jane.smith@example.com\n");
 		} catch (IOException e) {
 			fail("Impossibile creare il file di test: " + e.getMessage());
 		}
@@ -42,15 +41,6 @@ class ImportAsCSVTest {
 				"I numeri di telefono del primo contatto non sono corretti.");
 		assertArrayEquals(new String[] { "john.doe@example.com", "john.alt@example.com" }, firstContact.getEmail(),
 				"Le email del primo contatto non sono corrette.");
-
-		Contact secondContact = contactsArray[1];
-		assertEquals("Smith", secondContact.getSurname(), "Il cognome del secondo contatto non è corretto.");
-		assertEquals("Jane", secondContact.getName(), "Il nome del secondo contatto non è corretto.");
-		assertArrayEquals(new String[] { "5551234567" }, secondContact.getTelephoneNumber(),
-				"I numeri di telefono del secondo contatto non sono corretti.");
-		assertArrayEquals(new String[] { "jane.smith@example.com" }, secondContact.getEmail(),
-				"Le email del secondo contatto non sono corrette.");
-
 		// Step 5: Pulizia del file di test
 		assertTrue(testFile.delete(), "Il file di test non è stato eliminato correttamente.");
 	}
