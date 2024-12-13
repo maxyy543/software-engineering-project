@@ -3,35 +3,36 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Locale;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.TreeSet;
 
 public class ImportAsCSV implements ImportFileStrategy {
-    AddressBookModel addrBook = AddressBookModel.getInstance();
     @Override
     public TreeSet<Contact> importFile(File file) {
-        String filename = file.getAbsolutePath();
+        System.out.println("Sei arrivato qui");
         TreeSet<Contact> treeContacts = new TreeSet<>();
-        try(Scanner i = new Scanner(
-                new BufferedReader(
-                        new FileReader(filename)))){
-            i.useLocale(Locale.ITALY);
-            i.useDelimiter("\n*");
-            String surname;
-            String name;
-            String[] telNum;
-            String[] email;
-            while(i.hasNext()){
-                surname = i.next();
-                name = i.next();
-                String telNumStr = i.next();
-                String emailStr = i.next();
-                telNum = telNumStr.split(",");
-                email = emailStr.split(",");
+        try(Scanner i = new Scanner(new BufferedReader(new FileReader(file)))){
+            while(i.hasNextLine()){
+                String line = i.nextLine().trim();
+                String[] textFields = line.split(",");
+                String surname = textFields[0].trim();
+                String name = textFields[1].trim();
+                System.out.println(textFields[0] + textFields[1]);
+                String telNum1 = textFields[2];
+                String telNum2 = textFields[3];
+                String telNum3 = textFields[4];
+                System.out.println(telNum1 + telNum2 + telNum3);
+                String email1 = textFields[5];
+                String email2 = textFields[6];
+                String email3 = textFields[7];
+                System.out.println(email1 + email2 + email3);
+                String[] telNum = {telNum1, telNum2, telNum3};
+                String[] emails = {email1, email2, email3};
                 Contact c = new Contact(surname, name);
                 c.setTelephoneNumber(telNum);
-                c.setEmail(email);
+                c.setEmail(emails);
+                System.out.println(c.toString());
                 treeContacts.add(c);
             }
             return treeContacts;
