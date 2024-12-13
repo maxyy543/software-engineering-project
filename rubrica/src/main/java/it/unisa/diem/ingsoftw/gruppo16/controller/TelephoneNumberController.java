@@ -19,11 +19,11 @@ public class TelephoneNumberController extends Validator {
 		String[] phoneNumbers = contact.getTelephoneNumber();
 
 		for (String phoneNumber : phoneNumbers) {
-			if (PHONE_PATTERN.matcher(phoneNumber).matches() || (phoneNumber.equals(""))) {
-				return true;
+			if (!(PHONE_PATTERN.matcher(phoneNumber).matches() || (phoneNumber.equals("")))) {
+				return false;
 			}
 		}
 
-		return false;
+		return true;
 	}
 }

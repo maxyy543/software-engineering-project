@@ -16,8 +16,8 @@ public class ImportAsCSV implements ImportFileStrategy {
         try(Scanner i = new Scanner(
                 new BufferedReader(
                         new FileReader(filename)))){
-            i.useLocale(Locale.US);
-            i.useDelimiter(";\n*");
+            i.useLocale(Locale.ITALY);
+            i.useDelimiter("\n*");
             String surname;
             String name;
             String[] telNum;
@@ -36,9 +36,11 @@ public class ImportAsCSV implements ImportFileStrategy {
             }
             return treeContacts;
         }catch(FileNotFoundException e){
-            System.out.println(e);
-            return null;
+            //e.printStackTrace();
+            System.out.println("Ecco qua l'errore");
         }catch(RuntimeException e){   
+            //e.printStackTrace();
+            System.out.println("Errore lanciato dal RuntimeException");
         }
         return null;
     }

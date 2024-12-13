@@ -20,8 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 
 public class DetailController implements Initializable{
 
@@ -72,11 +70,10 @@ public class DetailController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         addrBook = AddressBookModel.getInstance();
         selectedContact = SelectedContactController.getInstance();
+        view = ViewUpdateController.getInstance();
+        initSelectedContactInfo(selectedContact);
         updateListView();
         listViewSelectItemInit();
-        /* 
-        bindContactDetail();
-        */
     }    
 
     @FXML
@@ -85,7 +82,8 @@ public class DetailController implements Initializable{
     }
 
     @FXML
-    private void addButtonOnAction(ActionEvent event) {
+    private void addButtonOnAction(ActionEvent event) throws IOException {
+        switchSceneToModifyContact(event);
     }
 
     @FXML
@@ -134,10 +132,6 @@ public class DetailController implements Initializable{
                 System.out.println("Utente ha annullato l'azione.");
             }
     }
-    void switchSceneToModifyContact(ActionEvent event) throws IOException{
-        view = new ViewUpdateController((Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow());
-        view.setAddAndModifyScene();
-    }
     @FXML
     private void contactSelected() throws IOException{
         try {
@@ -146,6 +140,10 @@ public class DetailController implements Initializable{
         } catch (Exception e) {
             System.out.println("Errore verificato qui");
         }
+    }
+
+    void switchSceneToModifyContact(ActionEvent event) throws IOException{
+        view.setModifyScene();
     }
     public void setContactDetail(Contact contact){
         contactNameLbl.setText(contact.getSurname() + " " + contact.getName());
@@ -159,8 +157,7 @@ public class DetailController implements Initializable{
         email3Lbl.setText(email[2]);
     }
     private void switchSceneToDashboard(ActionEvent event) throws IOException{
-        view = new ViewUpdateController((Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow());
-        view.setAddAndModifyScene();
+        view.setDashboardScene();
     }
     private void listViewSelectItemInit(){
         contactListListView.setCellFactory(param -> new ListCell<Contact>() {
@@ -192,21 +189,13 @@ public class DetailController implements Initializable{
         selectedContact.resetSelectedContact();
     }
     private void updateListView(){
-        System.out.println("Sono arrivato in updateListView");
         if(addrBook.isEmpty()){
             System.out.println("Rubrica Vuota");
         }
         listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         contactListListView.setItems(listObservable);
-    }/*
-    private void bindContactDetail(){
-        StringBinding fullNameBinding = Bindings.createStringBinding(() ->
-            selectedContact.getSelectedContact().getSurname() + " " + selectedContact.getSelectedContact().getName(),
-            selectedContact.getSelectedContact().getSurnameProperty(), selectedContact.getSelectedContact().getNameProperty());
-        StringBinding telephoneBinding = Bindings.createStringBinding(() -> selectedContact.getSelectedContact().getTelephoneNumber(),
-                                                                            selectedContact.getSelectedContact().getTelephoneNumberProperty().get(0) );
-        contactNameLbl.textProperty().bind(fullNameBinding);
-        telephoneLbl.textProperty().bind(selectedContact.getSelectedContact().getTelephoneNumberProperty().get(0));
-
-    }*/
+    }
+    private void initSelectedContactInfo(SelectedContactController selectedContact){
+        setContactDetail(selectedContact.getSelectedContact());
+    }
 }

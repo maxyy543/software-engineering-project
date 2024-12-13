@@ -19,11 +19,11 @@ public class EmailController extends Validator {
 		String[] emails = contact.getEmail();
 
 		for (String email : emails) {
-			if (EMAIL_PATTERN.matcher(email).matches() || (email.equals(""))) {
-				return true;
+			if (!(EMAIL_PATTERN.matcher(email).matches() || (email.equals("")))) {
+				return false;
 			}
 		}
 
-		return false;
+		return true;
 	}
 }

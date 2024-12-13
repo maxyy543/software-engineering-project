@@ -17,14 +17,15 @@ public class ExportFileController {
     private AddressBookModel addrBook;
     
     public ExportFileController(ActionEvent event){
-        init();
-        reactOnEvent(event);
+        init(event);
     }
 
-    private void init(){
+    private void init(ActionEvent event){
         addrBook = AddressBookModel.getInstance();
         if(addrBook.isEmpty())
             setAlert();
+        else
+            reactOnEvent(event);
         
     }
     private void reactOnEvent(ActionEvent event){

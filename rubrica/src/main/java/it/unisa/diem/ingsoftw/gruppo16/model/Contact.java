@@ -176,5 +176,13 @@ public class Contact implements Comparable<Contact>, Serializable{
     public int compareTo(Contact o) {
         return this.surname.compareTo(o.surname);
     }
-    
+    @Override
+    public boolean equals(Object o){
+        if(o == null) 
+            return false;
+        if(!o.getClass().equals(this.getClass())) 
+            return false;
+        Contact c = (Contact) o;
+        return this.surname.equals(c.getSurname()) && this.name.equals(c.getName());
+    }
 }
