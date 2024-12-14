@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TreeSet;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
 import javafx.collections.FXCollections;
@@ -65,19 +64,20 @@ public class ModifyContactController implements Initializable{
     private TextField surnameTf;
 
     private AddressBookModel addrBook;
-    private ObservableList<Contact> listObservable;
     private SelectedContactController selectedContact;
     private ViewUpdateController view;
+    private ListViewController list;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addrBook = AddressBookModel.getInstance();
         view = ViewUpdateController.getInstance();
-        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
         selectedContact = SelectedContactController.getInstance();
+        list = new ListViewController();
         initSelectedContactInfo(selectedContact);
-        listView.setItems(listObservable);
+        listView.setItems(list.getSharedListView());
         listViewSelectItemInit();
+        initSearchbar();
     }    
 
     @FXML
@@ -93,8 +93,9 @@ public class ModifyContactController implements Initializable{
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
         FavouriteListController favList = new FavouriteListController();
-        listObservable = FXCollections.observableArrayList(favList.getTreeWithFavContacts());
-        listView.setItems(listObservable);
+        list.getSharedListView().setAll(favList.getTreeWithFavContacts());
+        list.updateList();
+        listView.setItems(list.getSharedListView());
         favouriteContactsBtn.setStyle("-fx-background-color: #00a1ff; " +
                                        "-fx-text-fill: white; ");
     }
@@ -102,44 +103,45 @@ public class ModifyContactController implements Initializable{
     @FXML
     private void importFileOnAction(ActionEvent event) {
         new ImportFileController(event);
+        list.updateList();
+        listView.setItems(list.getSharedListView());
     }
-
-    @FXML
-    private void searchbarOnAction(ActionEvent event) {
+    private void initSearchbar(){
         searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
-
-            TreeSet<Contact> tempTree = addrBook.getTreeSet();
-            listObservable.clear();
-
-            for(Contact c : tempTree){
-                if(c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
-                   c.getSurname().toLowerCase().contains(newValue.toLowerCase())){
-                    listObservable.add(c);
-                }
-            }
-            listView.setItems(listObservable);
+            list.filterList(newValue);
+            listView.setItems(list.getSharedListView());
         });
     }
     @FXML 
     private void delContactOnAction(ActionEvent event){
         Alert alert = new Alert(AlertType.CONFIRMATION); 
-        //initAlert(alert);
+        initAlert(alert);
         Optional<ButtonType> result = alert.showAndWait(); 
         if (result.isPresent() && result.get() == ButtonType.OK) { 
             if(selectedContact.getSelectedContact() != null){
-                //deleteContactFromAddressBook(selectedContact);
-                //switchSceneToDashboard(event);
+                deleteContactFromAddressBook(selectedContact);
+                view.setDashboardScene();;
             }
         } 
         else{ 
             System.out.println("Utente ha annullato l'azione.");
         }
     }
+    private void deleteContactFromAddressBook(SelectedContactController s){
+        selectedContact = SelectedContactController.getInstance();
+        addrBook.removeContact(selectedContact.getSelectedContact());
+        list.updateList();
+        selectedContact.resetSelectedContact();
+    }
     @FXML
     private void cancelOnAction(ActionEvent event) throws IOException{
         view.setDashboardScene();
     }
-
+    private void initAlert(Alert a){
+        a.setTitle("Conferma Azione"); 
+        a.setHeaderText("Sei sicuro di voler procedere?"); 
+        a.setContentText("Questa azione non può essere annullata."); 
+    }
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
         Contact contact = contactWithInfoFromTextFields();     

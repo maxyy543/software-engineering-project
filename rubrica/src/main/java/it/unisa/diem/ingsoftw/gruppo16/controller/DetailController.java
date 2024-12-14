@@ -4,18 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TreeSet;
+
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.SVGPath;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -66,25 +62,21 @@ public class DetailController implements Initializable{
     private Label email3Lbl;
 
     private AddressBookModel addrBook;
-    private ObservableList<Contact> listObservable;
+    private ListViewController list;
     private SelectedContactController selectedContact;
     private ViewUpdateController view;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addrBook = AddressBookModel.getInstance();
         selectedContact = SelectedContactController.getInstance();
         view = ViewUpdateController.getInstance();
-        initSelectedContactInfo(selectedContact);
-        updateListView();
+        list = new ListViewController();
         listViewSelectItemInit();
-        SVGPath star = new SVGPath();
-        star.setContent("M20,2 L24,14 H36 L26,22 L30,34 L20,26 L10,34 L14,22 L4,14 H16 Z");
-        star.setFill(Color.WHITE);
-        star.setStyle("-fx-background-color: white;");
-        starButton.setGraphic(star);
-        starButton.setText("");
-        starButton.setStyle("-fx-background-color: transparent;");
+        listView.setItems(list.getSharedListView());
+        initSearchbar();
+        initSelectedContactInfo(selectedContact);
     }    
 
     @FXML
@@ -97,14 +89,10 @@ public class DetailController implements Initializable{
         view.setAddContactScene();
     }
     @FXML
-    private void starButtonOnAction(ActionEvent event){
-        //
-    }
-    @FXML
     private void favouriteListOnAction(ActionEvent event) {
         FavouriteListController favList = new FavouriteListController();
-        listObservable = FXCollections.observableArrayList(favList.getTreeWithFavContacts());
-        listView.setItems(listObservable);
+        list.getSharedListView().setAll(favList.getTreeWithFavContacts());
+        listView.setItems(list.getSharedListView());
         favouriteContactsBtn.setStyle("-fx-background-color: #00a1ff; " +
                                        "-fx-text-fill: white; ");
     }
@@ -114,19 +102,10 @@ public class DetailController implements Initializable{
         new ImportFileController(event);
     }
 
-    @FXML
-    private void searchBarOnAction(ActionEvent event) {
+    private void initSearchbar(){
         searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
-
-            TreeSet<Contact> tempTree = addrBook.getTreeSet();
-            listObservable.clear();
-
-            for(Contact c : tempTree){
-                if(contactIsFiltered(c, newValue)){
-                    listObservable.add(c);
-                }
-            }
-            listView.setItems(listObservable);
+            list.filterList(newValue);
+            listView.setItems(list.getSharedListView());
         });
     }
 
@@ -144,7 +123,7 @@ public class DetailController implements Initializable{
                 if(selectedContact.getSelectedContact() != null){
                     System.out.println("Sono arrivato fino a qui");;
                     deleteContactFromAddressBook(selectedContact);
-                    switchSceneToDashboard(event);
+                    view.setDashboardScene();
                 }
             } 
             else{ 
@@ -171,10 +150,9 @@ public class DetailController implements Initializable{
         emailLbl.setText(email[0]);
         email2Lbl.setText(email[1]);
         email3Lbl.setText(email[2]);
+    
     }
-    private void switchSceneToDashboard(ActionEvent event) throws IOException{
-        view.setDashboardScene();
-    }
+
     private void listViewSelectItemInit(){
         listView.setCellFactory(param -> new ListCell<Contact>() {
             @Override
@@ -183,18 +161,11 @@ public class DetailController implements Initializable{
 
                 if (empty || contact == null) {
                     setText(null);
-                    setStyle("-fx-background-color: #545454;" + 
-                             "-fx-text-fill: white");
+                    setId("void");
                 } else {
                     setText(contact.getSurname() + " " + contact.getName());
-                    setStyle("-fx-background-color: #545454;" + 
-                             "-fx-text-fill: white");
                 }
             }});
-    }
-    private boolean contactIsFiltered(Contact c, String newValue){
-        return c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
-                c.getSurname().toLowerCase().contains(newValue.toLowerCase());
     }
     private void initAlert(Alert a){
         a.setTitle("Conferma Azione"); 
@@ -204,15 +175,8 @@ public class DetailController implements Initializable{
     private void deleteContactFromAddressBook(SelectedContactController s){
         selectedContact = SelectedContactController.getInstance();
         addrBook.removeContact(selectedContact.getSelectedContact());
-        updateListView();
+        list.updateList();
         selectedContact.resetSelectedContact();
-    }
-    private void updateListView(){
-        if(addrBook.isEmpty()){
-            System.out.println("Rubrica Vuota");
-        }
-        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        listView.setItems(listObservable);
     }
     private void initSelectedContactInfo(SelectedContactController selectedContact){
         setContactDetail(selectedContact.getSelectedContact());

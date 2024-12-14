@@ -23,5 +23,6 @@ public class NameAndSurnameChecker extends Validator{
         alert.setTitle("Errore");
         alert.setHeaderText("Nome e cognome non inseriti!");
         alert.setContentText("I campi del nome e del cognome non possono essere vuoti!");
+        alert.showAndWait();
     }
 }

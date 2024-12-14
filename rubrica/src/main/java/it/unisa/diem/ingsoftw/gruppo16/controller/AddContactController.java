@@ -5,9 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,20 +54,20 @@ public class AddContactController implements Initializable{
     private TextField surnameTf;
 
     private AddressBookModel addrBook;
-    private FilteredList<Contact> filteredContactsList;
     private SelectedContactController selectedContact;
     private ViewUpdateController view;
+    private ListViewController list;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addrBook = AddressBookModel.getInstance();
         view = ViewUpdateController.getInstance();
-        ObservableList<Contact> contactList = FXCollections.observableArrayList(addrBook.getTreeSet());
         selectedContact = SelectedContactController.getInstance();
-        filteredContactsList = new FilteredList<>(contactList, p -> true);
-        listView.setItems(filteredContactsList);
+        list = new ListViewController();
+        listView.setItems(list.getSharedListView());
         listViewSelectItemInit();
+        initSearchbar();
     }
     
     @FXML
@@ -86,8 +83,8 @@ public class AddContactController implements Initializable{
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
         FavouriteListController favList = new FavouriteListController();
-        ObservableList<Contact> obsList = FXCollections.observableArrayList(favList.getTreeWithFavContacts());
-        listView.setItems(new FilteredList<>(obsList, p -> true));
+        list.getSharedListView().setAll(favList.getTreeWithFavContacts());
+        listView.setItems(list.getSharedListView());
         favouriteContactsBtn.setStyle("-fx-background-color: #00a1ff; " +
                                        "-fx-text-fill: white; ");
     }
@@ -95,20 +92,17 @@ public class AddContactController implements Initializable{
     @FXML
     private void importFileOnAction(ActionEvent event) {
         new ImportFileController(event);
+        list.updateList();
+        listView.setItems(list.getSharedListView());
     }
 
-    @FXML
-    private void searchbarOnAction(ActionEvent event) {
-        searchBarTf.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredContactsList.setPredicate(c -> {
-                if(newValue == null || newValue.isEmpty()){
-                    return true;
-                }
-                return c.getSurname().toLowerCase().contains(newValue.toLowerCase()) ||
-                       c.getName().toLowerCase().contains(newValue.toLowerCase());
-            });
+    private void initSearchbar(){
+        searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
+            list.filterList(newValue);
+            listView.setItems(list.getSharedListView());
         });
     }
+
     @FXML
     private void cancelOnAction(ActionEvent event) throws IOException{
         view.setDashboardScene();
@@ -120,8 +114,8 @@ public class AddContactController implements Initializable{
         Validator contactVerifier = Validator.link(new TelephoneNumberController(), new EmailController(), new NameAndSurnameChecker());
         if(contactVerifier.check(contact) && (addrBook != null)){
             addrBook.addNewContact(contact);
-            ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-            listView.setItems(listObservable);
+            list.updateList();
+            listView.setItems(list.getSharedListView());
             clearTextFields();
         }
     }

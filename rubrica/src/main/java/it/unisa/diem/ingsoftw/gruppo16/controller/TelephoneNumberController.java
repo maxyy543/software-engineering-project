@@ -34,5 +34,6 @@ public class TelephoneNumberController extends Validator {
         alert.setTitle("Errore");
         alert.setHeaderText("Numero di telefono non corretto");
         alert.setContentText("Il numero di telefono inserito non è corretto!");
+		alert.showAndWait();
     }
 }

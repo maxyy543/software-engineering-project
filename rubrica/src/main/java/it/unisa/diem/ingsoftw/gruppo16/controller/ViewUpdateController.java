@@ -24,11 +24,12 @@ public class ViewUpdateController {
     public void setStage(Stage stage){
         ViewUpdateController.stage = stage;
     }
-    private void setScene(String fxml){
+    private void setScene(String fxml, String css){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
             Parent root = loader.load();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
             stage.setScene(scene);
             stage.show();
             stage.setResizable(false);
@@ -38,15 +39,15 @@ public class ViewUpdateController {
     }
 
     public void setDashboardScene(){
-        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml");
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css");
     }
     public void setModifyScene(){
-        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml");
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css");
     }
     public void setDetailOfContactScene(){
-        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml");
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css");
     }
     public void setAddContactScene(){
-        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface4.fxml");
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface4.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css");
     }
 }
