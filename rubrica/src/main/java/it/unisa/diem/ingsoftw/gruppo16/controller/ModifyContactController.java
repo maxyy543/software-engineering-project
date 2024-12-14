@@ -11,10 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -23,7 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+
 
 
 public class ModifyContactController implements Initializable{
@@ -95,6 +92,11 @@ public class ModifyContactController implements Initializable{
 
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
+        FavouriteListController favList = new FavouriteListController();
+        listObservable = FXCollections.observableArrayList(favList.getTreeWithFavContacts());
+        listView.setItems(listObservable);
+        favouriteContactsBtn.setStyle("-fx-background-color: #00a1ff; " +
+                                       "-fx-text-fill: white; ");
     }
 
     @FXML
@@ -121,16 +123,17 @@ public class ModifyContactController implements Initializable{
     @FXML 
     private void delContactOnAction(ActionEvent event){
         Alert alert = new Alert(AlertType.CONFIRMATION); 
-        alert.setTitle("Conferma Azione"); 
-        alert.setHeaderText("Sei sicuro di voler procedere?"); 
-        alert.setContentText("Questa azione non può essere annullata."); 
+        //initAlert(alert);
         Optional<ButtonType> result = alert.showAndWait(); 
-            if (result.isPresent() && result.get() == ButtonType.OK) { 
-                
-            } 
-            else{ 
-                System.out.println("Utente ha annullato l'azione.");
+        if (result.isPresent() && result.get() == ButtonType.OK) { 
+            if(selectedContact.getSelectedContact() != null){
+                //deleteContactFromAddressBook(selectedContact);
+                //switchSceneToDashboard(event);
             }
+        } 
+        else{ 
+            System.out.println("Utente ha annullato l'azione.");
+        }
     }
     @FXML
     private void cancelOnAction(ActionEvent event) throws IOException{
@@ -139,50 +142,20 @@ public class ModifyContactController implements Initializable{
 
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
-        
-        if(!((surnameTf.getText().trim().isEmpty()) && (nameTf.getText().trim().isEmpty()))){
-            Contact contact = ContactWithInfoFromTextFields();            
-            Validator verificaContatto = Validator.link(new EmailController(), new TelephoneNumberController());
-            if(verificaContatto.check(contact) && (addrBook != null)){
-                addrBook.addNewContact(contact);
-                ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-                listView.setItems(listObservable);
-                clearTextFields();
-            } 
+        Contact contact = contactWithInfoFromTextFields();     
+        Validator contactVerifier = Validator.link(new TelephoneNumberController(), new EmailController(), new NameAndSurnameChecker());
+        if(contactVerifier.check(contact) && (addrBook != null)){
+            addrBook.modifyContact(selectedContact.getSelectedContact(), contact);
+            ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+            listView.setItems(listObservable);
+            clearTextFields();
         }
     }
     @FXML
     private void contactSelected() throws IOException{
         selectedContact.setSelectedContact(listView.getSelectionModel().getSelectedItem());
-        openDetailOf(selectedContact.getSelectedContact());
+        view.setDetailOfContactScene();
     }
-    private void openDetailOf(Contact contact) throws IOException{
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
-            Parent root = loader.load();
-            DetailController detailController = loader.getController();
-            detailController.setContactDetail(contact);
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) listView.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    /*
-    private void switchSceneToDashboard(ActionEvent event) throws IOException{
-        try {
-            Parent scene2Root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml")); 
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow(); 
-            Scene scene2 = new Scene(scene2Root); 
-            stage.setScene(scene2); 
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Errore qui");
-        }
-    }
-    */
     private void listViewSelectItemInit(){
         listView.setCellFactory(param -> new ListCell<Contact>() {
             @Override
@@ -220,16 +193,6 @@ public class ModifyContactController implements Initializable{
         telephone2Tf.clear();
         telephone3Tf.clear();
     }
-    private Contact ContactWithInfoFromTextFields(){
-        String surname = getSurnameTextField();
-        String name = getNameTextField();
-        Contact contact = new Contact(surname, name);
-        String[] tel =  {telephoneTf.getText().trim().toUpperCase(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
-        String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
-        contact.setTelephoneNumber(tel);
-        contact.setEmail(email);
-        return contact;
-    }
     private void initSelectedContactInfo(SelectedContactController selectedContact){
         setContactDetail(selectedContact.getSelectedContact());
     }
@@ -244,5 +207,15 @@ public class ModifyContactController implements Initializable{
         emailTf.setText(email[0]);
         email2Tf.setText(email[1]);
         email3Tf.setText(email[2]);
+    }
+    private Contact contactWithInfoFromTextFields(){
+        String surname = getSurnameTextField();
+        String name = getNameTextField();
+        Contact contact = new Contact(surname, name);
+        String[] tel =  {telephoneTf.getText().trim().toUpperCase(), telephone2Tf.getText().trim(), telephone3Tf.getText().trim()};
+        String[] email =  {emailTf.getText().trim(), email2Tf.getText().trim(), email3Tf.getText().trim()};
+        contact.setTelephoneNumber(tel);
+        contact.setEmail(email);
+        return contact;
     }
 }

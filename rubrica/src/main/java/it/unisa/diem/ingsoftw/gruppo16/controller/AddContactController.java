@@ -3,12 +3,11 @@ package it.unisa.diem.ingsoftw.gruppo16.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.TreeSet;
-
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -58,7 +57,7 @@ public class AddContactController implements Initializable{
     private TextField surnameTf;
 
     private AddressBookModel addrBook;
-    private ObservableList<Contact> listObservable;
+    private FilteredList<Contact> filteredContactsList;
     private SelectedContactController selectedContact;
     private ViewUpdateController view;
 
@@ -67,9 +66,10 @@ public class AddContactController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         addrBook = AddressBookModel.getInstance();
         view = ViewUpdateController.getInstance();
-        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+        ObservableList<Contact> contactList = FXCollections.observableArrayList(addrBook.getTreeSet());
         selectedContact = SelectedContactController.getInstance();
-        listView.setItems(listObservable);
+        filteredContactsList = new FilteredList<>(contactList, p -> true);
+        listView.setItems(filteredContactsList);
         listViewSelectItemInit();
     }
     
@@ -85,6 +85,11 @@ public class AddContactController implements Initializable{
 
     @FXML
     private void favouriteListOnAction(ActionEvent event) {
+        FavouriteListController favList = new FavouriteListController();
+        ObservableList<Contact> obsList = FXCollections.observableArrayList(favList.getTreeWithFavContacts());
+        listView.setItems(new FilteredList<>(obsList, p -> true));
+        favouriteContactsBtn.setStyle("-fx-background-color: #00a1ff; " +
+                                       "-fx-text-fill: white; ");
     }
 
     @FXML
@@ -94,18 +99,14 @@ public class AddContactController implements Initializable{
 
     @FXML
     private void searchbarOnAction(ActionEvent event) {
-        searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
-
-            TreeSet<Contact> tempTree = addrBook.getTreeSet();
-            listObservable.clear();
-
-            for(Contact c : tempTree){
-                if(c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
-                   c.getSurname().toLowerCase().contains(newValue.toLowerCase())){
-                    listObservable.add(c);
+        searchBarTf.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredContactsList.setPredicate(c -> {
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
                 }
-            }
-            listView.setItems(listObservable);
+                return c.getSurname().toLowerCase().contains(newValue.toLowerCase()) ||
+                       c.getName().toLowerCase().contains(newValue.toLowerCase());
+            });
         });
     }
     @FXML
@@ -115,37 +116,18 @@ public class AddContactController implements Initializable{
 
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
-        if(!((surnameTf.getText().trim().isEmpty()) && (nameTf.getText().trim().isEmpty()))){
-            Contact contact = ContactWithInfoFromTextFields();            
-            Validator contactVerifier = Validator.link(new EmailController(), new TelephoneNumberController());
-            if(contactVerifier.check(contact) && (addrBook != null)){
-                addrBook.addNewContact(contact);
-                ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-                listView.setItems(listObservable);
-                clearTextFields();
-            } 
+        Contact contact = contactWithInfoFromTextFields();     
+        Validator contactVerifier = Validator.link(new TelephoneNumberController(), new EmailController(), new NameAndSurnameChecker());
+        if(contactVerifier.check(contact) && (addrBook != null)){
+            addrBook.addNewContact(contact);
+            ObservableList<Contact> listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
+            listView.setItems(listObservable);
+            clearTextFields();
         }
     }
     @FXML
     private void contactSelected() throws IOException{
         selectedContact.setSelectedContact(listView.getSelectionModel().getSelectedItem());
-        openDetailOf(selectedContact.getSelectedContact());
-    }
-    private void openDetailOf(Contact contact) throws IOException{
-        /*try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml"));;
-            Parent root = loader.load();
-            DetailController detailController = loader.getController();
-            detailController.setContactDetail(contact);
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) contactListListView.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }*/
-        selectedContact.resetSelectedContact();
-        selectedContact.setSelectedContact(contact);
         view.setDetailOfContactScene();
     }
     private String getSurnameTextField(){
@@ -172,7 +154,7 @@ public class AddContactController implements Initializable{
         telephone2Tf.clear();
         telephone3Tf.clear();
     }
-    private Contact ContactWithInfoFromTextFields(){
+    private Contact contactWithInfoFromTextFields(){
         String surname = getSurnameTextField();
         String name = getNameTextField();
         Contact contact = new Contact(surname, name);

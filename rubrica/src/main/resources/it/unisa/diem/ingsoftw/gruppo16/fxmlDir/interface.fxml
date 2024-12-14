@@ -33,7 +33,7 @@
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <ListView fx:id="contactListListView" layoutX="275.0" layoutY="109.0" onMouseClicked="#contactSelected" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;">
+      <ListView fx:id="listView" layoutX="275.0" layoutY="109.0" onMouseClicked="#contactSelected" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ListView>

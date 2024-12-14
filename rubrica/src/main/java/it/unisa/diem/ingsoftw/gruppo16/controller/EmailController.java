@@ -24,6 +24,6 @@ public class EmailController extends Validator {
 			}
 		}
 
-		return true;
+		return checkNext(contact);
 	}
 }

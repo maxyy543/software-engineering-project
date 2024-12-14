@@ -17,7 +17,11 @@ public abstract class Validator {
      * @return La testa della catena Validator
      */
     public static Validator link(Validator first, Validator... chain){
-        //
+        Validator head = first;
+        for(Validator nextChecker: chain){
+            head.next = nextChecker;
+            head = nextChecker;
+        }
         return first;
     }
     /**
@@ -33,7 +37,9 @@ public abstract class Validator {
      * @return true se il prossimo Validatore restituisce true
      */
     protected boolean checkNext(Contact contact){
-        //
+        if(next == null){
+            return true;
+        }
         return next.check(contact);
     }
 }
