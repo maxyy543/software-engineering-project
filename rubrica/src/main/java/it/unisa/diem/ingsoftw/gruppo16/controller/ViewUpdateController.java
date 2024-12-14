@@ -1,8 +1,5 @@
 package it.unisa.diem.ingsoftw.gruppo16.controller;
 
-import java.io.IOException;
-
-import it.unisa.diem.ingsoftw.gruppo16.App;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,54 +7,46 @@ import javafx.stage.Stage;
 
 public class ViewUpdateController {
     
-    private static Scene scene;
+    private static ViewUpdateController instance;
     private static Stage stage;
-    private static Parent root;
+ 
 
-    public ViewUpdateController(Stage stage){
+
+    private ViewUpdateController(){}
+
+    public static ViewUpdateController getInstance(){
+        if(instance == null){
+            instance = new ViewUpdateController();
+        }
+        return instance;
+    }
+
+    public void setStage(Stage stage){
         ViewUpdateController.stage = stage;
+    }
+    private void setScene(String fxml){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void setDashboardScene(){
-        try {
-            ViewUpdateController.root = loadFXML("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface");
-            ViewUpdateController.scene = new Scene(root);
-            ViewUpdateController.stage.setScene(scene);
-            ViewUpdateController.stage.show();
-            ViewUpdateController.stage.setResizable(false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml");
     }
-    public void setAddAndModifyScene(){
-        try {
-            ViewUpdateController.root = loadFXML("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3");
-            ViewUpdateController.scene = new Scene(root);
-            ViewUpdateController.stage.setScene(scene);
-            ViewUpdateController.stage.show();
-            ViewUpdateController.stage.setResizable(false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void setModifyScene(){
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml");
     }
     public void setDetailOfContactScene(){
-        try {
-            ViewUpdateController.root = loadFXML("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2");
-            ViewUpdateController.scene = new Scene(root);
-            ViewUpdateController.stage.setScene(scene);
-            ViewUpdateController.stage.show();
-            ViewUpdateController.stage.setResizable(false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml");
     }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    public void setAddContactScene(){
+        setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface4.fxml");
     }
 }

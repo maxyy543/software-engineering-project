@@ -1,8 +1,11 @@
 package it.unisa.diem.ingsoftw.gruppo16.model;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 /**
  * @Class ExportAsXML
@@ -17,34 +20,13 @@ public class ExportAsXML implements ExportFileStrategy {
      */
     @Override
     public void exportFile(String filename, TreeSet<Contact> contacts) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-            writer.write("<contacts>\n");
-            for (Contact c : contacts) {
-                writer.write("  <contact>\n");
-                writer.write("    <firstName>" + c.getName() + "</firstName>\n"); // Scrive il nome del contatto
-                writer.write("    <lastName>" + c.getSurname() + "</lastName>\n"); // Scrive il cognome del contatto
-                
-                // Scrive fino a tre email
-                String[] emails = c.getEmail();  // Cambia qui, per usare l'array
-                for (int i = 0; i < emails.length && i < 3; i++) { // Itera sugli array
-                    writer.write("    <email>" + emails[i] + "</email>\n");
-                }
-    
-                // Scrive fino a tre numeri di telefono
-                String[] phoneNumbers = c.getTelephoneNumber();  // Cambia qui, per usare l'array
-                for (int i = 0; i < phoneNumbers.length && i < 3; i++) { // Itera sugli array
-                    writer.write("    <phoneNumber>" + phoneNumbers[i] + "</phoneNumber>\n");
-                }
-    
-                writer.write("  </contact>\n");
-            }
-            writer.write("</contacts>");
-            writer.close();
-        } catch (IOException e) {
+        XmlMapper xmlMapper = new XmlMapper();
+        List<Contact> list = contacts.stream().collect(Collectors.toList());
+        try{
+            xmlMapper.writeValue(new File(filename), list);
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
-      
-    }
+}
 

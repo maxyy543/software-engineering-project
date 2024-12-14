@@ -18,8 +18,9 @@ public class App extends Application{
     
     @Override
     public void start(Stage stage){
-        ViewUpdateController view = new ViewUpdateController(stage);
-        view.setDashboardScene();      
+        ViewUpdateController view = ViewUpdateController.getInstance();
+        view.setStage(stage);
+        view.setDashboardScene();  
         /*try {
             Parent root = loadFXML("fxmlDir/interface");
             Scene scene1 = new Scene(root);

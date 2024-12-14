@@ -18,7 +18,7 @@ public class ExportAsCSV implements ExportFileStrategy {
 public void exportFile(String filename, TreeSet<Contact> contacts) {
     try (FileWriter writer = new FileWriter(filename)) {
         for (Contact contact : contacts) {
-            writer.append(contact.getName()).append(',').append(contact.getSurname()).append(',');
+            writer.append(contact.getSurname()).append(',').append(contact.getName()).append(',');
 
                 // Append up to three phone numbers
                 String[] phoneNumbers = contact.getTelephoneNumber();
