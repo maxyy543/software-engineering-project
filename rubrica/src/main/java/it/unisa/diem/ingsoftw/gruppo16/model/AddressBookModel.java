@@ -18,7 +18,7 @@ public class AddressBookModel implements AddressBook, Cloneable, Serializable{
      * @brief Costruttore che inizializza un AddressBookModel.
      * Inizializza una lista di contatti come una struttura TreeSet.
      */
-    private AddressBookModel(){
+    AddressBookModel(){
         listContacts = new TreeSet<>();
     }
 
