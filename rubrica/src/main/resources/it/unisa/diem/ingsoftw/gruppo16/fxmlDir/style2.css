@@ -1,7 +1,28 @@
-#starButton {
-    -fx-background-color: transparent;
+.button-add-fav{
+    -fx-background-color: #545454;
+    -fx-text-fill: rgb(226, 244, 119);
+    -fx-font-size: 15px;
     -fx-cursor: hand;
 }
+.button-remove-fav{
+    -fx-background-color: #545454;
+    -fx-text-fill: rgb(247, 122, 122);
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+.button-add-fav:hover{
+    -fx-background-color: #616161;
+    -fx-text-fill: rgb(226, 244, 119);
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+.button-remove-fav:hover{
+    -fx-background-color: #616161;
+    -fx-text-fill: rgb(247, 122, 122);
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
 #addContactBtn {
     -fx-background-color: #545454;
     -fx-text-fill: white;
@@ -93,4 +114,8 @@
 }
 .list-cell:filled:hover{
     -fx-background-color: #616161;
+}
+#button-selected{
+    -fx-background-color: #00a1ff;
+    -fx-text-fill: white;
 }
