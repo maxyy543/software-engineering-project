@@ -1,17 +1,104 @@
 \doxysection{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Detail\+Controller Class Reference}
 \hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller}{}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller}\index{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController@{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController}}
+
+
+Classe view-\/controller per i dettagli del contatto selezionato. La classe eredita tutte le funzionalità di \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}{Main\+Controller} e implementa una interfaccia Initializable per la gestione della GUI. @\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller}{Detail\+Controller}.  
+
+
 Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Detail\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller}
+\includegraphics[height=1.609195cm]{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a2650dd015d3a6b21c84e93c43d70e6d1}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a2650dd015d3a6b21c84e93c43d70e6d1} 
-void {\bfseries initialize} (URL url, Resource\+Bundle rb)
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a2650dd015d3a6b21c84e93c43d70e6d1}{initialize}} (URL url, Resource\+Bundle rb)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a4ab2d601fcc9542ee6826faee2cbdd6b}{set\+Contact\+Detail}} (\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} contact)
+\begin{DoxyCompactList}\small\item\em Vengono impostati nelle label tutte le informazioni del contatto selezionato. Se un contatto risulta essere tra i preferiti, allora viene impostato un bottone rimuovi dai preferiti, altrimenti viene impostato un bottone aggiungi ai preferiti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a15d4c873e1102b5528f54dfe7cfeb105}{all\+Contact\+List\+Bind}} ()
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aa4e4462721f009daea147449e60f2c02}{export\+File\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8baec2285d7e8fcb75347c63277295bf}{add\+Button\+On\+Action}} (Action\+Event event)  throws IOException 
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8070249a45f08a43f1a6e3763cb17252}{all\+Contacts\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a1f5b1bbb1e9eddbd0e5c691849570e9f}{favourite\+List\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ab9b966611c2a23731a673e3e2afec4eb}{import\+File\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a11d6f0bbe657a4aec879b468e2405891}{contact\+Selected}} ()  throws IOException
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aeeea86736144a4fa99e79a718936b656}{list\+View\+Select\+Item\+Init}} ()
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ae5c31e0fae34cc27f36882f865dcef01}{init\+Searchbar}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+Button {\bfseries export\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per esportare una rubrica su un file. \end{DoxyCompactList}\item 
+Button {\bfseries add\+Contact\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per aggiungere un nuovo contatto. \end{DoxyCompactList}\item 
+Button {\bfseries all\+Contacts\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per visualizzare tutti i contatti della rubrica. \end{DoxyCompactList}\item 
+Button {\bfseries favourite\+Contacts\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per visualizzare tutti i contatti preferiti. \end{DoxyCompactList}\item 
+Button {\bfseries import\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per importare una rubrica da un file. \end{DoxyCompactList}\item 
+Text\+Field {\bfseries search\+Bar\+Tf}
+\begin{DoxyCompactList}\small\item\em searchbar per filtrare la list\+View. \end{DoxyCompactList}\item 
+List\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ {\bfseries list\+View}
+\begin{DoxyCompactList}\small\item\em Listview per la visualizzazione dei contatti della rubrica. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}{Address\+Book\+Model}} {\bfseries addr\+Book} = \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a16e688ca9e4aefd4ae1ac1460250b73b}{Address\+Book\+Model.\+get\+Instance}}()
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_selected_contact_controller}{Selected\+Contact\+Controller}} {\bfseries selected\+Contact} = \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_selected_contact_controller_a6aff440358288cefab1989ce8dadc1d9}{Selected\+Contact\+Controller.\+get\+Instance}}()
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_view_update_controller}{View\+Update\+Controller}} {\bfseries view} = \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_view_update_controller_a1212540c0089b5a289213896a9b1bf07}{View\+Update\+Controller.\+get\+Instance}}()
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}{List\+View\+Controller}} {\bfseries list} = new \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}{List\+View\+Controller}}()
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_favourite_list_controller}{Favourite\+List\+Controller}} {\bfseries fav\+List} = new \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_favourite_list_controller}{Favourite\+List\+Controller}}()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+static Boolean\+Property {\bfseries display\+All\+Contacts} = new Simple\+Boolean\+Property(true)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe view-\/controller per i dettagli del contatto selezionato. La classe eredita tutte le funzionalità di \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}{Main\+Controller} e implementa una interfaccia Initializable per la gestione della GUI. @\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller}{Detail\+Controller}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a2650dd015d3a6b21c84e93c43d70e6d1}\index{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController@{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController}!initialize@{initialize}}
+\index{initialize@{initialize}!it.unisa.diem.ingsoftw.gruppo16.controller.DetailController@{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a2650dd015d3a6b21c84e93c43d70e6d1} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Detail\+Controller.\+initialize (\begin{DoxyParamCaption}\item[{URL}]{url}{, }\item[{Resource\+Bundle}]{rb}{}\end{DoxyParamCaption})}
+
+Inizializza la classe \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller}{Detail\+Controller}. \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a4ab2d601fcc9542ee6826faee2cbdd6b}\index{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController@{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController}!setContactDetail@{setContactDetail}}
+\index{setContactDetail@{setContactDetail}!it.unisa.diem.ingsoftw.gruppo16.controller.DetailController@{it.unisa.diem.ingsoftw.gruppo16.controller.DetailController}}
+\doxysubsubsection{\texorpdfstring{setContactDetail()}{setContactDetail()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_detail_controller_a4ab2d601fcc9542ee6826faee2cbdd6b} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Detail\+Controller.\+set\+Contact\+Detail (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}}}]{contact}{}\end{DoxyParamCaption})}
+
+
+
+Vengono impostati nelle label tutte le informazioni del contatto selezionato. Se un contatto risulta essere tra i preferiti, allora viene impostato un bottone rimuovi dai preferiti, altrimenti viene impostato un bottone aggiungi ai preferiti. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em contact} & Contatto da mostrare sulla pagina Contact Detail. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

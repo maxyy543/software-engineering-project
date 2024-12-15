@@ -1,0 +1,189 @@
+\doxysection{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller Class Reference}
+\hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}{}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+
+
+Classe controller-\/view che gestisce l\textquotesingle{}interazione tra diverse sottoclassi controller e l\textquotesingle{}interfaccia GUI di Java\+FX. Definisce e implementa alcune dei principali eventi comuni a tutte le scene, come\+: import, export, add\+Btn\+Contact ecc..  
+
+
+Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.042184cm]{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a15d4c873e1102b5528f54dfe7cfeb105}{all\+Contact\+List\+Bind}} ()
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aa4e4462721f009daea147449e60f2c02}{export\+File\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8baec2285d7e8fcb75347c63277295bf}{add\+Button\+On\+Action}} (Action\+Event event)  throws IOException 
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8070249a45f08a43f1a6e3763cb17252}{all\+Contacts\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a1f5b1bbb1e9eddbd0e5c691849570e9f}{favourite\+List\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ab9b966611c2a23731a673e3e2afec4eb}{import\+File\+On\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a11d6f0bbe657a4aec879b468e2405891}{contact\+Selected}} ()  throws IOException
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aeeea86736144a4fa99e79a718936b656}{list\+View\+Select\+Item\+Init}} ()
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ae5c31e0fae34cc27f36882f865dcef01}{init\+Searchbar}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a69a287ee196215d71bcf73938251482d}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a69a287ee196215d71bcf73938251482d} 
+Button {\bfseries export\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per esportare una rubrica su un file. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aae9387acf9ebbf5d26dafa2349845ee3}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aae9387acf9ebbf5d26dafa2349845ee3} 
+Button {\bfseries add\+Contact\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per aggiungere un nuovo contatto. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a953dc2527875156baa0787f3720c141d}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a953dc2527875156baa0787f3720c141d} 
+Button {\bfseries all\+Contacts\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per visualizzare tutti i contatti della rubrica. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a0636627c786fe4123a8c5cee43c5b993}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a0636627c786fe4123a8c5cee43c5b993} 
+Button {\bfseries favourite\+Contacts\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per visualizzare tutti i contatti preferiti. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ad949cc56470e38399ecf7788bd8f62a7}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ad949cc56470e38399ecf7788bd8f62a7} 
+Button {\bfseries import\+Btn}
+\begin{DoxyCompactList}\small\item\em bottone per importare una rubrica da un file. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a50b5dde16f563907d16b9a14f1923347}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a50b5dde16f563907d16b9a14f1923347} 
+Text\+Field {\bfseries search\+Bar\+Tf}
+\begin{DoxyCompactList}\small\item\em searchbar per filtrare la list\+View. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a3dc6f7c399a1b95b0b6e8668e81dc957}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a3dc6f7c399a1b95b0b6e8668e81dc957} 
+List\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ {\bfseries list\+View}
+\begin{DoxyCompactList}\small\item\em Listview per la visualizzazione dei contatti della rubrica. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a9abf4bb581fae7787c941457bb929283}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a9abf4bb581fae7787c941457bb929283} 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}{Address\+Book\+Model}} {\bfseries addr\+Book} = \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a16e688ca9e4aefd4ae1ac1460250b73b}{Address\+Book\+Model.\+get\+Instance}}()
+\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a776f55c29f9b955c0ac3c1e946ca4125}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a776f55c29f9b955c0ac3c1e946ca4125} 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_selected_contact_controller}{Selected\+Contact\+Controller}} {\bfseries selected\+Contact} = \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_selected_contact_controller_a6aff440358288cefab1989ce8dadc1d9}{Selected\+Contact\+Controller.\+get\+Instance}}()
+\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a412556fcd0ba0927aea725fc5255bd54}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a412556fcd0ba0927aea725fc5255bd54} 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_view_update_controller}{View\+Update\+Controller}} {\bfseries view} = \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_view_update_controller_a1212540c0089b5a289213896a9b1bf07}{View\+Update\+Controller.\+get\+Instance}}()
+\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a7326d1416660929eeb310a52dd04e775}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a7326d1416660929eeb310a52dd04e775} 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}{List\+View\+Controller}} {\bfseries list} = new \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}{List\+View\+Controller}}()
+\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a75fefc228b45021490a9c9792954f904}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a75fefc228b45021490a9c9792954f904} 
+\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_favourite_list_controller}{Favourite\+List\+Controller}} {\bfseries fav\+List} = new \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_favourite_list_controller}{Favourite\+List\+Controller}}()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8dd17f35535c66967c04d996f2fcaa0a}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8dd17f35535c66967c04d996f2fcaa0a} 
+static Boolean\+Property {\bfseries display\+All\+Contacts} = new Simple\+Boolean\+Property(true)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe controller-\/view che gestisce l\textquotesingle{}interazione tra diverse sottoclassi controller e l\textquotesingle{}interfaccia GUI di Java\+FX. Definisce e implementa alcune dei principali eventi comuni a tutte le scene, come\+: import, export, add\+Btn\+Contact ecc.. 
+
+@\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller}{Main\+Controller} 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8baec2285d7e8fcb75347c63277295bf}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!addButtonOnAction@{addButtonOnAction}}
+\index{addButtonOnAction@{addButtonOnAction}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{addButtonOnAction()}{addButtonOnAction()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8baec2285d7e8fcb75347c63277295bf} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+add\+Button\+On\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [protected]}}
+
+Gestisce l\textquotesingle{}evento aggiungi nuovo contatto quando viene premuto il bottone Nuovo Contatto.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & l\textquotesingle{}azione viene avviata quando il pulsante Aggiungi contatto viene premuto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & se la scena Add\+Contact\+Scene non viene caricata bene. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a15d4c873e1102b5528f54dfe7cfeb105}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!allContactListBind@{allContactListBind}}
+\index{allContactListBind@{allContactListBind}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{allContactListBind()}{allContactListBind()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a15d4c873e1102b5528f54dfe7cfeb105} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+all\+Contact\+List\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Effettua un binding tra gli style e i bottoni all\+Contacts\+Btn e favourite\+Contacts\+Btn. \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8070249a45f08a43f1a6e3763cb17252}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!allContactsOnAction@{allContactsOnAction}}
+\index{allContactsOnAction@{allContactsOnAction}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{allContactsOnAction()}{allContactsOnAction()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a8070249a45f08a43f1a6e3763cb17252} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+all\+Contacts\+On\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Gestisce l\textquotesingle{}evento visualizza tutti i contatti quando viene premuto il bottone Tutti i contatti.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & l\textquotesingle{}azione viene avviata quando il pulsante Tutti i contatti viene premuto. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a11d6f0bbe657a4aec879b468e2405891}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!contactSelected@{contactSelected}}
+\index{contactSelected@{contactSelected}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{contactSelected()}{contactSelected()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a11d6f0bbe657a4aec879b468e2405891} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+contact\+Selected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [protected]}}
+
+Gestisce l\textquotesingle{}evento seleziona contatto quando viene selezionato un contatto nella listview. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & se la scena Detail\+Contact\+Scene non viene caricata correttamente. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aa4e4462721f009daea147449e60f2c02}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!exportFileOnAction@{exportFileOnAction}}
+\index{exportFileOnAction@{exportFileOnAction}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{exportFileOnAction()}{exportFileOnAction()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aa4e4462721f009daea147449e60f2c02} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+export\+File\+On\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Gestisce l\textquotesingle{}evento export quando il bottone Esporta viene premuto. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & l\textquotesingle{}azione viene avviata quando il pulsante Esporta viene premuto. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a1f5b1bbb1e9eddbd0e5c691849570e9f}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!favouriteListOnAction@{favouriteListOnAction}}
+\index{favouriteListOnAction@{favouriteListOnAction}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{favouriteListOnAction()}{favouriteListOnAction()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_a1f5b1bbb1e9eddbd0e5c691849570e9f} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+favourite\+List\+On\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Gestisce l\textquotesingle{}evento visualizza lista preferiti quando viene premuto il bottone Preferiti.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & l\textquotesingle{}azione viene avviata quando il pulsante Preferiti viene premuto. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ab9b966611c2a23731a673e3e2afec4eb}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!importFileOnAction@{importFileOnAction}}
+\index{importFileOnAction@{importFileOnAction}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{importFileOnAction()}{importFileOnAction()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ab9b966611c2a23731a673e3e2afec4eb} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+import\+File\+On\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Gestisce l\textquotesingle{}evento importa file quando viene premuto il bottone Importa.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & l\textquotesingle{}azione viene avviata quando il pulsante Importa viene premuto. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ae5c31e0fae34cc27f36882f865dcef01}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!initSearchbar@{initSearchbar}}
+\index{initSearchbar@{initSearchbar}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{initSearchbar()}{initSearchbar()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_ae5c31e0fae34cc27f36882f865dcef01} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+init\+Searchbar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Metodo che filtra i contatti della rubrica con un inserimento di una sottostringa del cognome e del nome tramite una searchbar. \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aeeea86736144a4fa99e79a718936b656}\index{it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}!listViewSelectItemInit@{listViewSelectItemInit}}
+\index{listViewSelectItemInit@{listViewSelectItemInit}!it.unisa.diem.ingsoftw.gruppo16.controller.MainController@{it.unisa.diem.ingsoftw.gruppo16.controller.MainController}}
+\doxysubsubsection{\texorpdfstring{listViewSelectItemInit()}{listViewSelectItemInit()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_main_controller_aeeea86736144a4fa99e79a718936b656} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Main\+Controller.\+list\+View\+Select\+Item\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Metodo che imposta ed aggiorna il contenuto nelle celle della List\+View. Ogni cella memorizza cognome e nome di un contatto della List\+View. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/it/unisa/diem/ingsoftw/gruppo16/controller/Main\+Controller.\+java\end{DoxyCompactItemize}

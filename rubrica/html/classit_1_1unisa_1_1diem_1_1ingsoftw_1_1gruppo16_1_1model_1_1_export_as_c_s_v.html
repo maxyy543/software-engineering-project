@@ -95,7 +95,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Strategia per esportare i contatti in un file in formato CSV @verison 1.0.  
+<p>Strategia per esportare i contatti in un file in formato CSV.  
  <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for it.unisa.diem.ingsoftw.gruppo16.model.ExportAsCSV:</div>
@@ -110,12 +110,13 @@ Inheritance diagram for it.unisa.diem.ingsoftw.gruppo16.model.ExportAsCSV:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2037c233a9e212ecf2d03cd3711e7ff2" id="r_a2037c233a9e212ecf2d03cd3711e7ff2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2037c233a9e212ecf2d03cd3711e7ff2">exportFile</a> (String filename, TreeSet&lt; <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html">Contact</a> &gt; contacts)</td></tr>
+<tr class="memdesc:a2037c233a9e212ecf2d03cd3711e7ff2"><td class="mdescLeft">&#160;</td><td class="mdescRight">metodo per esportare una rubrica in un file CSV.  <br /></td></tr>
 <tr class="separator:a2037c233a9e212ecf2d03cd3711e7ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy.html">it.unisa.diem.ingsoftw.gruppo16.model.ExportFileStrategy</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Strategia per esportare i contatti in un file in formato CSV @verison 1.0. </p>
-<p>@Class <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_as_c_s_v.html" title="Strategia per esportare i contatti in un file in formato CSV @verison 1.0.">ExportAsCSV</a> </p>
+<div class="textblock"><p>Strategia per esportare i contatti in un file in formato CSV. </p>
+<p>@Class <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_as_c_s_v.html" title="Strategia per esportare i contatti in un file in formato CSV.">ExportAsCSV</a> </p><dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2037c233a9e212ecf2d03cd3711e7ff2" name="a2037c233a9e212ecf2d03cd3711e7ff2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2037c233a9e212ecf2d03cd3711e7ff2">&#9670;&#160;</a></span>exportFile()</h2>
@@ -135,10 +136,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>metodo per esportare una rubrica in un file CSV. </p>
+<p>Metodo che implementa l'exportFile di <code><a class="el" href="interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy.html">ExportFileStrategy</a></code>. Il metodo visita tutta la lista di contatti e sovrascrive sul file ogni contatto(cognome,nome, numeri di telefono e email) presente nella lista.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>il file inserito deve esistere e la lista di contatti non deve essere vuota. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>viene generato un file CSV con i contatti della rubrica.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Path del file da esportare </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">contacts</td><td>Contatti da salvare nel file CSV </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">filename</td><td>path del file su cui esportare la rubrica. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">contacts</td><td><code><a class="el" href="">TreeSet</a></code> lista di contatti. </td></tr>
   </table>
   </dd>
 </dl>

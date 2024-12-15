@@ -2,7 +2,7 @@
 \hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n}{}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n}\index{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON}}
 
 
-Strategia per importare i contatti in un file in formato JSON @verison 1.\+0.  
+Strategia per importare i contatti in un file in formato JSON.  
 
 
 Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+As\+JSON\+:\begin{figure}[H]
@@ -14,34 +14,43 @@ Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n_a9e8975152f41ebb2afbbd735111f1156}{import\+File}} (String filename)
-\end{DoxyCompactItemize}
+Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n_ad3c9b55332271c32983cfb05f230689e}{import\+File}} (File file)
+\begin{DoxyCompactList}\small\item\em metodo per importare dei contatti nella rubrica da un file JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+File\+Strategy}}}
 
 
 \doxysubsection{Detailed Description}
-Strategia per importare i contatti in un file in formato JSON @verison 1.\+0. 
+Strategia per importare i contatti in un file in formato JSON. 
 
-@\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n}{Import\+As\+JSON} 
+@\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n}{Import\+As\+JSON} \begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n_a9e8975152f41ebb2afbbd735111f1156}\index{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON}!importFile@{importFile}}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n_ad3c9b55332271c32983cfb05f230689e}\index{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON}!importFile@{importFile}}
 \index{importFile@{importFile}!it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON}}
 \doxysubsubsection{\texorpdfstring{importFile()}{importFile()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n_a9e8975152f41ebb2afbbd735111f1156} 
-Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+As\+JSON.\+import\+File (\begin{DoxyParamCaption}\item[{String}]{filename}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n_ad3c9b55332271c32983cfb05f230689e} 
+Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+As\+JSON.\+import\+File (\begin{DoxyParamCaption}\item[{File}]{file}{}\end{DoxyParamCaption})}
+
+
+
+metodo per importare dei contatti nella rubrica da un file JSON. 
+
+Metodo che implementa l\textquotesingle{}import\+File di {\ttfamily \doxylink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy}{Export\+File\+Strategy}}. Il metodo utilizza {\ttfamily \doxylink{}{Gson}} per deserializzare un file in un oggetto {\ttfamily \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} da inserire in una {\ttfamily \doxylink{}{Tree\+Set}}.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em filename} & Path del file da importare \\
+\mbox{\texttt{ in}}  & {\em filename} & path del file da cui importare la rubrica.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Tree\+Set con i contatti importati dal file JSON. 
+una treeset contenente contatti da validare con il {\ttfamily \doxylink{}{Validator}}. 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy_a80f78bc3da17f0cdf03cddb6685ae921}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+File\+Strategy}}.
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy_a0269a3effe4bb7479ba035f667dc9914}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+File\+Strategy}}.
 
 
 

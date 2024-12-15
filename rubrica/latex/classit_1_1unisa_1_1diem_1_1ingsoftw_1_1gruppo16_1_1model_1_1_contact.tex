@@ -37,7 +37,12 @@ void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_
 void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a0d12fb81b986a058872b8f081b1abd1d}{set\+Is\+Favourite}} (boolean is\+Favourite)
 \item 
 int \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a36ccff44647e5e3a5e5f735a22daacbd}{compare\+To}} (\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} o)
-\begin{DoxyCompactList}\small\item\em Metodo per il confronto tra i contatti nella Tree\+Set. Per tenere ordinata la Tree\+Set è necessario definire una relazione d\textquotesingle{}ordine. Nel nostro caso la relazione d\textquotesingle{}ordine è il Cognome. Questo metodo stabilisce una relazione d\textquotesingle{}ordine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Metodo per il confronto tra i contatti nella Tree\+Set. Per tenere ordinata la Tree\+Set è necessario definire una relazione d\textquotesingle{}ordine. Nel nostro caso la relazione d\textquotesingle{}ordine è il Cognome e nome. Questo metodo stabilisce una relazione d\textquotesingle{}ordine. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a0e96682b87b7cd31fad067c69439980d}{equals}} (Object o)
+\begin{DoxyCompactList}\small\item\em Metodo per il confronto tra i contatti nella Tree\+Set. Individua i contatti duplicati con una sequenza di controlli. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_aa39226d9c4b40cf17d42da4f24a3bfaf}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_aa39226d9c4b40cf17d42da4f24a3bfaf} 
+String {\bfseries to\+String} ()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -77,7 +82,7 @@ int it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Contact.\+compare\+To (\be
 
 
 
-Metodo per il confronto tra i contatti nella Tree\+Set. Per tenere ordinata la Tree\+Set è necessario definire una relazione d\textquotesingle{}ordine. Nel nostro caso la relazione d\textquotesingle{}ordine è il Cognome. Questo metodo stabilisce una relazione d\textquotesingle{}ordine. 
+Metodo per il confronto tra i contatti nella Tree\+Set. Per tenere ordinata la Tree\+Set è necessario definire una relazione d\textquotesingle{}ordine. Nel nostro caso la relazione d\textquotesingle{}ordine è il Cognome e nome. Questo metodo stabilisce una relazione d\textquotesingle{}ordine. 
 
 \begin{DoxyPrecond}{Precondition}
 Il contatto da confrontare deve essere validato da un Validator. 
@@ -92,6 +97,30 @@ Il contatto viene confrontato con altri contatti.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 un numero intero negativo, zero o un numero intero positivo se il contatto ha un cognome più piccolo, uguale o più grande in ordine alfabetico rispetto ad un altro contatto 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a0e96682b87b7cd31fad067c69439980d}\index{it.unisa.diem.ingsoftw.gruppo16.model.Contact@{it.unisa.diem.ingsoftw.gruppo16.model.Contact}!equals@{equals}}
+\index{equals@{equals}!it.unisa.diem.ingsoftw.gruppo16.model.Contact@{it.unisa.diem.ingsoftw.gruppo16.model.Contact}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a0e96682b87b7cd31fad067c69439980d} 
+boolean it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Contact.\+equals (\begin{DoxyParamCaption}\item[{Object}]{o}{}\end{DoxyParamCaption})}
+
+
+
+Metodo per il confronto tra i contatti nella Tree\+Set. Individua i contatti duplicati con una sequenza di controlli. 
+
+\begin{DoxyPrecond}{Precondition}
+Il contatto da confrontare deve essere validato da un Validator. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Il contatto viene confrontato con altri contatti. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em o} & \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se due contatti hanno lo stesso cognome e stesso nome. 
 \end{DoxyReturn}
 \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a0d21f2467a28c9e2a93ebd0c38b0e65a}\index{it.unisa.diem.ingsoftw.gruppo16.model.Contact@{it.unisa.diem.ingsoftw.gruppo16.model.Contact}!getEmail@{getEmail}}
 \index{getEmail@{getEmail}!it.unisa.diem.ingsoftw.gruppo16.model.Contact@{it.unisa.diem.ingsoftw.gruppo16.model.Contact}}
@@ -144,9 +173,6 @@ Numeri di telefono del \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo1
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_afefb04be24b88869365c659cab9f774e} 
 void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Contact.\+set\+Email (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{email}{}\end{DoxyParamCaption})}
 
-\begin{DoxyPrecond}{Precondition}
-Le email devono essere corrette. 
-\end{DoxyPrecond}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em email} & Setter email del contact \\
@@ -169,9 +195,6 @@ void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Contact.\+set\+Is\+Favour
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_ac6aa3283f035948201654f20bd615cac} 
 void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Contact.\+set\+Name (\begin{DoxyParamCaption}\item[{String}]{name}{}\end{DoxyParamCaption})}
 
-\begin{DoxyPrecond}{Precondition}
-Il nome deve rispettare la lunghezza massima di caratteri consentita. 
-\end{DoxyPrecond}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em name} & Setter nome del contact \\
@@ -183,9 +206,6 @@ Il nome deve rispettare la lunghezza massima di caratteri consentita.
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a52453fc4c81917953de8af7658e979a0} 
 void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Contact.\+set\+Surname (\begin{DoxyParamCaption}\item[{String}]{surname}{}\end{DoxyParamCaption})}
 
-\begin{DoxyPrecond}{Precondition}
-Il cognome deve rispettare la lunghezza massima di caratteri consentita. 
-\end{DoxyPrecond}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em surname} & Setter cognome del contact \\
@@ -197,9 +217,6 @@ Il cognome deve rispettare la lunghezza massima di caratteri consentita.
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact_a8132a97fe64e000c1cb35d3d68fc4a33} 
 void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Contact.\+set\+Telephone\+Number (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{telephone\+Number}{}\end{DoxyParamCaption})}
 
-\begin{DoxyPrecond}{Precondition}
-I numeri di telefono devono essere corretti. 
-\end{DoxyPrecond}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em telephone\+Number} & Setter numeri di telefono del contact \\

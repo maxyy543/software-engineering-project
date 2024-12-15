@@ -1,10 +1,5 @@
 \doxysection{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+As\+CSV Class Reference}
 \hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v}{}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v}\index{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV}}
-
-
-Strategia per importare i contatti in un file in formato CSV @verison 1.\+0.  
-
-
 Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+As\+CSV\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -14,34 +9,41 @@ Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v_a743e99af6dc88e0bed0a238d22338bf6}{import\+File}} (String filename)
-\end{DoxyCompactItemize}
+Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v_a03a30a3f6d0064827635679b8d2f7fba}{import\+File}} (File file)
+\begin{DoxyCompactList}\small\item\em metodo per importare dei contatti nella rubrica da un file CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+File\+Strategy}}}
 
 
-\doxysubsection{Detailed Description}
-Strategia per importare i contatti in un file in formato CSV @verison 1.\+0. 
-
-@\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v}{Import\+As\+CSV} 
-
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v_a743e99af6dc88e0bed0a238d22338bf6}\index{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV}!importFile@{importFile}}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v_a03a30a3f6d0064827635679b8d2f7fba}\index{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV}!importFile@{importFile}}
 \index{importFile@{importFile}!it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV@{it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV}}
 \doxysubsubsection{\texorpdfstring{importFile()}{importFile()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v_a743e99af6dc88e0bed0a238d22338bf6} 
-Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+As\+CSV.\+import\+File (\begin{DoxyParamCaption}\item[{String}]{filename}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_c_s_v_a03a30a3f6d0064827635679b8d2f7fba} 
+Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+As\+CSV.\+import\+File (\begin{DoxyParamCaption}\item[{File}]{file}{}\end{DoxyParamCaption})}
 
+
+
+metodo per importare dei contatti nella rubrica da un file CSV. 
+
+Metodo che implementa l\textquotesingle{}import\+File di {\ttfamily \doxylink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy}{Export\+File\+Strategy}}. Ogni linea di testo del file CSV deve contenere i dati necessari per inserire un nuovo contatto nella rubrica. Ogni linea corrisponde a un nuovo contatto. Ogni contatto creato viene inserito in una {\ttfamily \doxylink{}{Tree\+Set}}. Ogni linea ha diversi campi che rappresentano, rispettivamente, Cognome, Nome, Numeri di Telefono (max 3), Email (max 3), Preferito
+
+\begin{DoxyPrecond}{Precondition}
+il file da importare deve esistere. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+viene generata una lista di contatti da validare con un {\ttfamily \doxylink{}{Validator}}.
+\end{DoxyPostcond}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em filename} & Path del file da importare \\
+\mbox{\texttt{ in,out}}  & {\em filename} & path del file da cui importare la rubrica.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Tree\+Set con i contatti importati dal file CSV. 
+una treeset contenente contatti da validare con il {\ttfamily \doxylink{}{Validator}}. 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy_a80f78bc3da17f0cdf03cddb6685ae921}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+File\+Strategy}}.
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy_a0269a3effe4bb7479ba035f667dc9914}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Import\+File\+Strategy}}.
 
 
 

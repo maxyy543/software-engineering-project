@@ -1,10 +1,5 @@
 \doxysection{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Export\+As\+JSON Class Reference}
 \hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_as_j_s_o_n}{}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_as_j_s_o_n}\index{it.unisa.diem.ingsoftw.gruppo16.model.ExportAsJSON@{it.unisa.diem.ingsoftw.gruppo16.model.ExportAsJSON}}
-
-
-Strategia per esportare i contatti in un file in formato JSON @verison 1.\+0.  
-
-
 Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Export\+As\+JSON\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,14 +10,9 @@ Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Export
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_as_j_s_o_n_aad6fca0a5bf9e53f93e753da55cc2b03}{export\+File}} (String filename, Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ contacts)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em metodo per esportare una rubrica in un file JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Export\+File\+Strategy}}}
 
-
-\doxysubsection{Detailed Description}
-Strategia per esportare i contatti in un file in formato JSON @verison 1.\+0. 
-
-@\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_as_j_s_o_n}{Export\+As\+JSON} 
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_as_j_s_o_n_aad6fca0a5bf9e53f93e753da55cc2b03}\index{it.unisa.diem.ingsoftw.gruppo16.model.ExportAsJSON@{it.unisa.diem.ingsoftw.gruppo16.model.ExportAsJSON}!exportFile@{exportFile}}
@@ -32,10 +22,22 @@ Strategia per esportare i contatti in un file in formato JSON @verison 1.\+0.
 void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Export\+As\+JSON.\+export\+File (\begin{DoxyParamCaption}\item[{String}]{filename}{, }\item[{Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$}]{contacts}{}\end{DoxyParamCaption})}
 
 
+
+metodo per esportare una rubrica in un file JSON. 
+
+Metodo che implementa l\textquotesingle{}export\+File di {\ttfamily \doxylink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy}{Export\+File\+Strategy}}. Il metodo visita tutta la lista di contatti e sovrascrive sul file ogni contatto(cognome,nome, numeri di telefono e email) presente nella lista.
+
+\begin{DoxyPrecond}{Precondition}
+il file inserito deve esistere e la lista di contatti non deve essere vuota. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+viene generato un file CSV con i contatti della rubrica.
+\end{DoxyPostcond}
+
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em filename} & Path del file da esportare \\
+\mbox{\texttt{ in,out}}  & {\em filename} & path del file su cui esportare la rubrica. \\
 \hline
-\mbox{\texttt{ in}}  & {\em contacts} & Contatti da salvare nel file JSON \\
+\mbox{\texttt{ in}}  & {\em contacts} & {\ttfamily \doxylink{}{Tree\+Set}} lista di contatti. \\
 \hline
 \end{DoxyParams}
 

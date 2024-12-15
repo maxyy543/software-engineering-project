@@ -2,13 +2,13 @@
 \hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}\index{it.unisa.diem.ingsoftw.gruppo16.controller.Validator@{it.unisa.diem.ingsoftw.gruppo16.controller.Validator}}
 
 
-Classe astratta che implementa il chain of responsibility.  
+Classe astratta che implementa il pattern chain of responsibility.  
 
 
 Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Validator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=1.396509cm]{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}
+\includegraphics[height=0.891010cm]{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -29,7 +29,7 @@ boolean \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1con
 
 
 \doxysubsection{Detailed Description}
-Classe astratta che implementa il chain of responsibility. 
+Classe astratta che implementa il pattern chain of responsibility. 
 
 @\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{Validator} 
 
@@ -42,17 +42,25 @@ Classe astratta che implementa il chain of responsibility.
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator_a91a97f8ab911d703401f1638f514aa81} 
 abstract boolean it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Validator.\+check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}}}]{contact}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
 
+Metodo astratto da implementare nelle sottoclassi \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{Validator}.
+
+\begin{DoxyPrecond}{Precondition}
+esiste un validator che lo implementi. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+risultato della validazione. 
+\end{DoxyPostcond}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em contact} & Contatto da validare \\
+\mbox{\texttt{ in}}  & {\em contact} & Contatto da validare. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true se la verifica è andata a buon fine 
+true se la verifica è andata a buon fine, falso altrimenti. 
 \end{DoxyReturn}
 
 
-Reimplemented in \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_format_controller_aa41162741b07b819cc94d303971f3eeb}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Format\+Controller}}, and \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_max_text_length_controller_a4e65fb1a5f0afed95f679693c174e11b}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Max\+Text\+Length\+Controller}}.
+Reimplemented in \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_email_controller_ab7969fa433de1544b8bbd7b6d0fbbeaa}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Email\+Controller}}, \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_name_and_surname_checker_ab8e4098e8e1f59628a672dd13c3dda66}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Name\+And\+Surname\+Checker}}, and \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_telephone_number_controller_a9499a79eed42838c6b84a746e92f0fd2}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Telephone\+Number\+Controller}}.
 
 \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator_ac0582e69d8e71e8548bc820f5f875bef}\index{it.unisa.diem.ingsoftw.gruppo16.controller.Validator@{it.unisa.diem.ingsoftw.gruppo16.controller.Validator}!checkNext@{checkNext}}
 \index{checkNext@{checkNext}!it.unisa.diem.ingsoftw.gruppo16.controller.Validator@{it.unisa.diem.ingsoftw.gruppo16.controller.Validator}}
@@ -60,13 +68,13 @@ Reimplemented in \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator_ac0582e69d8e71e8548bc820f5f875bef} 
 boolean it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Validator.\+check\+Next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}}}]{contact}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-
+Controlla se esiste un prossimo validatore. Se non esistono altri validatori, allora il metodo restituisce true. 
 \begin{DoxyParams}{Parameters}
-{\em contact} & Contatto da validare dal prossimo Validatore \\
+{\em contact} & Contatto da validare dal prossimo Validatore. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true se il prossimo Validatore restituisce true 
+true se il prossimo Validatore restituisce true oppure se non ci sono altri validatori. 
 \end{DoxyReturn}
 \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator_af20117aabcb3605fcae2286dacbd2682}\index{it.unisa.diem.ingsoftw.gruppo16.controller.Validator@{it.unisa.diem.ingsoftw.gruppo16.controller.Validator}!link@{link}}
 \index{link@{link}!it.unisa.diem.ingsoftw.gruppo16.controller.Validator@{it.unisa.diem.ingsoftw.gruppo16.controller.Validator}}
@@ -74,15 +82,23 @@ true se il prossimo Validatore restituisce true
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator_af20117aabcb3605fcae2286dacbd2682} 
 static \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{Validator}} it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+Validator.\+link (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{Validator}}}]{first}{, }\item[{Validator...}]{chain}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+Metodo che permette di collegare una sequenza di validator. Ogni \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{Validator} è responsabile di un specifico controllo.
+
+\begin{DoxyPrecond}{Precondition}
+devono esistere dei validator per poter creare la catena. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+viene creata una catena di validator.
+\end{DoxyPostcond}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em first} & Il primo validatore nella catena \\
+\mbox{\texttt{ in}}  & {\em first} & Il primo validatore nella catena. \\
 \hline
-\mbox{\texttt{ in}}  & {\em chain} & La sequenza di oggetti presenti nella catena \\
+\mbox{\texttt{ in}}  & {\em chain} & La sequenza di oggetti presenti nella catena. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-La testa della catena \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{Validator} 
+La testa della catena \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator}{Validator}. 
 \end{DoxyReturn}
 
 

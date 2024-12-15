@@ -8,16 +8,19 @@ Definizione della classe \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1grupp
 Inheritance diagram for it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book\+Model\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}
+\includegraphics[height=1.069723cm]{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_aa7b170254c4094aeb8171a8855f470e4}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_aa7b170254c4094aeb8171a8855f470e4} 
-{\bfseries Address\+Book\+Model} ()
-\begin{DoxyCompactList}\small\item\em Costruttore che inizializza un \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}{Address\+Book\+Model}. Inizializza una lista di contatti come una struttura Tree\+Set. \end{DoxyCompactList}\item 
+Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a4e3c801e74ddf1b4ef538df58020b048}{get\+Tree\+Set}} ()
+\item 
 boolean \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a08946220901c9bf7da507a63aea365cb}{contains}} (\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} c)
+\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a62678e46fdcc080afc6942032760699a}{is\+Empty}} ()
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a6285199ea82b922754fd325aa6a01912}{clear\+Address\+Book}} ()
 \item 
 boolean \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a1b57af12fc33c221939ef168031c023a}{add\+New\+Contact}} (\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} c)
 \item 
@@ -26,6 +29,11 @@ boolean \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1mod
 boolean \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_ac8e828e06e8e110f5cd89ad6c0073112}{modify\+Contact}} (\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} c\+Old, \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} c\+New)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book}}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}{Address\+Book\+Model}} \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a16e688ca9e4aefd4ae1ac1460250b73b}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Metodo statico che restituisce l\textquotesingle{}istanza della rubrica. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -61,19 +69,60 @@ true se questo contatto non è già presente nella rubrica.
 
 Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_a18d057a70d35da5ab5a391ca51d62c33}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book}}.
 
-\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a08946220901c9bf7da507a63aea365cb}\index{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}!contains@{contains}}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a6285199ea82b922754fd325aa6a01912}\index{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}!clearAddressBook@{clearAddressBook}}
+\index{clearAddressBook@{clearAddressBook}!it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}}
+\doxysubsubsection{\texorpdfstring{clearAddressBook()}{clearAddressBook()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a6285199ea82b922754fd325aa6a01912} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book\+Model.\+clear\+Address\+Book (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+svuota la rubrica \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a08946220901c9bf7da507a63aea365cb}\index{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}!contains@{contains}}
 \index{contains@{contains}!it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}}
 \doxysubsubsection{\texorpdfstring{contains()}{contains()}}
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a08946220901c9bf7da507a63aea365cb} 
 boolean it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book\+Model.\+contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}}}]{c}{}\end{DoxyParamCaption})}
 
 
-\begin{DoxyParams}{Parameters}
-{\em c} & Contatto da trovare \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em c} & Contatto da trovare \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 restituisce true se il contatto cercato è presente nella Tree\+Set. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a16e688ca9e4aefd4ae1ac1460250b73b}\index{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a16e688ca9e4aefd4ae1ac1460250b73b} 
+static \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}{Address\+Book\+Model}} it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book\+Model.\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo statico che restituisce l\textquotesingle{}istanza della rubrica. 
+
+\begin{DoxyReturn}{Returns}
+addr\+Book\+Instance, l\textquotesingle{}istanza della classe \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model}{Address\+Book\+Model}. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a4e3c801e74ddf1b4ef538df58020b048}\index{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}!getTreeSet@{getTreeSet}}
+\index{getTreeSet@{getTreeSet}!it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}}
+\doxysubsubsection{\texorpdfstring{getTreeSet()}{getTreeSet()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a4e3c801e74ddf1b4ef538df58020b048} 
+Tree\+Set$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book\+Model.\+get\+Tree\+Set (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+una lista di contatti 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_aba169a23922c56cb73819f1504a1a8d9}{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book}}.
+
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a62678e46fdcc080afc6942032760699a}\index{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_a62678e46fdcc080afc6942032760699a} 
+boolean it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+model.\+Address\+Book\+Model.\+is\+Empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true se la rubrica è vuota, false altrimenti. 
 \end{DoxyReturn}
 \Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_address_book_model_ac8e828e06e8e110f5cd89ad6c0073112}\index{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}!modifyContact@{modifyContact}}
 \index{modifyContact@{modifyContact}!it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel@{it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel}}

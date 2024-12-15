@@ -95,7 +95,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Strategia per importare i contatti in un file in formato JSON @verison 1.0.  
+<p>Strategia per importare i contatti in un file in formato JSON.  
  <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON:</div>
@@ -109,16 +109,17 @@ Inheritance diagram for it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON:</div
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9e8975152f41ebb2afbbd735111f1156" id="r_a9e8975152f41ebb2afbbd735111f1156"><td class="memItemLeft" align="right" valign="top">TreeSet&lt; <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html">Contact</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e8975152f41ebb2afbbd735111f1156">importFile</a> (String filename)</td></tr>
-<tr class="separator:a9e8975152f41ebb2afbbd735111f1156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c9b55332271c32983cfb05f230689e" id="r_ad3c9b55332271c32983cfb05f230689e"><td class="memItemLeft" align="right" valign="top">TreeSet&lt; <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html">Contact</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3c9b55332271c32983cfb05f230689e">importFile</a> (File file)</td></tr>
+<tr class="memdesc:ad3c9b55332271c32983cfb05f230689e"><td class="mdescLeft">&#160;</td><td class="mdescRight">metodo per importare dei contatti nella rubrica da un file JSON.  <br /></td></tr>
+<tr class="separator:ad3c9b55332271c32983cfb05f230689e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy.html">it.unisa.diem.ingsoftw.gruppo16.model.ImportFileStrategy</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Strategia per importare i contatti in un file in formato JSON @verison 1.0. </p>
-<p>@Class <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n.html" title="Strategia per importare i contatti in un file in formato JSON @verison 1.0.">ImportAsJSON</a> </p>
+<div class="textblock"><p>Strategia per importare i contatti in un file in formato JSON. </p>
+<p>@Class <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_as_j_s_o_n.html" title="Strategia per importare i contatti in un file in formato JSON.">ImportAsJSON</a> </p><dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9e8975152f41ebb2afbbd735111f1156" name="a9e8975152f41ebb2afbbd735111f1156"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e8975152f41ebb2afbbd735111f1156">&#9670;&#160;</a></span>importFile()</h2>
+<a id="ad3c9b55332271c32983cfb05f230689e" name="ad3c9b55332271c32983cfb05f230689e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3c9b55332271c32983cfb05f230689e">&#9670;&#160;</a></span>importFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -126,20 +127,23 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">TreeSet&lt; <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html">Contact</a> &gt; it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON.importFile </td>
           <td>(</td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
+          <td class="paramtype">File</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>metodo per importare dei contatti nella rubrica da un file JSON. </p>
+<p>Metodo che implementa l'importFile di <code><a class="el" href="interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_export_file_strategy.html">ExportFileStrategy</a></code>. Il metodo utilizza <code><a class="el" href="">Gson</a></code> per deserializzare un file in un oggetto <code><a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html">Contact</a></code> da inserire in una <code><a class="el" href="">TreeSet</a></code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Path del file da importare </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>path del file da cui importare la rubrica.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TreeSet con i contatti importati dal file JSON. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>una treeset contenente contatti da validare con il <code><a class="el" href="">Validator</a></code>. </dd></dl>
 
-<p>Implements <a class="el" href="interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy.html#a80f78bc3da17f0cdf03cddb6685ae921">it.unisa.diem.ingsoftw.gruppo16.model.ImportFileStrategy</a>.</p>
+<p>Implements <a class="el" href="interfaceit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_import_file_strategy.html#a0269a3effe4bb7479ba035f667dc9914">it.unisa.diem.ingsoftw.gruppo16.model.ImportFileStrategy</a>.</p>
 
 </div>
 </div>

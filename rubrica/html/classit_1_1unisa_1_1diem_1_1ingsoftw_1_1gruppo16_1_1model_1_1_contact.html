@@ -130,8 +130,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d12fb81b986a058872b8f081b1abd1d" id="r_a0d12fb81b986a058872b8f081b1abd1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d12fb81b986a058872b8f081b1abd1d">setIsFavourite</a> (boolean isFavourite)</td></tr>
 <tr class="separator:a0d12fb81b986a058872b8f081b1abd1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36ccff44647e5e3a5e5f735a22daacbd" id="r_a36ccff44647e5e3a5e5f735a22daacbd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36ccff44647e5e3a5e5f735a22daacbd">compareTo</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html">Contact</a> o)</td></tr>
-<tr class="memdesc:a36ccff44647e5e3a5e5f735a22daacbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per il confronto tra i contatti nella TreeSet. Per tenere ordinata la TreeSet è necessario definire una relazione d'ordine. Nel nostro caso la relazione d'ordine è il Cognome. Questo metodo stabilisce una relazione d'ordine.  <br /></td></tr>
+<tr class="memdesc:a36ccff44647e5e3a5e5f735a22daacbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per il confronto tra i contatti nella TreeSet. Per tenere ordinata la TreeSet è necessario definire una relazione d'ordine. Nel nostro caso la relazione d'ordine è il Cognome e nome. Questo metodo stabilisce una relazione d'ordine.  <br /></td></tr>
 <tr class="separator:a36ccff44647e5e3a5e5f735a22daacbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e96682b87b7cd31fad067c69439980d" id="r_a0e96682b87b7cd31fad067c69439980d"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e96682b87b7cd31fad067c69439980d">equals</a> (Object o)</td></tr>
+<tr class="memdesc:a0e96682b87b7cd31fad067c69439980d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per il confronto tra i contatti nella TreeSet. Individua i contatti duplicati con una sequenza di controlli.  <br /></td></tr>
+<tr class="separator:a0e96682b87b7cd31fad067c69439980d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa39226d9c4b40cf17d42da4f24a3bfaf" id="r_aa39226d9c4b40cf17d42da4f24a3bfaf"><td class="memItemLeft" align="right" valign="top"><a id="aa39226d9c4b40cf17d42da4f24a3bfaf" name="aa39226d9c4b40cf17d42da4f24a3bfaf"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> ()</td></tr>
+<tr class="separator:aa39226d9c4b40cf17d42da4f24a3bfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definizione della classe <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html" title="Definizione della classe Contact e suoi metodi.">Contact</a> e suoi metodi. </p>
@@ -183,7 +189,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Metodo per il confronto tra i contatti nella TreeSet. Per tenere ordinata la TreeSet è necessario definire una relazione d'ordine. Nel nostro caso la relazione d'ordine è il Cognome. Questo metodo stabilisce una relazione d'ordine. </p>
+<p>Metodo per il confronto tra i contatti nella TreeSet. Per tenere ordinata la TreeSet è necessario definire una relazione d'ordine. Nel nostro caso la relazione d'ordine è il Cognome e nome. Questo metodo stabilisce una relazione d'ordine. </p>
 <dl class="section pre"><dt>Precondition</dt><dd>Il contatto da confrontare deve essere validato da un Validator. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Il contatto viene confrontato con altri contatti. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -193,6 +199,34 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>un numero intero negativo, zero o un numero intero positivo se il contatto ha un cognome più piccolo, uguale o più grande in ordine alfabetico rispetto ad un altro contatto </dd></dl>
+
+</div>
+</div>
+<a id="a0e96682b87b7cd31fad067c69439980d" name="a0e96682b87b7cd31fad067c69439980d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e96682b87b7cd31fad067c69439980d">&#9670;&#160;</a></span>equals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean it.unisa.diem.ingsoftw.gruppo16.model.Contact.equals </td>
+          <td>(</td>
+          <td class="paramtype">Object</td>          <td class="paramname"><span class="paramname"><em>o</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metodo per il confronto tra i contatti nella TreeSet. Individua i contatti duplicati con una sequenza di controlli. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Il contatto da confrontare deve essere validato da un Validator. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Il contatto viene confrontato con altri contatti. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">o</td><td><a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact.html" title="Definizione della classe Contact e suoi metodi.">Contact</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true se due contatti hanno lo stesso cognome e stesso nome. </dd></dl>
 
 </div>
 </div>
@@ -300,7 +334,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>Le email devono essere corrette. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">email</td><td>Setter email del contact </td></tr>
@@ -347,7 +380,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>Il nome deve rispettare la lunghezza massima di caratteri consentita. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Setter nome del contact </td></tr>
@@ -371,7 +403,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>Il cognome deve rispettare la lunghezza massima di caratteri consentita. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">surname</td><td>Setter cognome del contact </td></tr>
@@ -395,7 +426,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>I numeri di telefono devono essere corretti. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">telephoneNumber</td><td>Setter numeri di telefono del contact </td></tr>

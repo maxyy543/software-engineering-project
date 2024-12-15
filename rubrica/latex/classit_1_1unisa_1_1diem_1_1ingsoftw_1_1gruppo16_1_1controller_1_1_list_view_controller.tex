@@ -1,0 +1,59 @@
+\doxysection{it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+List\+View\+Controller Class Reference}
+\hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}{}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}\index{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController@{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController}}
+
+
+Classe controller per la gestione della List\+View\+: filtrare gli elementi, ottenere la lista della List\+View e aggiornare la Listview. @\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}{List\+View\+Controller}.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a740b2c9a390832b14a5b879c7c99fd13}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a740b2c9a390832b14a5b879c7c99fd13} 
+{\bfseries List\+View\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Costruttore della classe per istanziare gli attributi. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a774e8794affb358eb2f3b269d61f0998}{get\+Shared\+List\+View}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}istanza della list\+View. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a5b47886bb961d9edb7c9389eeb0be576}{filter\+List}} (String s)
+\begin{DoxyCompactList}\small\item\em Filtra gli elementi della List\+View con una sottostringa del nome e del cognome di un contatto. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a970c194c6d7de248c5dd5c387be3cad8}\label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a970c194c6d7de248c5dd5c387be3cad8} 
+void {\bfseries update\+List} ()
+\begin{DoxyCompactList}\small\item\em aggiorna la list\+View con i nuovi contatti della rubrica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe controller per la gestione della List\+View\+: filtrare gli elementi, ottenere la lista della List\+View e aggiornare la Listview. @\+Class \doxylink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller}{List\+View\+Controller}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a5b47886bb961d9edb7c9389eeb0be576}\index{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController@{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController}!filterList@{filterList}}
+\index{filterList@{filterList}!it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController@{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController}}
+\doxysubsubsection{\texorpdfstring{filterList()}{filterList()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a5b47886bb961d9edb7c9389eeb0be576} 
+void it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+List\+View\+Controller.\+filter\+List (\begin{DoxyParamCaption}\item[{String}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Filtra gli elementi della List\+View con una sottostringa del nome e del cognome di un contatto. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em s} & stringa di caratteri utilizzati per trovare un elemento nella rubrica. Se il filtro trova un contatto, allora questo viene aggiunto alla listview "{}filtrata"{}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a774e8794affb358eb2f3b269d61f0998}\index{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController@{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController}!getSharedListView@{getSharedListView}}
+\index{getSharedListView@{getSharedListView}!it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController@{it.unisa.diem.ingsoftw.gruppo16.controller.ListViewController}}
+\doxysubsubsection{\texorpdfstring{getSharedListView()}{getSharedListView()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_list_view_controller_a774e8794affb358eb2f3b269d61f0998} 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1model_1_1_contact}{Contact}} $>$ it.\+unisa.\+diem.\+ingsoftw.\+gruppo16.\+controller.\+List\+View\+Controller.\+get\+Shared\+List\+View (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}istanza della list\+View. 
+
+\begin{DoxyReturn}{Returns}
+istanza di list\+View. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/it/unisa/diem/ingsoftw/gruppo16/controller/List\+View\+Controller.\+java\end{DoxyCompactItemize}

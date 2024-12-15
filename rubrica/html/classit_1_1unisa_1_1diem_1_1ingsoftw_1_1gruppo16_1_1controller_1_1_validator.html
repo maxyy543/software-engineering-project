@@ -97,7 +97,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Classe astratta che implementa il chain of responsibility.  
+<p>Classe astratta che implementa il pattern chain of responsibility.  
  <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for it.unisa.diem.ingsoftw.gruppo16.controller.Validator:</div>
@@ -105,8 +105,9 @@ Inheritance diagram for it.unisa.diem.ingsoftw.gruppo16.controller.Validator:</d
  <div class="center">
   <img src="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.png" usemap="#it.unisa.diem.ingsoftw.gruppo16.controller.Validator_map" alt=""/>
   <map id="it.unisa.diem.ingsoftw.gruppo16.controller.Validator_map" name="it.unisa.diem.ingsoftw.gruppo16.controller.Validator_map">
-<area href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_format_controller.html" title="Classe che effettua il controllo del formato dei numeri telefonici e dell&#39;email." alt="it.unisa.diem.ingsoftw.gruppo16.controller.FormatController" shape="rect" coords="0,56,393,80"/>
-<area href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_max_text_length_controller.html" title="Classe che effettua il controllo del formato testuale dei nomi e dei cognomi dei Contatti." alt="it.unisa.diem.ingsoftw.gruppo16.controller.MaxTextLengthController" shape="rect" coords="403,56,796,80"/>
+<area href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_email_controller.html" title="Classe che controlla la correttezza d3lle email di un contatto. Classe che estende Validator ed imple..." alt="it.unisa.diem.ingsoftw.gruppo16.controller.EmailController" shape="rect" coords="0,56,411,80"/>
+<area href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_name_and_surname_checker.html" title="Classe che controlla se sono stati inseriti nome e cognome nel contatto. Classe che estende Validator..." alt="it.unisa.diem.ingsoftw.gruppo16.controller.NameAndSurnameChecker" shape="rect" coords="421,56,832,80"/>
+<area href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_telephone_number_controller.html" title="Classe che controlla la correttezza dei numeri di telefono di un contatto. Classe che estende Validat..." alt="it.unisa.diem.ingsoftw.gruppo16.controller.TelephoneNumberController" shape="rect" coords="842,56,1253,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -126,9 +127,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ac0582e69d8e71e8548bc820f5f875bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Classe astratta che implementa il chain of responsibility. </p>
-<p>@Class <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il chain of responsibility.">Validator</a> </p>
-<p><a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il chain of responsibility.">Validator</a> definisce i metodi per la validazione dei contatti da inserire in una rubrica. </p>
+<div class="textblock"><p>Classe astratta che implementa il pattern chain of responsibility. </p>
+<p>@Class <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il pattern chain of responsibility.">Validator</a> </p>
+<p><a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il pattern chain of responsibility.">Validator</a> definisce i metodi per la validazione dei contatti da inserire in una rubrica. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a91a97f8ab911d703401f1638f514aa81" name="a91a97f8ab911d703401f1638f514aa81"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a91a97f8ab911d703401f1638f514aa81">&#9670;&#160;</a></span>check()</h2>
@@ -152,15 +153,18 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Metodo astratto da implementare nelle sottoclassi <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il pattern chain of responsibility.">Validator</a>.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>esiste un validator che lo implementi. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>risultato della validazione. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">contact</td><td>Contatto da validare </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">contact</td><td>Contatto da validare. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se la verifica è andata a buon fine </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se la verifica è andata a buon fine, falso altrimenti. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_format_controller.html#aa41162741b07b819cc94d303971f3eeb">it.unisa.diem.ingsoftw.gruppo16.controller.FormatController</a>, and <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_max_text_length_controller.html#a4e65fb1a5f0afed95f679693c174e11b">it.unisa.diem.ingsoftw.gruppo16.controller.MaxTextLengthController</a>.</p>
+<p>Reimplemented in <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_email_controller.html#ab7969fa433de1544b8bbd7b6d0fbbeaa">it.unisa.diem.ingsoftw.gruppo16.controller.EmailController</a>, <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_name_and_surname_checker.html#ab8e4098e8e1f59628a672dd13c3dda66">it.unisa.diem.ingsoftw.gruppo16.controller.NameAndSurnameChecker</a>, and <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_telephone_number_controller.html#a9499a79eed42838c6b84a746e92f0fd2">it.unisa.diem.ingsoftw.gruppo16.controller.TelephoneNumberController</a>.</p>
 
 </div>
 </div>
@@ -186,13 +190,13 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Controlla se esiste un prossimo validatore. Se non esistono altri validatori, allora il metodo restituisce true. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">contact</td><td>Contatto da validare dal prossimo Validatore </td></tr>
+    <tr><td class="paramname">contact</td><td>Contatto da validare dal prossimo Validatore. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se il prossimo Validatore restituisce true </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se il prossimo Validatore restituisce true oppure se non ci sono altri validatori. </dd></dl>
 
 </div>
 </div>
@@ -222,14 +226,17 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Metodo che permette di collegare una sequenza di validator. Ogni <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il pattern chain of responsibility.">Validator</a> è responsabile di un specifico controllo.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>devono esistere dei validator per poter creare la catena. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>viene creata una catena di validator.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">first</td><td>Il primo validatore nella catena </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">chain</td><td>La sequenza di oggetti presenti nella catena </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">first</td><td>Il primo validatore nella catena. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">chain</td><td>La sequenza di oggetti presenti nella catena. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>La testa della catena <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il chain of responsibility.">Validator</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>La testa della catena <a class="el" href="classit_1_1unisa_1_1diem_1_1ingsoftw_1_1gruppo16_1_1controller_1_1_validator.html" title="Classe astratta che implementa il pattern chain of responsibility.">Validator</a>. </dd></dl>
 
 </div>
 </div>
