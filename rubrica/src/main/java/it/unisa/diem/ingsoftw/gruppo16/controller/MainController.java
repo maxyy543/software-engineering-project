@@ -4,6 +4,9 @@ import java.io.IOException;
 
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,6 +35,20 @@ public abstract class MainController {
     protected ViewUpdateController view = ViewUpdateController.getInstance();
     protected ListViewController list = new ListViewController();
     protected FavouriteListController favList = new FavouriteListController();
+    protected static BooleanProperty displayAllContacts = new SimpleBooleanProperty(true);  
+
+    protected void allContactListBind(){
+        allContactsBtn.styleProperty().bind(
+            Bindings.when(displayAllContacts)
+                .then("-fx-background-color:#00a1ff;")
+                .otherwise("-fx-background-color:#545454;")
+        );
+        favouriteContactsBtn.styleProperty().bind(
+            Bindings.when(displayAllContacts.not())
+                .then("-fx-background-color:#00a1ff;")
+                .otherwise("-fx-background-color:#545454;")
+        );
+    }
 
     @FXML
     protected void exportFileOnAction(ActionEvent event) {
@@ -43,17 +60,20 @@ public abstract class MainController {
     }
     @FXML
     protected void allContactsOnAction(ActionEvent event){
+        displayAllContacts.set(true);
         list.updateList();
         listView.setItems(list.getSharedListView());
     }
     @FXML
     protected void favouriteListOnAction(ActionEvent event) {
+        displayAllContacts.set(false);
         list.getSharedListView().setAll(favList.getTreeWithFavContacts());
         listView.setItems(list.getSharedListView());
     }
     @FXML
     protected void importFileOnAction(ActionEvent event) {
         new ImportFileController(event);
+        displayAllContacts.set(true);
         list.updateList();
         listView.setItems(list.getSharedListView());
     }
@@ -79,6 +99,7 @@ public abstract class MainController {
         searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
             list.filterList(newValue);
             listView.setItems(list.getSharedListView());
+            displayAllContacts.set(true);
         });
     }
 }

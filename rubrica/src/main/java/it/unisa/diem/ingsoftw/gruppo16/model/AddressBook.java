@@ -32,5 +32,9 @@ public interface AddressBook {
      * @return true se la modifica del contatto nella rubrica è andata a buon fine.
      */
     public boolean modifyContact(Contact cOld, Contact cNew);
+    /**
+     * @brief Restituisce la rubrica.
+     * @return una lista di contatti.
+     */
     public TreeSet<Contact> getTreeSet();
 }

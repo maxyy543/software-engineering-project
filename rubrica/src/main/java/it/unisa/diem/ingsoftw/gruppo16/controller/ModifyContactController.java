@@ -34,6 +34,7 @@ public class ModifyContactController extends ContactServiceController implements
         listView.setItems(list.getSharedListView());
         listViewSelectItemInit();
         initSearchbar();
+        allContactListBind();
     }    
     @FXML 
     private void delContactOnAction(ActionEvent event){

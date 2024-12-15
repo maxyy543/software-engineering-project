@@ -51,7 +51,7 @@ public class DetailController extends MainController implements Initializable{
         listView.setItems(list.getSharedListView());
         initSearchbar();
         initSelectedContactInfo(selectedContact);
-
+        allContactListBind();
     }
     @FXML
     private void starButtonOnAction(ActionEvent event){

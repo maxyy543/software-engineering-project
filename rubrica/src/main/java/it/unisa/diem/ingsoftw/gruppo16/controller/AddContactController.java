@@ -23,6 +23,7 @@ public class AddContactController extends ContactServiceController implements In
         listView.setItems(list.getSharedListView());
         listViewSelectItemInit();
         initSearchbar();
+        allContactListBind();
     }
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{

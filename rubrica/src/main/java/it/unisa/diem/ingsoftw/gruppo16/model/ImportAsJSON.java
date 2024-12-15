@@ -15,12 +15,16 @@ import java.util.TreeSet;
 */
 public class ImportAsJSON implements ImportFileStrategy {
     /**
+     * @brief metodo per importare dei contatti nella rubrica da un file JSON.
      * 
-     * @param[in] filename Path del file da importare
-     * @return TreeSet con i contatti importati dal file JSON.
+     * Metodo che implementa l'importFile di {@link ExportFileStrategy}.
+     * Il metodo utilizza {@link Gson} per deserializzare un file in un oggetto {@link Contact}
+     * da inserire in una {@link TreeSet}.
      * 
-     * 
-    */
+     * @param[in] filename path del file da cui importare la rubrica.
+     *  
+     * @return una treeset contenente contatti da validare con il {@link Validator}.
+     */
     @Override
     public TreeSet<Contact> importFile(File file) {
         String filename = file.getAbsolutePath();

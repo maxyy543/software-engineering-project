@@ -12,7 +12,7 @@ import java.util.TreeSet;
 public class AddressBookModel implements AddressBook, Cloneable, Serializable{
     
     private static TreeSet<Contact> listContacts; ///< lista di contatti gestita con una TreeSet.
-    private static AddressBookModel addrBookInstance;
+    private static AddressBookModel addrBookInstance; ///< istanza della classe AddressBookModel
 
     /**
      * @brief Costruttore che inizializza un AddressBookModel.
@@ -21,29 +21,40 @@ public class AddressBookModel implements AddressBook, Cloneable, Serializable{
     private AddressBookModel(){
         listContacts = new TreeSet<>();
     }
-
+    /**
+     * @brief Metodo statico che restituisce l'istanza della rubrica. 
+     * @return addrBookInstance, l'istanza della classe AddressBookModel.
+     */
     public static AddressBookModel getInstance(){
         if(addrBookInstance == null){
             addrBookInstance = new AddressBookModel();
         }
         return addrBookInstance;
     }
+    /**
+     * @return una lista di contatti
+     */
     public TreeSet<Contact> getTreeSet(){
         return listContacts;
     }
     /**
      * 
-     * @param c Contatto da trovare
+     * @param[in] c Contatto da trovare
      * @return restituisce true se il contatto cercato è presente nella TreeSet.
      */
     public boolean contains(Contact c){
         return listContacts.contains(c);
     }
 
+    /**
+     * @return true se la rubrica è vuota, false altrimenti.
+     */
     public boolean isEmpty(){
         return listContacts.isEmpty();
     }
-
+    /**
+     * svuota la rubrica
+     */
     public void clearAddressBook(){
         listContacts.clear();
     }

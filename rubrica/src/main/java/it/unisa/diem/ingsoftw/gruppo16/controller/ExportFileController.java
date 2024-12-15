@@ -5,7 +5,6 @@ import java.util.Optional;
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.ExportAsCSV;
 import it.unisa.diem.ingsoftw.gruppo16.model.ExportAsJSON;
-import it.unisa.diem.ingsoftw.gruppo16.model.ExportAsXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -43,9 +42,6 @@ public class ExportFileController {
             if(choice.get() == buttonCSV){
                 exportCSV("Test.csv");
             }
-            if(choice.get() == buttonXML){
-                exportXML("Test.xml");
-            }
             if(choice.get() == buttonJSON){
                 exportJSON("Test.json");
             }
@@ -61,10 +57,6 @@ public class ExportFileController {
     private void exportCSV(String filename){
         ExportAsCSV csv = new ExportAsCSV();
         csv.exportFile(filename, addrBook.getTreeSet());
-    }
-    private void exportXML(String filename){
-        ExportAsXML xml = new ExportAsXML();
-        xml.exportFile(filename, addrBook.getTreeSet());
     }
     private void exportJSON(String filename){
         ExportAsJSON json = new ExportAsJSON();

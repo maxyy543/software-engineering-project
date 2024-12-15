@@ -6,7 +6,6 @@ import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
 import it.unisa.diem.ingsoftw.gruppo16.model.ImportAsCSV;
 import it.unisa.diem.ingsoftw.gruppo16.model.ImportAsJSON;
-import it.unisa.diem.ingsoftw.gruppo16.model.ImportAsXML;
 import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -32,8 +31,7 @@ public class ImportFileController {
         fileChooser.setTitle("Seleziona un file che contenga una lista di contatti");
         fileChooser.getExtensionFilters().addAll(
             new FileChooser.ExtensionFilter("File CSV", "*.csv"),
-            new FileChooser.ExtensionFilter("File JSON", "*.json"),
-            new FileChooser.ExtensionFilter("File XML", "*.xml")
+            new FileChooser.ExtensionFilter("File JSON", "*.json")
         );
     }
 
@@ -48,9 +46,6 @@ public class ImportFileController {
             switch (fileExtension) {
                 case "csv":
                     importAsCSV(selectedFile);
-                    break;
-                case "xml":
-                    importAsXML(selectedFile);
                     break;
                 case "json":
                     importAsJSON(selectedFile);
@@ -76,16 +71,6 @@ public class ImportFileController {
                 addrBook.addNewContact(c);
             else
                 System.out.println("Contatto: "+ " " + "non inserito nella rubrica!");
-        }
-    }
-    private void importAsXML(File selectedFile){
-        addrBook.clearAddressBook();
-        ImportAsXML xml = new ImportAsXML();
-        for(Contact c: xml.importFile(selectedFile)){
-        if(verificaContatto.check(c))
-            addrBook.addNewContact(c);
-        else
-            System.out.println("Contatto: "+ " " + "non inserito nella rubrica!");
         }
     }
     private void importAsJSON(File selectedFile){

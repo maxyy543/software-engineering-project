@@ -13,5 +13,6 @@ public class DashboardController extends MainController implements Initializable
         listView.setItems(list.getSharedListView());
         listViewSelectItemInit();
         initSearchbar();
+        allContactListBind();
     }
 }
