@@ -22,7 +22,6 @@
     -fx-font-size: 15px;
     -fx-cursor: hand;
 }
-
 #addContactBtn {
     -fx-background-color: #545454;
     -fx-text-fill: white;
@@ -41,12 +40,12 @@
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
-#allContactsBtn {
-    -fx-background-color: #545454;
+#allContactsBtn{
+    -fx-background-color: #00a1ff;
     -fx-text-fill: white;
 }
 #allContactsBtn:hover {
-    -fx-background-color: #616161;
+    -fx-background-color: #00a1ff;
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
@@ -58,6 +57,9 @@
     -fx-background-color: #616161;
     -fx-text-fill: white;
     -fx-cursor: hand;
+}
+#favouriteContactBtn:pressed{
+    -fx-background-color: red;
 }
 #importBtn {
     -fx-background-color: #545454;
@@ -114,8 +116,4 @@
 }
 .list-cell:filled:hover{
     -fx-background-color: #616161;
-}
-#button-selected{
-    -fx-background-color: #00a1ff;
-    -fx-text-fill: white;
 }

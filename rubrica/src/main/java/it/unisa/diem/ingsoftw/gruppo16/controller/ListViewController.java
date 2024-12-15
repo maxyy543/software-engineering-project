@@ -31,6 +31,4 @@ public class ListViewController{
     public void updateList(){
         listView.setAll(addrBook.getTreeSet());
     }
-
- 
 }

@@ -9,18 +9,28 @@ import java.util.TreeSet;
 * @brief Strategia per esportare i contatti in un file in formato CSV
 * @version 1.0
 *
-* @param[in] filename Path del file da esportare
-* @param[in] contacts Contatti da salvare nel file CSV
 */
-
 public class ExportAsCSV implements ExportFileStrategy {
-@Override
-public void exportFile(String filename, TreeSet<Contact> contacts) {
+
+    /**
+     * @brief metodo per esportare una rubrica in un file CSV.
+     * 
+     * Metodo che implementa l'exportFile di {@link ExportFileStrategy}.
+     * Il metodo visita tutta la lista di contatti e sovrascrive sul file ogni contatto(cognome,nome, numeri di telefono e email)
+     * presente nella lista. 
+     * 
+     * @pre il file inserito deve esistere e la lista di contatti non deve essere vuota.
+     * @post viene generato un file CSV con i contatti della rubrica.
+     * 
+     * @param[inout] filename path del file su cui esportare la rubrica.
+     * @param[in] contacts {@link TreeSet} lista di contatti.
+     *  
+     */
+    @Override
+    public void exportFile(String filename, TreeSet<Contact> contacts) {
     try (FileWriter writer = new FileWriter(filename)) {
         for (Contact contact : contacts) {
             writer.append(contact.getSurname()).append(',').append(contact.getName()).append(',');
-
-                // Append up to three phone numbers
                 String[] phoneNumbers = contact.getTelephoneNumber();
                 for (int i = 0; i < 3; i++) {
                     if (i < phoneNumbers.length) {
@@ -28,8 +38,6 @@ public void exportFile(String filename, TreeSet<Contact> contacts) {
                     }
                     writer.append(',');
                 }
-
-                // Append up to three emails
                 String[] emails = contact.getEmail();
                 for (int i = 0; i < 3; i++) {
                     if (i < emails.length) {

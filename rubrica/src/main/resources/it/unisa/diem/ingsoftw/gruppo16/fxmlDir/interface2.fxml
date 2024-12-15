@@ -24,12 +24,15 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label fx:id="contactsBtn" layoutX="100.0" layoutY="40.0" text="Contatti" textFill="WHITE">
+      <Label fx:id="contactsBtn" layoutX="100.0" layoutY="48.0" text="Contatti" textFill="WHITE">
          <font>
             <Font name="System Bold" size="21.2" />
          </font>
       </Label>
-      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="16.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="16.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@klipartz.com.png" />
+         </image></ImageView>
       <TextField fx:id="searchBarTf" layoutX="275.0" layoutY="36.0" prefHeight="39.0" prefWidth="497.0" promptText="Cerca in tutti i contatti" style="-fx-background-color: #545454;">
          <cursor>
             <Cursor fx:constant="TEXT" />
@@ -67,7 +70,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="starButton" mnemonicParsing="false" onAction="#starButtonOnAction" prefHeight="30.0" prefWidth="138.0" textAlignment="CENTER">
+                  <Button fx:id="starButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#starButtonOnAction" prefHeight="30.0" prefWidth="138.0">
                      <font>
                         <Font size="11.0" />
                      </font>

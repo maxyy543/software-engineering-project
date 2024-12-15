@@ -10,8 +10,8 @@ import java.io.Serializable;
  */
 public class Contact implements Comparable<Contact>, Serializable{
 
-    private final int MAX_TELEPHONE_NUMBER = 3;
-    private final int MAX_EMAIL_NUMBER = 3;
+    private final int MAX_TELEPHONE_NUMBER = 3; ///< Numero massimo di numeri di telefono utilizzabili.
+    private final int MAX_EMAIL_NUMBER = 3; ///< Numero massimo di email utilizzabili.
     /**
      * Cognome del Contact
      */
@@ -23,7 +23,7 @@ public class Contact implements Comparable<Contact>, Serializable{
     private String name;
 
     /**
-     * Numero di telefono del Contact
+     * Numeri di telefono del Contact
      */
     private String[] telephoneNumber;
 
@@ -101,7 +101,6 @@ public class Contact implements Comparable<Contact>, Serializable{
 
 
     /**
-     * @pre Il cognome deve rispettare la lunghezza massima di caratteri consentita. 
      * @param[in] surname Setter cognome del contact
      */
     public void setSurname(String surname) {
@@ -110,7 +109,6 @@ public class Contact implements Comparable<Contact>, Serializable{
 
 
     /**
-     * @pre Il nome deve rispettare la lunghezza massima di caratteri consentita.
      * @param[in] name Setter nome del contact
      */
     public void setName(String name) {
@@ -119,7 +117,6 @@ public class Contact implements Comparable<Contact>, Serializable{
 
 
     /**
-     * @pre I numeri di telefono devono essere corretti.
      * @param[in] telephoneNumber Setter numeri di telefono del contact
      */
     public void setTelephoneNumber(String[] telephoneNumber) {
@@ -128,7 +125,6 @@ public class Contact implements Comparable<Contact>, Serializable{
 
 
     /**
-     * @pre Le email devono essere corrette.
      * @param[in] email Setter email del contact
      */
     public void setEmail(String[] email) {
@@ -144,7 +140,7 @@ public class Contact implements Comparable<Contact>, Serializable{
 
     /**
      * @brief Metodo per il confronto tra i contatti nella TreeSet.
-     * Per tenere ordinata la TreeSet è necessario definire una relazione d'ordine. Nel nostro caso la relazione d'ordine è il Cognome.
+     * Per tenere ordinata la TreeSet è necessario definire una relazione d'ordine. Nel nostro caso la relazione d'ordine è il Cognome e nome.
      * Questo metodo stabilisce una relazione d'ordine.
      * @pre Il contatto da confrontare deve essere validato da un Validator.
      * @post Il contatto viene confrontato con altri contatti.
@@ -159,6 +155,14 @@ public class Contact implements Comparable<Contact>, Serializable{
         else
             return this.name.compareTo(o.getName());
     }
+    /**
+     * @brief Metodo per il confronto tra i contatti nella TreeSet.
+     * Individua i contatti duplicati con una sequenza di controlli.
+     * @pre Il contatto da confrontare deve essere validato da un Validator.
+     * @post Il contatto viene confrontato con altri contatti.
+     * @param[in] o Contact
+     * @return true se due contatti hanno lo stesso cognome e stesso nome.
+     */
     @Override
     public boolean equals(Object o){
         if(o == null) 

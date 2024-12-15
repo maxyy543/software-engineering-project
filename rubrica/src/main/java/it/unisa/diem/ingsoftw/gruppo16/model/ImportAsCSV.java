@@ -7,6 +7,21 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 public class ImportAsCSV implements ImportFileStrategy {
+    /**
+     * @brief metodo per importare dei contatti nella rubrica da un file CSV.
+     * 
+     * Metodo che implementa l'importFile di {@link ExportFileStrategy}.
+     * Ogni linea di testo del file CSV deve contenere i dati necessari per inserire un nuovo contatto nella rubrica.
+     * Ogni linea corrisponde a un nuovo contatto. Ogni contatto creato viene inserito in una {@link TreeSet}.
+     * Ogni linea ha diversi campi che rappresentano, rispettivamente, Cognome, Nome, Numeri di Telefono (max 3), Email (max 3), Preferito
+     * 
+     * @pre il file da importare deve esistere.
+     * @post viene generata una lista di contatti da validare con un {@link Validator}.
+     * 
+     * @param[inout] filename path del file da cui importare la rubrica.
+     *  
+     * @return una treeset contenente contatti da validare con il {@link Validator}.
+     */
     @Override
     public TreeSet<Contact> importFile(File file) {
         TreeSet<Contact> treeContacts = new TreeSet<>();
