@@ -10,17 +10,17 @@
 
 <AnchorPane maxHeight="768.0" maxWidth="1024.0" minHeight="480.0" minWidth="640.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #343434;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ingsoftw.gruppo16.controller.AddContactController">
    <children>
-      <Button fx:id="exportBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="379.0" mnemonicParsing="false" onAction="#exportFileOnAction" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: #545454;" text="Esporta" textFill="#a6a6a6">
+      <Button fx:id="exportBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="379.0" mnemonicParsing="false" onAction="#exportFileOnAction" prefHeight="39.0" prefWidth="220.0"  text="Esporta" textFill="#a6a6a6">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="addContactBtn" layoutX="16.0" layoutY="109.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="70.0" prefWidth="168.0" style="-fx-background-color: #545454;" text="+ Crea Contatto" textFill="#00a1ff" AnchorPane.bottomAnchor="421.0">
+      <Button fx:id="addContactBtn" layoutX="16.0" layoutY="109.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="70.0" prefWidth="168.0" text="+ Crea Contatto" textFill="#00a1ff" AnchorPane.bottomAnchor="421.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="allContactsBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="200.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: #545454;" text="Tutti i Contatti" textFill="#a6a6a6" />
-      <Button fx:id="favouriteContactsBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="261.0" mnemonicParsing="false" onAction="#favouriteListOnAction" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: #545454;" text="Preferiti" textFill="#a6a6a6" AnchorPane.leftAnchor="15.0" />
-      <Button fx:id="importBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="320.0" mnemonicParsing="false" onAction="#importFileOnAction" prefHeight="39.0" prefWidth="220.0" style="-fx-background-color: #545454;" text="Importa" textFill="#a6a6a6">
+      <Button fx:id="allContactsBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="200.0" mnemonicParsing="false" onAction="#allContactsOnAction" prefHeight="39.0" prefWidth="220.0"  text="Tutti i Contatti" textFill="#a6a6a6" />
+      <Button fx:id="favouriteContactsBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="261.0" mnemonicParsing="false" onAction="#favouriteListOnAction" prefHeight="39.0" prefWidth="220.0"  text="Preferiti" textFill="#a6a6a6" AnchorPane.leftAnchor="15.0" />
+      <Button fx:id="importBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="320.0" mnemonicParsing="false" onAction="#importFileOnAction" prefHeight="39.0" prefWidth="220.0"  text="Importa" textFill="#a6a6a6">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -30,7 +30,7 @@
          </font>
       </Label>
       <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="16.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="searchBarTf" layoutX="275.0" layoutY="36.0" onAction="#searchbarOnAction" prefHeight="39.0" prefWidth="497.0" promptText="Cerca in tutti contatti" style="-fx-background-color: #545454;">
+      <TextField fx:id="searchBarTf" layoutX="275.0" layoutY="36.0" prefHeight="39.0" prefWidth="497.0" promptText="Cerca in tutti contatti" style="-fx-background-color: #545454;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
@@ -40,46 +40,58 @@
          </cursor></ListView>
       <Pane layoutX="524.0" layoutY="109.0" prefHeight="443.0" prefWidth="247.0" style="-fx-background-color: #545454;">
          <children>
-            <Button fx:id="cancelBtn" layoutX="12.0" mnemonicParsing="false" onAction="#cancelOnAction" style="-fx-background-color: #545454;" text="Annulla" textFill="#00a1ff">
+            <Button fx:id="cancelBtn" layoutX="11.0" layoutY="7.0" mnemonicParsing="false" onAction="#cancelOnAction"  text="Annulla" textFill="#00a1ff">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="saveBtn" layoutX="82.0" mnemonicParsing="false" onAction="#saveBtnOnAction" style="-fx-background-color: #545454;" text="Salva" textFill="#00a1ff">
+            <Button fx:id="saveBtn" layoutX="82.0" layoutY="7.0" mnemonicParsing="false" onAction="#saveBtnOnAction"  text="Salva" textFill="#00a1ff">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TextField fx:id="telephoneTf" layoutX="12.0" layoutY="138.0" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 1" style="-fx-border-color: #a6a6a6; -fx-background-color: #545454;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
-            <TextField fx:id="telephone2Tf" layoutX="12.0" layoutY="190.0" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 2" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
-            <TextField fx:id="telephone3Tf" layoutX="12.0" layoutY="239.0" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 3" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
-            <TextField fx:id="emailTf" layoutX="12.0" layoutY="289.0" prefHeight="16.0" prefWidth="224.0" promptText="E-mail 1" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
-            <TextField fx:id="email2Tf" layoutX="12.0" layoutY="339.0" prefHeight="16.0" prefWidth="224.0" promptText="E-mail 2" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
-            <TextField fx:id="email3Tf" layoutX="12.0" layoutY="388.0" prefHeight="16.0" prefWidth="224.0" promptText="E-mail3" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
-            <TextField fx:id="nameTf" layoutX="12.0" layoutY="87.0" prefHeight="16.0" prefWidth="224.0" promptText="Nome" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
-            <TextField fx:id="surnameTf" layoutX="12.0" layoutY="39.0" prefHeight="16.0" prefWidth="224.0" promptText="Cognome" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></TextField>
+            <VBox layoutX="12.0" layoutY="50.0" prefHeight="387.0" prefWidth="224.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="surnameTf" prefHeight="16.0" prefWidth="224.0" promptText="Cognome" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="nameTf" prefHeight="16.0" prefWidth="224.0" promptText="Nome" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="telephoneTf" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 1" style="-fx-border-color: #a6a6a6; -fx-background-color: #545454;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="telephone2Tf" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 2" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="telephone3Tf" prefHeight="16.0" prefWidth="224.0" promptText="Numero di telefono 3" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="emailTf" prefHeight="16.0" prefWidth="224.0" promptText="E-mail 1" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="email2Tf" prefHeight="16.0" prefWidth="224.0" promptText="E-mail 2" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="email3Tf" prefHeight="16.0" prefWidth="224.0" promptText="E-mail3" style="-fx-background-color: #545454; -fx-border-color: #a6a6a6;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TextField>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </children>

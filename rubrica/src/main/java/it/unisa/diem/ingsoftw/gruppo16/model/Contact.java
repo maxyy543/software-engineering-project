@@ -153,7 +153,11 @@ public class Contact implements Comparable<Contact>, Serializable{
      */
     @Override
     public int compareTo(Contact o) {
-        return this.surname.compareTo(o.surname);
+        int surnameCompare = this.surname.compareTo(o.surname);
+        if(surnameCompare != 0)
+            return surnameCompare;
+        else
+            return this.name.compareTo(o.getName());
     }
     @Override
     public boolean equals(Object o){
@@ -166,6 +170,6 @@ public class Contact implements Comparable<Contact>, Serializable{
     }
     @Override
     public String toString(){
-        return surname + " " + name + " " + telephoneNumber + " " + email;
+        return surname + " " + name + " " + telephoneNumber.toString() + " " + email.toString();
     }
 }

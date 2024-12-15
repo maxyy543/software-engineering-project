@@ -1,0 +1,121 @@
+.button-add-fav{
+    -fx-background-color: #545454;
+    -fx-text-fill: rgb(226, 244, 119);
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+.button-remove-fav{
+    -fx-background-color: #545454;
+    -fx-text-fill: rgb(247, 122, 122);
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+.button-add-fav:hover{
+    -fx-background-color: #616161;
+    -fx-text-fill: rgb(226, 244, 119);
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+.button-remove-fav:hover{
+    -fx-background-color: #616161;
+    -fx-text-fill: rgb(247, 122, 122);
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
+#addContactBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: white;
+}
+#addContactBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+#exportBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: white;
+}
+#exportBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+#allContactsBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: white;
+}
+#allContactsBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+#favouriteContactsBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: white;
+}
+#favouriteContactsBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+#importBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: white;
+}
+#importBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+#modifyBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: #00a1ff;
+}
+#modifyBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: #00a1ff;
+    -fx-cursor: hand;
+}
+#deleteContactBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: #ea3e3e;
+}
+#deleteContactBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: #ea3e3e;
+    -fx-cursor: hand;
+}
+#saveBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: #00a1ff;
+}
+#saveBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: #00a1ff;
+    -fx-cursor: hand;
+}
+#cancelBtn {
+    -fx-background-color: #545454;
+    -fx-text-fill: #00a1ff;
+}
+#cancelBtn:hover {
+    -fx-background-color: #616161;
+    -fx-text-fill: #00a1ff;
+    -fx-cursor: hand;
+}
+.text-field{
+    -fx-text-fill: white;
+}
+.list-cell{
+    -fx-background-color: #343434;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+.list-cell:filled:hover{
+    -fx-background-color: #616161;
+}
+#button-selected{
+    -fx-background-color: #00a1ff;
+    -fx-text-fill: white;
+}

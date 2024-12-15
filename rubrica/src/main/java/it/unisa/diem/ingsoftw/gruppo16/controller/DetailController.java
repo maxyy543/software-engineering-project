@@ -4,44 +4,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TreeSet;
+
 import it.unisa.diem.ingsoftw.gruppo16.model.AddressBookModel;
 import it.unisa.diem.ingsoftw.gruppo16.model.Contact;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.SVGPath;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 
-public class DetailController implements Initializable{
-
-
-    @FXML
-    private Button exportBtn;
-    @FXML
-    private Button addContactBtn;
-    @FXML
-    private Button allContactsBtn;
-    @FXML
-    private Button favouriteContactsBtn;
-    @FXML
-    private Button importBtn;
-    @FXML
-    private Label contactsBtn;
-    @FXML
-    private TextField searchBarTf;
-    @FXML
-    private ListView<Contact> listView;
+public class DetailController extends MainController implements Initializable{
     @FXML
     private Button modifyBtn;
     @FXML
@@ -65,76 +40,30 @@ public class DetailController implements Initializable{
     @FXML
     private Label email3Lbl;
 
-    private AddressBookModel addrBook;
-    private ObservableList<Contact> listObservable;
-    private SelectedContactController selectedContact;
-    private ViewUpdateController view;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        addrBook = AddressBookModel.getInstance();
+        super.addrBook = AddressBookModel.getInstance();
         selectedContact = SelectedContactController.getInstance();
         view = ViewUpdateController.getInstance();
-        initSelectedContactInfo(selectedContact);
-        updateListView();
+        list = new ListViewController();
+        favList = new FavouriteListController();
         listViewSelectItemInit();
-        SVGPath star = new SVGPath();
-        star.setContent("M20,2 L24,14 H36 L26,22 L30,34 L20,26 L10,34 L14,22 L4,14 H16 Z");
-        star.setFill(Color.WHITE);
-        star.setStyle("-fx-background-color: white;");
-        starButton.setGraphic(star);
-        starButton.setText("");
-        starButton.setStyle("-fx-background-color: transparent;");
-    }    
+        listView.setItems(list.getSharedListView());
+        initSearchbar();
+        initSelectedContactInfo(selectedContact);
 
-    @FXML
-    private void exportFileOnAction(ActionEvent event) {
-        new ExportFileController(event);
-    }
-
-    @FXML
-    private void addButtonOnAction(ActionEvent event) throws IOException {
-        view.setAddContactScene();
     }
     @FXML
     private void starButtonOnAction(ActionEvent event){
-        //
+        Boolean isFav = selectedContact.getSelectedContact().getIsFavourite();
+        selectedContact.getSelectedContact().setIsFavourite(!isFav);
+        favouriteListOnAction(event);
+        view.setDetailOfContactScene();
     }
-    @FXML
-    private void favouriteListOnAction(ActionEvent event) {
-        FavouriteListController favList = new FavouriteListController();
-        listObservable = FXCollections.observableArrayList(favList.getTreeWithFavContacts());
-        listView.setItems(listObservable);
-        favouriteContactsBtn.setStyle("-fx-background-color: #00a1ff; " +
-                                       "-fx-text-fill: white; ");
-    }
-
-    @FXML
-    private void importFileOnAction(ActionEvent event) {
-        new ImportFileController(event);
-    }
-
-    @FXML
-    private void searchBarOnAction(ActionEvent event) {
-        searchBarTf.textProperty().addListener((observer, oldValue, newValue) -> {
-
-            TreeSet<Contact> tempTree = addrBook.getTreeSet();
-            listObservable.clear();
-
-            for(Contact c : tempTree){
-                if(contactIsFiltered(c, newValue)){
-                    listObservable.add(c);
-                }
-            }
-            listView.setItems(listObservable);
-        });
-    }
-
     @FXML
     private void modifyBtnOnAction(ActionEvent event) throws IOException{
         view.setModifyScene();
     }
-
     @FXML 
     private void delContactOnAction(ActionEvent event) throws IOException{
         Alert alert = new Alert(AlertType.CONFIRMATION); 
@@ -142,25 +71,14 @@ public class DetailController implements Initializable{
         Optional<ButtonType> result = alert.showAndWait(); 
             if (result.isPresent() && result.get() == ButtonType.OK) { 
                 if(selectedContact.getSelectedContact() != null){
-                    System.out.println("Sono arrivato fino a qui");;
                     deleteContactFromAddressBook(selectedContact);
-                    switchSceneToDashboard(event);
+                    view.setDashboardScene();
                 }
             } 
             else{ 
                 System.out.println("Utente ha annullato l'azione.");
             }
     }
-    @FXML
-    private void contactSelected() throws IOException{
-        try {
-            selectedContact.setSelectedContact(listView.getSelectionModel().getSelectedItem());
-            setContactDetail(selectedContact.getSelectedContact());
-        } catch (Exception e) {
-            System.out.println("Errore verificato qui");
-        }
-    }
-
     public void setContactDetail(Contact contact){
         contactNameLbl.setText(contact.getSurname() + " " + contact.getName());
         String[] tel = contact.getTelephoneNumber();
@@ -171,30 +89,17 @@ public class DetailController implements Initializable{
         emailLbl.setText(email[0]);
         email2Lbl.setText(email[1]);
         email3Lbl.setText(email[2]);
-    }
-    private void switchSceneToDashboard(ActionEvent event) throws IOException{
-        view.setDashboardScene();
-    }
-    private void listViewSelectItemInit(){
-        listView.setCellFactory(param -> new ListCell<Contact>() {
-            @Override
-            protected void updateItem(Contact contact, boolean empty) {
-                super.updateItem(contact, empty);
 
-                if (empty || contact == null) {
-                    setText(null);
-                    setStyle("-fx-background-color: #545454;" + 
-                             "-fx-text-fill: white");
-                } else {
-                    setText(contact.getSurname() + " " + contact.getName());
-                    setStyle("-fx-background-color: #545454;" + 
-                             "-fx-text-fill: white");
-                }
-            }});
-    }
-    private boolean contactIsFiltered(Contact c, String newValue){
-        return c.getName().toLowerCase().contains(newValue.toLowerCase()) ||
-                c.getSurname().toLowerCase().contains(newValue.toLowerCase());
+        if(contact.getIsFavourite()){
+            starButton.getStyleClass().clear();
+            starButton.getStyleClass().add("button-remove-fav");
+            starButton.setText("Rimuovi dai preferiti");
+        }else{
+            starButton.getStyleClass().clear();
+            starButton.getStyleClass().add("button-add-fav");
+            starButton.setText("Aggiungi ai preferiti");
+        }
+        
     }
     private void initAlert(Alert a){
         a.setTitle("Conferma Azione"); 
@@ -204,15 +109,8 @@ public class DetailController implements Initializable{
     private void deleteContactFromAddressBook(SelectedContactController s){
         selectedContact = SelectedContactController.getInstance();
         addrBook.removeContact(selectedContact.getSelectedContact());
-        updateListView();
+        list.updateList();
         selectedContact.resetSelectedContact();
-    }
-    private void updateListView(){
-        if(addrBook.isEmpty()){
-            System.out.println("Rubrica Vuota");
-        }
-        listObservable = FXCollections.observableArrayList(addrBook.getTreeSet());
-        listView.setItems(listObservable);
     }
     private void initSelectedContactInfo(SelectedContactController selectedContact){
         setContactDetail(selectedContact.getSelectedContact());

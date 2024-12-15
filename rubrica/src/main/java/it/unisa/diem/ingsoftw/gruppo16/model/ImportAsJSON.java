@@ -21,6 +21,7 @@ public class ImportAsJSON implements ImportFileStrategy {
      * 
      * 
     */
+    @Override
     public TreeSet<Contact> importFile(File file) {
         String filename = file.getAbsolutePath();
         Gson gson = new Gson();

@@ -25,7 +25,7 @@ public class ImportFileController {
     private void init(){
         addrBook = AddressBookModel.getInstance();
         fileChooser = new FileChooser();
-        verificaContatto = Validator.link(new EmailController(), new TelephoneNumberController());
+        verificaContatto = Validator.link(new EmailController(), new TelephoneNumberController(), new NameAndSurnameChecker());
     }
 
     private void chooseFile(){
@@ -95,7 +95,7 @@ public class ImportFileController {
             if(verificaContatto.check(c))
                 addrBook.addNewContact(c);
             else
-                System.out.println("Contatto: "+ " " + "non inserito nella rubrica!");
+                System.out.println("Contatto: "+ c.toString() + "non inserito nella rubrica!");
         }
     }
 }
