@@ -15,6 +15,9 @@ public class ImportAsCSV implements ImportFileStrategy {
      * Ogni linea corrisponde a un nuovo contatto. Ogni contatto creato viene inserito in una {@link TreeSet}.
      * Ogni linea ha diversi campi che rappresentano, rispettivamente, Cognome, Nome, Numeri di Telefono (max 3), Email (max 3), Preferito
      * 
+     * @pre il file da importare deve esistere.
+     * @post viene generata una lista di contatti da validare con un {@link Validator}.
+     * 
      * @param[inout] filename path del file da cui importare la rubrica.
      *  
      * @return una treeset contenente contatti da validare con il {@link Validator}.

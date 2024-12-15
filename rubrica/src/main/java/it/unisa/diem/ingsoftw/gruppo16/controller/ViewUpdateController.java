@@ -42,7 +42,7 @@ public class ViewUpdateController {
      * 
      * @param[in] fxml scena da caricare sullo stage
      * @param[in] css file per lo styling della scena
-     * @param[in] txt testo da impostare per il titolo della scena
+     * @param[in] txt titolo della scena
      */
     private void setScene(String fxml, String css, String txt){
         try{
@@ -58,16 +58,27 @@ public class ViewUpdateController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Imposta la scena sulla dashboard.
+     */
     public void setDashboardScene(){
         setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css", "Dashboard");
     }
+    /**
+     * Imposta la scena su Modify contact.
+     */
     public void setModifyScene(){
         setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface3.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css", "Modify Contact");
     }
+    /**
+     * Imposta la scena su Detail of contact.
+     */
     public void setDetailOfContactScene(){
         setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface2.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css", "Contact Detail");
     }
+    /**
+     * Imposta la scena su Add Contact.
+     */
     public void setAddContactScene(){
         setScene("/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/interface4.fxml", "/it/unisa/diem/ingsoftw/gruppo16/fxmlDir/style2.css", "Add Contact");
     }

@@ -19,6 +19,8 @@ public class ExportAsCSV implements ExportFileStrategy {
      * Il metodo visita tutta la lista di contatti e sovrascrive sul file ogni contatto(cognome,nome, numeri di telefono e email)
      * presente nella lista. 
      * 
+     * @pre il file inserito deve esistere e la lista di contatti non deve essere vuota.
+     * @post viene generato un file CSV con i contatti della rubrica.
      * 
      * @param[inout] filename path del file su cui esportare la rubrica.
      * @param[in] contacts {@link TreeSet} lista di contatti.

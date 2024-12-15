@@ -70,7 +70,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="starButton" mnemonicParsing="false" onAction="#starButtonOnAction" prefHeight="30.0" prefWidth="138.0" textAlignment="CENTER">
+                  <Button fx:id="starButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#starButtonOnAction" prefHeight="30.0" prefWidth="138.0">
                      <font>
                         <Font size="11.0" />
                      </font>
