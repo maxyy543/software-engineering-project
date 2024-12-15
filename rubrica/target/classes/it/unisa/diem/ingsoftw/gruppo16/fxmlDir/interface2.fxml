@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
@@ -55,6 +56,8 @@
                </font>
             </Label>
             <Label fx:id="telephoneLbl" layoutX="27.0" layoutY="165.0" text="+393762969769" textFill="WHITE" />
+            <Label fx:id="telephone2Lbl" layoutX="27.0" layoutY="192.0" text="Label" textFill="WHITE" />
+            <Label fx:id="telephone3Lbl" layoutX="27.0" layoutY="219.0" text="Label" textFill="WHITE" />
             <Label fx:id="telephone2Lbl" layoutX="27.0" layoutY="192.0" text="Label" textFill="WHITE" />
             <Label fx:id="telephone3Lbl" layoutX="27.0" layoutY="219.0" text="Label" textFill="WHITE" />
             <Label fx:id="emailLbl" layoutX="27.0" layoutY="246.0" text="E-mail: email@contatto.it" textFill="WHITE" />

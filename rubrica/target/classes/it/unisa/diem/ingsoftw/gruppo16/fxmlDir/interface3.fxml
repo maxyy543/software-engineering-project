@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.*?>
+<?import javafx.scene.*?>
 <?import java.net.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -8,6 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<AnchorPane maxHeight="768.0" maxWidth="1024.0" minHeight="480.0" minWidth="640.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #343434;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ingsoftw.gruppo16.controller.ModifyContactController">
 <AnchorPane maxHeight="768.0" maxWidth="1024.0" minHeight="480.0" minWidth="640.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #343434;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ingsoftw.gruppo16.controller.ModifyContactController">
    <children>
       <Button fx:id="exportBtn" alignment="BASELINE_LEFT" layoutX="15.0" layoutY="379.0" mnemonicParsing="false" onAction="#exportFileOnAction" prefHeight="39.0" prefWidth="220.0" text="Esporta" textFill="#a6a6a6">
