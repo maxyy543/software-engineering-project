@@ -9,6 +9,9 @@ import javafx.fxml.Initializable;
  * @Class DashboardController
  */
 public class DashboardController extends MainController implements Initializable{
+    /**
+     * Inizializzazione di DashboardController
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         selectedContact = SelectedContactController.getInstance();

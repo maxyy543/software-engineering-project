@@ -24,30 +24,30 @@ import javafx.scene.control.Label;
  */
 public class DetailController extends MainController implements Initializable{
     @FXML
-    private Button modifyBtn;
+    private Button modifyBtn; ///< bottone per modificare i dati di un contatto selezionato
     @FXML
-    private Button starButton;
+    private Button starButton; ///< bottone per aggiungere/rimuovere un contatto selezionato dalla lista preferiti
+    @FXML 
+    private Button deleteContactBtn; ///< bottone per eliminare un contatto selezionato
     @FXML
-    private Button deleteContactBtn;
+    private Label contactNameLbl; ///< label che contiene il nome del contatto selezionato
     @FXML
-    private Label contactNameLbl;
+    private Label contactDetailsLbl; ///< label Dettagli contatto selezionato
     @FXML
-    private Label contactDetailsLbl;
-    @FXML
-    private Label telephoneLbl;
+    private Label telephoneLbl; ///< label del numero di telefono del contatto selezionato
     @FXML
     private Label telephone2Lbl;
     @FXML
     private Label telephone3Lbl;
     @FXML
-    private Label emailLbl;
+    private Label emailLbl; ///< labele dell'email del contatto selezionato
     @FXML
     private Label email2Lbl;
     @FXML
     private Label email3Lbl;
 
     /**
-     * Inizializza la classe.
+     * Inizializza la classe DetailController.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -108,6 +108,8 @@ public class DetailController extends MainController implements Initializable{
     }
     /**
      * @brief Vengono impostati nelle label tutte le informazioni del contatto selezionato.
+     * Se un contatto risulta essere tra i preferiti, allora viene impostato un bottone rimuovi dai preferiti,
+     * altrimenti viene impostato un bottone aggiungi ai preferiti.
      * @param[in] contact Contatto da mostrare sulla pagina Contact Detail.
      */
     public void setContactDetail(Contact contact){

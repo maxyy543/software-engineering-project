@@ -57,16 +57,20 @@ public class ExportFileController {
 
         ButtonType buttonCSV = new ButtonType("CSV");
         ButtonType buttonJSON = new ButtonType("JSON");
-        ButtonType buttonXML = new ButtonType("XML");
-        alert.getButtonTypes().setAll(buttonCSV, buttonJSON, buttonXML);
+        ButtonType buttonCancel = ButtonType.CANCEL;
+        alert.getButtonTypes().setAll(buttonCSV, buttonJSON,buttonCancel);
         Optional<ButtonType> choice = alert.showAndWait();
         if(choice.isPresent()){
             if(choice.get() == buttonCSV){
                 exportCSV("Test.csv");
             }
-            if(choice.get() == buttonJSON){
+            else if(choice.get() == buttonJSON){
                 exportJSON("Test.json");
+            }else if(choice.get()== buttonCancel){
+                System.out.println("Operazione annullata");
             }
+        }else{
+            System.out.println("Nessuna scelta effettuata");
         }
     }
     /**

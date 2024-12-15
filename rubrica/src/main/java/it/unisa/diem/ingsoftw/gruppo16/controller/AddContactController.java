@@ -18,7 +18,7 @@ import javafx.scene.control.Button;
  */
 public class AddContactController extends ContactServiceController implements Initializable{
     @FXML
-    private Button saveBtn;
+    private Button saveBtn; ///< bottone per il salvataggio del contatto;
 
     /**
      * Implementazione metodo initizalize di Initializable

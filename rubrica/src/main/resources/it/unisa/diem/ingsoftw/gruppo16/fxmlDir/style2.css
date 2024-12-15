@@ -1,119 +1,170 @@
-.button-add-fav{
+.button-add-fav {
     -fx-background-color: #545454;
-    -fx-text-fill: rgb(226, 244, 119);
-    -fx-font-size: 15px;
+    -fx-text-fill: #00a1ff;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
     -fx-cursor: hand;
 }
-.button-remove-fav{
+
+.button-remove-fav {
     -fx-background-color: #545454;
     -fx-text-fill: rgb(247, 122, 122);
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
     -fx-cursor: hand;
 }
-.button-add-fav:hover{
+
+.button-add-fav:hover {
     -fx-background-color: #616161;
-    -fx-text-fill: rgb(226, 244, 119);
-    -fx-font-size: 15px;
+    -fx-text-fill: #00a1ff;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
     -fx-cursor: hand;
 }
-.button-remove-fav:hover{
+
+.button-remove-fav:hover {
     -fx-background-color: #616161;
     -fx-text-fill: rgb(247, 122, 122);
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
     -fx-cursor: hand;
 }
+
 #addContactBtn {
     -fx-background-color: #545454;
     -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #addContactBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
+
 #exportBtn {
     -fx-background-color: #545454;
     -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #exportBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
-#allContactsBtn{
+
+#allContactsBtn {
     -fx-background-color: #00a1ff;
     -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #allContactsBtn:hover {
     -fx-background-color: #00a1ff;
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
+
 #favouriteContactsBtn {
     -fx-background-color: #545454;
     -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #favouriteContactsBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
-#favouriteContactBtn:pressed{
+
+#favouriteContactBtn:pressed {
     -fx-background-color: red;
 }
+
 #importBtn {
     -fx-background-color: #545454;
     -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #importBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
+
 #modifyBtn {
     -fx-background-color: #545454;
     -fx-text-fill: #00a1ff;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #modifyBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: #00a1ff;
     -fx-cursor: hand;
 }
+
 #deleteContactBtn {
     -fx-background-color: #545454;
     -fx-text-fill: #ea3e3e;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #deleteContactBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: #ea3e3e;
     -fx-cursor: hand;
 }
+
 #saveBtn {
     -fx-background-color: #545454;
     -fx-text-fill: #00a1ff;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #saveBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: #00a1ff;
     -fx-cursor: hand;
 }
+
 #cancelBtn {
     -fx-background-color: #545454;
     -fx-text-fill: #00a1ff;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
+
 #cancelBtn:hover {
     -fx-background-color: #616161;
     -fx-text-fill: #00a1ff;
     -fx-cursor: hand;
 }
-.text-field{
+
+.text-field {
     -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
-.list-cell{
+
+.list-cell {
     -fx-background-color: #343434;
     -fx-text-fill: white;
-    -fx-font-size: 16px;
+    -fx-font-size: 14px;
+    -fx-font-family: System;
 }
-.list-cell:filled:hover{
+
+.list-cell:filled:hover {
     -fx-background-color: #616161;
 }
+

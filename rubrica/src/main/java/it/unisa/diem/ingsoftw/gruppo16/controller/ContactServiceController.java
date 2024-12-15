@@ -17,25 +17,25 @@ import javafx.scene.control.TextField;
  */
 public abstract class ContactServiceController extends MainController{
     @FXML
-    protected Label contactsLbl;
+    protected Label contactsLbl; ///< bottone per la visualizzazione di tutti i contatti
     @FXML
-    protected Button cancelBtn;
+    protected Button cancelBtn; ///< bottone per annullare una operazione
     @FXML
-    protected TextField telephoneTf;
+    protected TextField telephoneTf; ///< textfield per il numero di telefono
     @FXML
     protected TextField telephone2Tf;
     @FXML
     protected TextField telephone3Tf;
     @FXML
-    protected TextField emailTf;
+    protected TextField emailTf; ///< textfield per l'email
     @FXML
     protected TextField email2Tf;
     @FXML
     protected TextField email3Tf;
     @FXML
-    protected TextField nameTf;
+    protected TextField nameTf; ///< textfield per il nome
     @FXML
-    protected TextField surnameTf;
+    protected TextField surnameTf; ///< textfield per il cognome
 
     /**
      * Se viene premuto il tasto Salva, allora viene impostata la scena della Dashboard.
@@ -97,4 +97,5 @@ public abstract class ContactServiceController extends MainController{
         contact.setEmail(email);
         return contact;
     }
+    
 }
