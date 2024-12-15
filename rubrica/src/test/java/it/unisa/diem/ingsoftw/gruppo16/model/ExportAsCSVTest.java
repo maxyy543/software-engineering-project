@@ -10,9 +10,6 @@ import java.util.TreeSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Unit test for ExportAsCSV.
- */
 public class ExportAsCSVTest {
 
 	private TreeSet<Contact> contacts;
