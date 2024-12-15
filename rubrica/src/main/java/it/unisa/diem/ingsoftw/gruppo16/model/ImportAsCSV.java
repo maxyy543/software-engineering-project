@@ -3,10 +3,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.TreeSet;
 
 public class ImportAsCSV implements ImportFileStrategy {
+    private final int MAX_TELEPHONE_NUMBER = 3; ///< Numero massimo di numeri di telefono utilizzabili.
+    private final int MAX_EMAIL_NUMBER = 3; ///< Numero massimo di email utilizzabili.
     /**
      * @brief metodo per importare dei contatti nella rubrica da un file CSV.
      * 
@@ -29,19 +32,30 @@ public class ImportAsCSV implements ImportFileStrategy {
             while(i.hasNextLine()){
                 String line = i.nextLine().trim();
                 String[] textFields = line.split(",");
-                String surname = textFields[0].trim();
-                String name = textFields[1].trim();
-                String telNum1 = (textFields.length > 2) ? textFields[2].trim() : "";
-                String telNum2 = (textFields.length > 3) ? textFields[3].trim() : "";
-                String telNum3 = (textFields.length > 4) ? textFields[4].trim() : "";
-                String email1 = (textFields.length > 5) ? textFields[5].trim() : "";
-                String email2 = (textFields.length > 6) ? textFields[6].trim() : "";
-                String email3 = (textFields.length > 7) ? textFields[7].trim() : "";
-                String[] telNum = {telNum1, telNum2, telNum3};
-                String[] emails = {email1, email2, email3};
+                String surname = (textFields.length > 0) ? textFields[0].trim(): "";
+                String name = (textFields.length > 1) ? textFields[1].trim() : "";
+                
+                String[] tel = new String[MAX_TELEPHONE_NUMBER];
+                String[] email = new String[MAX_EMAIL_NUMBER];
+
+                Arrays.fill(tel, "");
+                Arrays.fill(email, "");
+
+                int telIndex=0;
+                int emailIndex=0;
+                for(int k=2; k< textFields.length; k++){
+                    String str = textFields[k].trim();
+                    if(str.contains("@") && emailIndex < MAX_EMAIL_NUMBER){
+                        email[emailIndex++]=str;
+                    }else if(telIndex<MAX_TELEPHONE_NUMBER){
+                        tel[telIndex++] =str;
+                    }
+                    
+                }
+                
                 Contact c = new Contact(surname, name);
-                c.setTelephoneNumber(telNum);
-                c.setEmail(emails);
+                c.setTelephoneNumber(tel);
+                c.setEmail(email);
                 treeContacts.add(c);
             }
             return treeContacts;
