@@ -10,10 +10,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+/**
+ * @brief Classe view-controller per l'aggiunta di nuovi contatti.
+ * Questa classe eredita tutti i metodi principali di {@link ContactServiceController} e definisce il metodo per salvare un nuovo contatto
+ * nella rubrica (saveBtnAction).
+ * @Class AddContactController
+ */
 public class AddContactController extends ContactServiceController implements Initializable{
     @FXML
     private Button saveBtn;
 
+    /**
+     * Implementazione metodo initizalize di Initializable
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.addrBook = AddressBookModel.getInstance();
@@ -25,6 +34,14 @@ public class AddContactController extends ContactServiceController implements In
         initSearchbar();
         allContactListBind();
     }
+    /**
+     * Metodo che raccoglie tutti i dati dalle textfield (richiamando un metodo esterno) ed effettua il controllo con il Validator
+     * prima di inserire il contatto nella lista. Se il contatto inserito rispetta i criteri di valutazione stabiliti
+     * ({@link TelephoneNumberController},{@link EmailController}, {@link NameAndSurnameChecker}), allora 
+     * può essere inserito nella rubrica
+     * @param[in] event
+     * @throws IOException
+     */
     @FXML
     private void saveBtnOnAction(ActionEvent event) throws IOException{
         Contact contact = contactWithInfoFromTextFields();     

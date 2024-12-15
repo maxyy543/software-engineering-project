@@ -45,6 +45,7 @@ public class EmailController extends Validator {
 	/**
 	 * Creazione di alert per segnalare l'errore nell'inserimento dell'email
 	 */
+
 	private void setAlertEmail(){
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Errore");

@@ -16,6 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 
+/**
+ * @brief Classe view-controller per i dettagli del contatto selezionato.
+ * La classe eredita tutte le funzionalità di MainController e implementa una interfaccia
+ * Initializable per la gestione della GUI.
+ * @Class DetailController
+ */
 public class DetailController extends MainController implements Initializable{
     @FXML
     private Button modifyBtn;
@@ -40,6 +46,9 @@ public class DetailController extends MainController implements Initializable{
     @FXML
     private Label email3Lbl;
 
+    /**
+     * Inizializza la classe.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         super.addrBook = AddressBookModel.getInstance();
@@ -53,6 +62,12 @@ public class DetailController extends MainController implements Initializable{
         initSelectedContactInfo(selectedContact);
         allContactListBind();
     }
+    /**
+     * @brief Aggiunge o rimuove un contatto selezionato dalla lista preferiti.
+     * Aggiorna la grafica del bottone Aggiungi ai preferiti/Rimuovi dai preferiti
+     * e aggiorna lo stato di isFavourite del contatto selezionato.
+     * @param event evento attivato quando viene cliccato il bottone aggiungi ai preferiti/rimuovi dai preferiti.
+     */
     @FXML
     private void starButtonOnAction(ActionEvent event){
         Boolean isFav = selectedContact.getSelectedContact().getIsFavourite();
@@ -60,10 +75,22 @@ public class DetailController extends MainController implements Initializable{
         favouriteListOnAction(event);
         view.setDetailOfContactScene();
     }
+    /**
+     * Aggiorna li vista: viene impostata la scena ModifyScene.
+     * @param event evento attivato quando viene cliccato il bottone modifica.
+     * @throws IOException se la scena ModifyScene non viene caricata con successo.
+     */
     @FXML
     private void modifyBtnOnAction(ActionEvent event) throws IOException{
         view.setModifyScene();
     }
+    /**
+     * @brief Elimina un contatto dalla rubrica.
+     * Viene chiesto all'utente una seconda conferma sull'eliminazione del contatto. Se l'utente
+     * conferma, allora il contatto selezionato viene eliminato definitivamente, altrimenti l'azione viene annullata.
+     * @param event evento attivato quando viene cliccato il pulsante elimina contatto.
+     * @throws IOException se la scena della Dashboard non viene caricata correttamente
+     */
     @FXML 
     private void delContactOnAction(ActionEvent event) throws IOException{
         Alert alert = new Alert(AlertType.CONFIRMATION); 
@@ -79,6 +106,10 @@ public class DetailController extends MainController implements Initializable{
                 System.out.println("Utente ha annullato l'azione.");
             }
     }
+    /**
+     * @brief Vengono impostati nelle label tutte le informazioni del contatto selezionato.
+     * @param[in] contact Contatto da mostrare sulla pagina Contact Detail.
+     */
     public void setContactDetail(Contact contact){
         contactNameLbl.setText(contact.getSurname() + " " + contact.getName());
         String[] tel = contact.getTelephoneNumber();
@@ -101,17 +132,29 @@ public class DetailController extends MainController implements Initializable{
         }
         
     }
+    /**
+     * Assegnazione dei valori testuali all'alert
+     * @param a {@link Alert}
+     */
     private void initAlert(Alert a){
         a.setTitle("Conferma Azione"); 
         a.setHeaderText("Sei sicuro di voler procedere?"); 
         a.setContentText("Questa azione non può essere annullata."); 
     }
+    /**
+     * @brief Elimina un contatto dalla rubrica e aggiorna la listview.
+     * @param s {@link SelectedContactController} contatto selezionato da eliminare
+     */
     private void deleteContactFromAddressBook(SelectedContactController s){
         selectedContact = SelectedContactController.getInstance();
         addrBook.removeContact(selectedContact.getSelectedContact());
         list.updateList();
         selectedContact.resetSelectedContact();
     }
+    /**
+     * @brief Inizializza i dati del contatto selezionato sulla scena DetailContact.
+     * @param selectedContact contatto selezionato.
+     */
     private void initSelectedContactInfo(SelectedContactController selectedContact){
         setContactDetail(selectedContact.getSelectedContact());
     }
